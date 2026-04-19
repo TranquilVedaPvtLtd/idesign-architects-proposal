@@ -1,6 +1,6 @@
-# Champion Loom Script - Priya Studio Interiors
+# Champion Loom Script - iDesign Architects
 
-**Purpose:** A 90-second Loom that walks Priya through the proposal so she can forward one link to her CA, her managers, or anyone on her side. Shruti records this on the day the proposal is sent.
+**Purpose:** A 90-second Loom that walks Swati through the proposal so she can forward one link to her CA, her managers, or anyone on her side. Shruti records this on the day the proposal is sent.
 
 **Recording setup:**
 - Tool: Loom (browser extension) or Zoom record + trim
@@ -16,7 +16,7 @@
 
 **[0:00 - 0:15] The opening (webcam full frame, no screen share yet)**
 
-> "Hi Priya. This is Shruti from TranquilVeda. Thank you for the call last week - I heard everything you said about the seven Excel sheets, the 2pm and 4pm standups, and how revisions are getting lost between the BOQ and the cashflow. I've put together a proposal that is built specifically for your studio, not a template. Let me walk you through it."
+> "Hi Swati This is Shruti from TranquilVeda. Thank you for the call last week - I heard everything you said about the seven Excel sheets, the 2pm and 4pm standups, and how revisions are getting lost between the BOQ and the cashflow. I've put together a proposal that is built specifically for your studio, not a template. Let me walk you through it."
 
 *[switch to screen share, scroll to hero]*
 
@@ -48,7 +48,7 @@
 
 **[1:25 - 1:30] Sign-off (5s, back to webcam)**
 
-> "Thank you, Priya. Reply any time. I'll be online today."
+> "Thank you, Swati Reply any time. I'll be online today."
 
 ---
 
@@ -64,6 +64,6 @@
 
 ## The WhatsApp message that ships with the Loom
 
-> Hi Priya, as promised the full proposal is here [proposal link]. I also recorded a short 90-second walkthrough so you can skip to what matters - [Loom link]. Three-slide summary and detailed SOW are linked inside. Happy to hop on a 15-minute call Tuesday or Wednesday.
+> Hi Swati, as promised the full proposal is here [proposal link]. I also recorded a short 90-second walkthrough so you can skip to what matters - [Loom link]. Three-slide summary and detailed SOW are linked inside. Happy to hop on a 15-minute call Tuesday or Wednesday.
 >
 > Shruti, +91 96737 58777
