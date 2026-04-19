@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Scope of Work - Priya Studio Interiors - JAR-PSI-001</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ink: #0A1628;
+      --soft: #475569;
+      --mute: #94A3B8;
+      --border: #D4D9E0;
+      --bg: #FFFFFF;
+      --bg-alt: #F7F9FC;
+      --accent: #00A859;
+      --red: #FF1744;
+      --gold: #B8860B;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', Georgia, serif;
+      color: var(--ink);
+      background: var(--bg-alt);
+      line-height: 1.65;
+      font-size: 15px;
+      padding: 32px 16px;
+    }
+    .doc {
+      max-width: 840px; margin: 0 auto;
+      background: var(--bg); padding: 72px 72px 96px;
+      box-shadow: 0 20px 60px rgba(10,22,40,0.08);
+      border-radius: 4px;
+    }
+    .header {
+      border-bottom: 2px solid var(--ink);
+      padding-bottom: 24px; margin-bottom: 40px;
+      display: flex; justify-content: space-between; align-items: flex-start; gap: 40px;
+    }
+    .header h1 {
+      font-size: 22px; font-weight: 800; letter-spacing: -0.01em;
+      margin-bottom: 6px;
+    }
+    .header .sub { font-size: 13px; color: var(--soft); line-height: 1.5; }
+    .header .meta { text-align: right; font-size: 12px; color: var(--soft); line-height: 1.7; }
+    .header .meta strong { display: block; color: var(--ink); font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; }
+    .title-block {
+      text-align: center; margin: 40px 0 48px;
+      padding: 24px; background: var(--bg-alt); border: 1px solid var(--border);
+    }
+    .title-block h2 { font-size: 24px; font-weight: 800; letter-spacing: -0.01em; margin-bottom: 8px; }
+    .title-block p { font-size: 14px; color: var(--soft); }
+    .parties {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 32px;
+      margin-bottom: 40px;
+      padding: 24px; border: 1px solid var(--border);
+    }
+    .party h3 {
+      font-size: 11px; text-transform: uppercase; letter-spacing: 0.14em;
+      color: var(--soft); font-weight: 700; margin-bottom: 10px;
+    }
+    .party p { font-size: 14px; color: var(--ink); line-height: 1.7; }
+    .party strong { font-weight: 700; }
+    h2.section {
+      font-size: 15px; text-transform: uppercase; letter-spacing: 0.16em;
+      font-weight: 800; color: var(--ink);
+      margin: 44px 0 16px; padding-bottom: 8px;
+      border-bottom: 1px solid var(--ink);
+    }
+    h3.clause {
+      font-size: 15px; font-weight: 700; color: var(--ink);
+      margin: 26px 0 10px;
+    }
+    p { margin-bottom: 12px; color: var(--ink); }
+    ul, ol { margin: 10px 0 16px 24px; }
+    li { margin-bottom: 8px; color: var(--ink); }
+    table {
+      width: 100%; border-collapse: collapse;
+      margin: 16px 0 20px; font-size: 14px;
+    }
+    th, td {
+      border: 1px solid var(--border);
+      padding: 10px 14px; text-align: left; vertical-align: top;
+    }
+    th { background: var(--bg-alt); font-weight: 700; font-size: 12px; text-transform: uppercase; letter-spacing: 0.08em; }
+    td.amt { text-align: right; font-variant-numeric: tabular-nums; font-weight: 600; white-space: nowrap; }
+    .callout {
+      margin: 20px 0; padding: 18px 22px;
+      background: var(--bg-alt);
+      border-left: 3px solid var(--accent);
+      font-size: 14px; color: var(--ink);
+    }
+    .callout strong { font-weight: 700; }
+    .warn {
+      background: #FFF4F5; border-left-color: var(--red); color: var(--ink);
+    }
+    .signature-block {
+      margin-top: 80px; padding-top: 40px;
+      border-top: 2px solid var(--ink);
+    }
+    .sig-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 48px; margin-top: 40px;
+    }
+    .sig-col { font-size: 13px; color: var(--soft); }
+    .sig-col h4 { font-size: 11px; text-transform: uppercase; letter-spacing: 0.12em; color: var(--soft); font-weight: 700; margin-bottom: 18px; }
+    .sig-line {
+      height: 48px; border-bottom: 1px solid var(--ink);
+      margin-bottom: 10px;
+    }
+    .sig-col .detail { margin: 4px 0; font-size: 13px; color: var(--ink); }
+    .sig-col .detail strong { font-weight: 700; }
+    .footer-sow {
+      margin-top: 60px; padding-top: 20px;
+      border-top: 1px solid var(--border);
+      font-size: 11px; color: var(--mute); text-align: center;
+    }
+    .back-link {
+      display: inline-block; margin-bottom: 20px;
+      font-size: 13px; color: var(--accent); font-weight: 600;
+      text-decoration: none;
+    }
+    .back-link::before { content: "&larr; "; }
+    @media (max-width: 700px) {
+      .doc { padding: 40px 24px 64px; }
+      .header { flex-direction: column; gap: 16px; }
+      .header .meta { text-align: left; }
+      .parties, .sig-grid { grid-template-columns: 1fr; gap: 24px; }
+    }
+    @media print {
+      body { background: #fff; padding: 0; font-size: 11pt; }
+      .doc { box-shadow: none; padding: 24px; }
+      .back-link { display: none; }
+    }
+  </style>
+</head>
+<body>
+  <div class="doc">
+
+    <a class="back-link" href="index.html">Back to proposal</a>
+
+    <div class="header">
+      <div>
+        <h1>Scope of Work</h1>
+        <div class="sub">Studio Command Centre build and operations. Binding upon signature by both parties.</div>
+      </div>
+      <div class="meta">
+        <strong>Document ref.</strong>
+        SOW-PSI-001<br>
+        <strong style="margin-top:10px;">Date</strong>
+        19 April 2026<br>
+        <strong style="margin-top:10px;">Valid for signature until</strong>
+        03 May 2026
+      </div>
+    </div>
+
+    <div class="title-block">
+      <h2>Studio Command Centre - Design, Build and Operations</h2>
+      <p>Between Tranquil Veda Private Limited and Priya Studio Interiors, Pune</p>
+    </div>
+
+    <div class="parties">
+      <div class="party">
+        <h3>Service Provider</h3>
+        <p>
+          <strong>Tranquil Veda Private Limited</strong><br>
+          A company incorporated under the Companies Act, 2013<br>
+          Registered office: Pune, Maharashtra, India<br>
+          GSTIN: 27AAHCT6956C1Z3<br>
+          SAC Code: 998314 (IT consulting &amp; software services)<br>
+          Authorised signatory: Shruti, Principal Consultant<br>
+          Email: shruti@jarvisdaily.com<br>
+          Phone: +91 96737 58777
+        </p>
+      </div>
+      <div class="party">
+        <h3>Client</h3>
+        <p>
+          <strong>Priya Studio Interiors</strong><br>
+          Pune, Maharashtra, India<br>
+          GSTIN: [to be provided]<br>
+          Authorised signatory: [to be provided]<br>
+          Email: [to be provided]<br>
+          Phone: [to be provided]
+        </p>
+      </div>
+    </div>
+
+    <p>This Scope of Work ("SOW") sets out the terms under which Tranquil Veda Private Limited ("Service Provider") will design, build, deploy and support the Studio Command Centre ("the Platform") for Priya Studio Interiors ("Client"). This SOW is to be read together with the accompanying proposal (ref. JAR-PSI-001, dated 19 April 2026).</p>
+
+    <h2 class="section">1. Scope and deliverables</h2>
+
+    <h3 class="clause">1.1 Engagement</h3>
+    <p>The engagement is a fixed-scope, phased build of the Studio Command Centre. The engagement period begins on the date of signature of this SOW and receipt of the first tranche of the setup fee, whichever is later. The estimated build duration is 10 to 12 calendar weeks, followed by 30 calendar days of hypercare.</p>
+
+    <h3 class="clause">1.2 Numbered deliverables and acceptance criteria</h3>
+    <table>
+      <thead><tr><th style="width:45%;">Deliverable</th><th>Acceptance criteria</th></tr></thead>
+      <tbody>
+        <tr><td>1. Schema mapping document</td><td>Document listing every Excel sheet, field and calculation rule, signed off by Client within 5 business days of sharing.</td></tr>
+        <tr><td>2. Rate library migration</td><td>Historical rate library imported, SAC and HSN codes applied; first sample BOQ reproduced within 5% variance of a historical example.</td></tr>
+        <tr><td>3. BOQ engine with versioning</td><td>Creation, revision and diff view operational for one complete project end-to-end.</td></tr>
+        <tr><td>4. AI proposal generator</td><td>Three-column output (AI draft, historical pattern, final) rendered, human sign-off gate enforced, no client-facing auto-send.</td></tr>
+        <tr><td>5. Milestone payment tracker</td><td>Inflows and outflows visible per project, mapped to Indian construction milestone schedule.</td></tr>
+        <tr><td>6. Cashflow rollup</td><td>Studio-wide and per-project cashflow view operational with at least 14 days of live data.</td></tr>
+        <tr><td>7. WhatsApp team surface</td><td>Verified WhatsApp Business Cloud API number in Client's name, designers and managers onboarded, 2pm/4pm standup replaced by written feed.</td></tr>
+        <tr><td>8. Mobile site-visit capture</td><td>Photo + voice note flow operational on Android and iOS browsers, tagged auto-transcription reaching the Command Centre within 2 minutes.</td></tr>
+        <tr><td>9. Contractor payment dashboard</td><td>WhatsApp-native confirmations sent and acknowledgement-logged for at least one contractor end-to-end.</td></tr>
+        <tr><td>10. GST-aware invoicing</td><td>At least 3 sample invoices generated with correct SAC 998391 / SAC 9954 / HSN 9403 combinations, validated by Client's chartered accountant.</td></tr>
+        <tr><td>11. Weekly Excel export</td><td>Automated weekly export of all data to Client's Google Drive, operational for at least 4 consecutive weeks.</td></tr>
+        <tr><td>12. Audit trail compliant with MCA Rule 3</td><td>Immutable append-only change log operational, with 8-year retention policy documented.</td></tr>
+        <tr><td>13. Training video library</td><td>Hindi, Marathi and English walkthrough videos for every screen, delivered on Client's Google Drive.</td></tr>
+        <tr><td>14. 2-day Pune onsite</td><td>Onsite hypercare conducted at Client's studio during first week after go-live.</td></tr>
+        <tr><td>15. Runbook PDF + 2-hour handover call</td><td>Runbook delivered, handover call completed with both studio managers and principal designer.</td></tr>
+      </tbody>
+    </table>
+
+    <h3 class="clause">1.3 Exclusions (out of scope)</h3>
+    <ul>
+      <li>3D rendering, moodboard generation, SketchUp, AutoCAD or any CAD/BIM file authoring.</li>
+      <li>HR, payroll or salary processing for Client or Client's team.</li>
+      <li>Client-facing website redesign or public web properties beyond the internal Command Centre.</li>
+      <li>Public website chatbot, available as a separate Phase D engagement, KPI-gated.</li>
+      <li>VLM (vision-language model) drawing-to-BOQ automated extraction, available as a separate Phase D engagement, KPI-gated.</li>
+      <li>Backfill of projects older than the last 20 completed projects as of signature date.</li>
+      <li>Content creation (photography, copywriting, brand collateral) beyond training videos.</li>
+      <li>Third-party software licence fees invoiced directly to Client (see section 3).</li>
+    </ul>
+
+    <h2 class="section">2. Engagement commitments from Client</h2>
+    <p>The Client undertakes:</p>
+    <ul>
+      <li>To nominate a single point of contact (typically the Principal Designer) authorised to sign off on schema mappings, BOQ logic, proposal drafts and acceptance of deliverables.</li>
+      <li>To commit a <strong>minimum of 2 hours per week</strong> of the nominated point of contact's time for User Acceptance Testing (UAT) during the full build period. This is a material commitment, reviewed at week 2.</li>
+      <li>To provide timely access to representative historical data (last 20 projects), current Excel workbooks, rate library, past BOQs and past client proposals.</li>
+      <li>To confirm receipt of each deliverable within <strong>7 business days</strong> of sharing. Silence beyond 7 business days constitutes deemed acceptance.</li>
+      <li>To allocate two managers and at least two designers for training during the Pune onsite.</li>
+    </ul>
+    <div class="callout warn">
+      <strong>Kill clause - UAT commitment.</strong> If the Client's nominated UAT contact is unable or unwilling to commit the minimum 2 hours per week after week 2 of the build, Service Provider reserves the right to pause the engagement and trigger the adoption-risk clause in section 6.2 below. This is a condition of the engagement, not a courtesy request.
+    </div>
+
+    <h2 class="section">3. Fees and commercials</h2>
+
+    <h3 class="clause">3.1 Setup fee</h3>
+    <table>
+      <thead><tr><th style="width:66%;">Component</th><th style="text-align:right;">Amount (INR)</th></tr></thead>
+      <tbody>
+        <tr><td>Discovery, schema audit and data migration (last 20 projects)</td><td class="amt">&#8377;1,20,000</td></tr>
+        <tr><td>Core Command Centre build (all line items in clause 1.2, items 3 to 12)</td><td class="amt">&#8377;2,80,000</td></tr>
+        <tr><td>Team rollout: Hindi/Marathi training videos + 2-day Pune onsite (items 13 and 14)</td><td class="amt">&#8377;80,000</td></tr>
+        <tr><td>30-day hypercare post go-live</td><td class="amt">&#8377;70,000</td></tr>
+        <tr><td><strong>Total setup fee</strong></td><td class="amt"><strong>&#8377;5,50,000</strong></td></tr>
+      </tbody>
+    </table>
+
+    <h3 class="clause">3.2 Monthly retainer</h3>
+    <p><strong>&#8377;15,000 per month</strong>, commencing one calendar month after go-live. The retainer covers:</p>
+    <ul>
+      <li>Hosting and infrastructure pass-through for Service Provider-managed components.</li>
+      <li>AI API usage up to 50 proposal drafts per calendar month.</li>
+      <li>L2 support up to 4 hours per calendar month (monitoring, incident response, routine fixes).</li>
+      <li>Ongoing feature upkeep (security patches, dependency updates, breaking-API handling).</li>
+    </ul>
+    <p>The retainer does not cover new feature development, scope additions or L3 engineering. Those are handled via change requests under section 4.</p>
+
+    <h3 class="clause">3.3 Alternative commercial: Command Centre Prepaid</h3>
+    <p>At Client's option, the setup fee and the first 12 months of retainer may be bundled into a single one-time payment of <strong>&#8377;6,50,000</strong> (inclusive of the 12-month retainer, exclusive of GST). Year 2 renewal is <strong>&#8377;1,80,000 per year</strong>, invoiced in advance at the end of the 12-month prepaid period, and framed as Compliance, Hosting &amp; Continuity (8-year MCA audit retention being the anchor value). Prepaid election must be made at the time of SOW signature.</p>
+
+    <h3 class="clause">3.4 Optional Studio Starter Pilot</h3>
+    <p>If Client elects the optional Studio Starter Pilot at <strong>&#8377;60,000</strong> (one-time, three weeks, scope as defined in the proposal), and subsequently signs the Studio Command Centre or Command Centre Prepaid SOW within <strong>60 days</strong> of Pilot completion, the full &#8377;60,000 pilot fee shall be credited against the setup fee. Pilot and Command Centre sign-up are governed by separate SOWs.</p>
+
+    <h3 class="clause">3.5 Third-party subscriptions</h3>
+    <p>Third-party software subscriptions used within the Platform (including but not limited to Supabase, Airtable, Make.com, Retool/Softr, Meta WhatsApp Business Cloud API, Anthropic Claude API) may, at Client's election, be:</p>
+    <ul>
+      <li>Billed directly to Client's payment method (recommended, preserves Client ownership and control); or</li>
+      <li>Passed through by Service Provider at cost, with Client reimbursing monthly against invoiced usage.</li>
+    </ul>
+
+    <h3 class="clause">3.6 GST</h3>
+    <p>All fees above are exclusive of Goods and Services Tax. GST will be charged at applicable rates as notified from time to time by the Government of India. For intra-state supply (Maharashtra to Maharashtra), GST is charged as <strong>CGST at 9% + SGST at 9%</strong>. For inter-state supply, GST is charged as <strong>IGST at 18%</strong>.</p>
+
+    <h3 class="clause">3.7 TDS</h3>
+    <p>The Client may deduct Tax Deducted at Source ("TDS") at the applicable rate, being <strong>2% under Section 194C</strong> or <strong>10% under Section 194J</strong> of the Income-tax Act, 1961, as the Client's auditor determines. The Client shall issue a TDS certificate in Form 16A on a quarterly basis within the statutory timeline.</p>
+
+    <h3 class="clause">3.8 Payment schedule - Studio Command Centre (option A)</h3>
+    <table>
+      <thead><tr><th>Trigger event</th><th style="text-align:right;">Amount (INR)</th></tr></thead>
+      <tbody>
+        <tr><td>On signature of this SOW (tranche 1, 50%)</td><td class="amt">&#8377;2,75,000</td></tr>
+        <tr><td>On commencement of build (day 1 of Foundation phase, tranche 2, 25%)</td><td class="amt">&#8377;1,37,500</td></tr>
+        <tr><td>On go-live (start of hypercare, tranche 3, 25%)</td><td class="amt">&#8377;1,37,500</td></tr>
+        <tr><td><strong>Total setup schedule</strong></td><td class="amt"><strong>&#8377;5,50,000</strong></td></tr>
+      </tbody>
+    </table>
+    <p>Monthly retainer of &#8377;15,000 + GST is invoiced on the 1st of each calendar month, in advance, commencing one month after go-live. Payment terms: 7 calendar days from invoice date.</p>
+
+    <h3 class="clause">3.9 Payment schedule - Command Centre Prepaid (option B, if elected)</h3>
+    <table>
+      <thead><tr><th>Trigger event</th><th style="text-align:right;">Amount (INR)</th></tr></thead>
+      <tbody>
+        <tr><td>On signature of this SOW (tranche 1, 50%)</td><td class="amt">&#8377;3,25,000</td></tr>
+        <tr><td>On commencement of build (tranche 2, 50%)</td><td class="amt">&#8377;3,25,000</td></tr>
+        <tr><td><strong>Total prepaid schedule</strong></td><td class="amt"><strong>&#8377;6,50,000</strong></td></tr>
+      </tbody>
+    </table>
+    <p>No monthly retainer for the first 12 months from go-live. Year 2 renewal of &#8377;1,80,000 + GST is invoiced at the end of the 12-month prepaid period, payable in advance within 15 calendar days of invoice.</p>
+
+    <h3 class="clause">3.10 Late payment</h3>
+    <p>Invoices unpaid beyond the 7-day payment terms shall accrue interest at <strong>1.5% per month</strong>, compounded monthly, until settled. Service Provider reserves the right to pause all L2 support and any production monitoring beginning <strong>15 calendar days</strong> after invoice due date, until outstanding amounts are settled in full.</p>
+
+    <h2 class="section">4. Change requests</h2>
+    <p>Any addition, modification or deletion to the scope defined in section 1.2 shall be treated as a Change Request ("CR"). The CR process is as follows:</p>
+    <ol>
+      <li>Client submits a written CR (email or documented WhatsApp message) describing the requested change.</li>
+      <li>Service Provider issues a written impact estimate within 3 business days, detailing scope, schedule impact, and cost.</li>
+      <li>Client approves the estimate in writing before any work begins.</li>
+      <li>Change is executed and billed in the next invoice cycle.</li>
+    </ol>
+    <p><strong>Change requests are billed at &#8377;2,500 per engineering hour, exclusive of GST.</strong> No verbal CR shall be honoured under any circumstance.</p>
+
+    <h3 class="clause">4.1 Revision limits on deliverables</h3>
+    <p>Each deliverable in section 1.2 is subject to a cap of <strong>two (2) rounds of revisions</strong> based on Client feedback within the fixed scope. Revisions beyond the second round are treated as Change Requests and billed at &#8377;2,500 per hour.</p>
+
+    <h3 class="clause">4.2 Deemed acceptance</h3>
+    <p>Where Client does not provide written feedback, approval or rejection on a deliverable within <strong>7 business days</strong> of sharing, the deliverable shall be deemed accepted.</p>
+
+    <h2 class="section">5. Intellectual property</h2>
+
+    <h3 class="clause">5.1 Ownership of work product</h3>
+    <p>All source code, configuration, database schema, training videos, runbook PDF and documentation produced specifically for Client under this SOW ("Work Product") shall, upon full payment of all fees due, be the property of the Client, on a work-for-hire basis.</p>
+
+    <h3 class="clause">5.2 Retained rights of Service Provider</h3>
+    <p>Service Provider retains the right to use, modify and redistribute:</p>
+    <ul>
+      <li>Generic, non-Client-specific components, utilities, libraries, prompt templates and workflow patterns that pre-exist this engagement or are developed by Service Provider for general use.</li>
+      <li>After <strong>90 calendar days</strong> of live Client usage, and subject to Client's prior written consent, the right to name Priya Studio Interiors publicly as a case study. Without written consent, Client remains anonymous in all Service Provider marketing.</li>
+    </ul>
+
+    <h3 class="clause">5.3 Third-party IP</h3>
+    <p>Third-party software, APIs and libraries used in the Platform remain governed by their respective licences. No IP of any third party is transferred to Client under this SOW.</p>
+
+    <h2 class="section">6. Term, termination and adoption</h2>
+
+    <h3 class="clause">6.1 Term</h3>
+    <p>This SOW commences on the date of signature and remains in force for a minimum period covering the build + 12 months of retainer (Option A) or the 12-month prepaid period (Option B). Thereafter, the arrangement converts to month-to-month on the monthly retainer (Option A) or renews annually (Option B).</p>
+
+    <h3 class="clause">6.2 Adoption checkpoint (week 6)</h3>
+    <p>A formal adoption review takes place at the end of <strong>week 6</strong> of the build. If fewer than <strong>40% of Client's new projects initiated after build kickoff</strong> have been entered into the Command Centre by this date:</p>
+    <ul>
+      <li>Service Provider will pause the Team Workflow phase.</li>
+      <li>Service Provider will refund <strong>30% of the Team Workflow phase fees</strong> against the then-unearned balance.</li>
+      <li>The parties will in good faith renegotiate to a thinner, AI-proposal-only SKU at a revised fee of &#8377;1,50,000 (flat), in lieu of the full Command Centre scope.</li>
+    </ul>
+
+    <h3 class="clause">6.3 Cancellation by Client</h3>
+    <p>Client may terminate this SOW with <strong>30 calendar days written notice</strong>. Upon termination:</p>
+    <ul>
+      <li>Setup fees already invoiced are non-refundable, except as provided under clause 6.2.</li>
+      <li>Monthly retainer is pro-rated for the termination month.</li>
+      <li>Service Provider shall deliver all Client Work Product (code, credentials, data exports) within 15 business days of the termination date.</li>
+    </ul>
+
+    <h3 class="clause">6.4 Cancellation by Service Provider</h3>
+    <p>Service Provider may terminate this SOW with 30 calendar days written notice in the event of: material breach by Client; Client insolvency; non-payment beyond 30 days past invoice due date; or Client's failure to fulfil the 2 hours per week UAT commitment (section 2) beyond two consecutive review weeks.</p>
+
+    <h2 class="section">7. Confidentiality</h2>
+    <p>Both parties shall treat as confidential any non-public information shared under this engagement, including client lists, project financials, rate libraries, design work, and the existence and terms of this SOW. A separate Mutual Non-Disclosure Agreement ("NDA") may be signed alongside this SOW and shall be read as incorporated herein by reference.</p>
+    <p>Confidentiality obligations survive termination of this SOW for a period of 3 years.</p>
+
+    <h2 class="section">8. Data protection</h2>
+    <p>Service Provider shall handle all Client data (including client contact information, project data, rate libraries and financial records) in accordance with the Digital Personal Data Protection Act, 2023 of India. Client is the data fiduciary and Service Provider operates as a data processor acting on documented instructions of Client.</p>
+
+    <h2 class="section">9. Representations, warranties and liability</h2>
+
+    <h3 class="clause">9.1 Warranties</h3>
+    <p>Service Provider warrants that:</p>
+    <ul>
+      <li>All Work Product will be delivered in a professional and workmanlike manner, meeting the acceptance criteria in clause 1.2.</li>
+      <li>Service Provider holds valid GST registration and all licences required to perform the Services.</li>
+      <li>To the best of Service Provider's knowledge, Work Product produced under this SOW does not infringe the intellectual property of any third party.</li>
+    </ul>
+
+    <h3 class="clause">9.2 Liability cap</h3>
+    <p>To the maximum extent permitted by applicable law, the total aggregate liability of Service Provider arising out of or in connection with this SOW shall not exceed <strong>the total fees paid by Client to Service Provider in the three (3) calendar months immediately preceding the event giving rise to the claim</strong>. Neither party shall be liable for indirect, incidental, special, consequential or punitive damages, including loss of profit or business opportunity.</p>
+
+    <h2 class="section">10. Force majeure</h2>
+    <p>Neither party shall be liable for any failure or delay in performance to the extent such failure or delay is caused by circumstances beyond reasonable control, including acts of God, war, terrorism, civil disturbance, pandemic, internet or power outages, action of regulatory authorities, or strikes. The affected party shall promptly notify the other and use reasonable efforts to resume performance.</p>
+
+    <h2 class="section">11. Governing law, jurisdiction and dispute resolution</h2>
+    <p>This SOW shall be governed by and construed in accordance with the laws of India. The courts at <strong>Pune, Maharashtra</strong> shall have exclusive jurisdiction over any dispute arising hereunder.</p>
+    <p>Any dispute, controversy or claim arising out of or in connection with this SOW shall first be attempted to be resolved by good faith negotiation between senior representatives of both parties. If the dispute is not resolved within 30 calendar days, the dispute shall be referred to arbitration by a sole arbitrator appointed by mutual consent, seated at <strong>Pune, Maharashtra</strong>, under the Arbitration and Conciliation Act, 1996. The language of arbitration shall be English.</p>
+
+    <h2 class="section">12. General</h2>
+    <ul>
+      <li><strong>Entire agreement.</strong> This SOW, together with the proposal (JAR-PSI-001) and any referenced NDA, constitutes the entire agreement between the parties on the subject matter and supersedes all prior discussions, whether oral or written.</li>
+      <li><strong>Amendments.</strong> No amendment to this SOW is valid unless made in writing and signed by duly authorised signatories of both parties.</li>
+      <li><strong>Assignment.</strong> Neither party may assign this SOW without the prior written consent of the other, except that Service Provider may assign to an affiliate or successor entity upon notice.</li>
+      <li><strong>Severability.</strong> If any provision of this SOW is held invalid or unenforceable, the remaining provisions shall remain in full force and effect.</li>
+      <li><strong>Notices.</strong> All formal notices under this SOW shall be in writing, sent by email to the authorised signatory of the other party, with acknowledgement requested.</li>
+      <li><strong>Counterparts and electronic signature.</strong> This SOW may be executed in counterparts, each of which shall be deemed an original, and all of which together shall constitute one instrument. Digital signatures (including via WhatsApp-shared PDFs or e-signature platforms) shall be valid under the Information Technology Act, 2000.</li>
+    </ul>
+
+    <h2 class="section">13. Commercial option election</h2>
+    <p>Client hereby elects <u>_______________</u> (initial one): Option A - Studio Command Centre (&#8377;5,50,000 setup + &#8377;15,000/month) &nbsp;&nbsp;|&nbsp;&nbsp; Option B - Command Centre Prepaid (&#8377;6,50,000 one-time, Year 1 bundled).</p>
+
+    <div class="signature-block">
+      <h2 class="section" style="margin-top:0;">Signatures</h2>
+      <p>IN WITNESS WHEREOF, the parties have caused this SOW to be executed by their duly authorised representatives as of the date first written above.</p>
+
+      <div class="sig-grid">
+        <div class="sig-col">
+          <h4>For Tranquil Veda Private Limited</h4>
+          <div class="sig-line"></div>
+          <p class="detail"><strong>Name:</strong> Shruti</p>
+          <p class="detail"><strong>Title:</strong> Principal Consultant and Authorised Signatory</p>
+          <p class="detail"><strong>Date:</strong> _______________</p>
+          <p class="detail"><strong>Place:</strong> Pune, Maharashtra</p>
+        </div>
+        <div class="sig-col">
+          <h4>For Priya Studio Interiors</h4>
+          <div class="sig-line"></div>
+          <p class="detail"><strong>Name:</strong> _______________</p>
+          <p class="detail"><strong>Title:</strong> _______________</p>
+          <p class="detail"><strong>Date:</strong> _______________</p>
+          <p class="detail"><strong>Place:</strong> _______________</p>
+        </div>
+      </div>
+
+      <div style="margin-top: 48px;">
+        <h4 style="font-size: 11px; text-transform: uppercase; letter-spacing: 0.12em; color: var(--soft); font-weight: 700; margin-bottom: 18px;">Witness</h4>
+        <div class="sig-grid">
+          <div class="sig-col">
+            <div class="sig-line"></div>
+            <p class="detail"><strong>Name:</strong> _______________</p>
+            <p class="detail"><strong>Address:</strong> _______________</p>
+          </div>
+          <div class="sig-col">
+            <div class="sig-line"></div>
+            <p class="detail"><strong>Name:</strong> _______________</p>
+            <p class="detail"><strong>Address:</strong> _______________</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-sow">
+      SOW-PSI-001 | Prepared 19 April 2026 | Tranquil Veda Private Limited | GSTIN 27AAHCT6956C1Z3 | Pune, Maharashtra
+    </div>
+
+  </div>
+</body>
+</html>

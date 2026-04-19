@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Priya Studio Interiors - Command Centre - 3 slides</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { background: #1a1a1a; color: #fff; font-family: 'Inter', sans-serif; }
+    body { padding: 40px; }
+    .slide {
+      width: 100%; aspect-ratio: 16 / 9;
+      max-width: 1440px; margin: 0 auto 48px;
+      border-radius: 20px;
+      padding: 72px 88px;
+      color: #fff;
+      display: grid;
+      page-break-after: always;
+      box-shadow: 0 30px 90px rgba(0,0,0,0.35);
+      overflow: hidden;
+      position: relative;
+    }
+
+    /* SLIDE 1 - Problem */
+    .slide-1 {
+      background: radial-gradient(ellipse at top left, #1a2847 0%, #0A1628 50%, #060E1A 100%);
+      grid-template-columns: 1.2fr 1fr;
+      gap: 72px;
+      align-items: center;
+    }
+    .slide-1::before {
+      content: ""; position: absolute; top: -50%; right: -20%;
+      width: 70%; height: 130%; border-radius: 50%;
+      background: radial-gradient(circle, rgba(255, 215, 0, 0.12) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .slide-1 .label { font-size: 13px; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: #FFD700; margin-bottom: 24px; }
+    .slide-1 h1 { font-size: 56px; font-weight: 800; letter-spacing: -0.02em; line-height: 1.08; margin-bottom: 28px; }
+    .slide-1 h1 em { color: #FFD700; font-style: normal; }
+    .slide-1 p.lead { font-size: 20px; color: rgba(255,255,255,0.75); line-height: 1.55; max-width: 560px; }
+    .slide-1 .stat-grid {
+      display: grid; grid-template-columns: 1fr;
+      gap: 20px;
+      position: relative; z-index: 2;
+    }
+    .stat-card {
+      padding: 26px 28px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-left: 4px solid #FFD700;
+      border-radius: 12px;
+      backdrop-filter: blur(6px);
+    }
+    .stat-card .n { font-size: 40px; font-weight: 800; color: #fff; letter-spacing: -0.02em; line-height: 1; }
+    .stat-card .u { font-size: 14px; color: rgba(255,255,255,0.6); margin-top: 8px; font-weight: 500; }
+
+    /* SLIDE 2 - Our Fix */
+    .slide-2 {
+      background: linear-gradient(135deg, #0A1628 0%, #152238 100%);
+      grid-template-rows: auto auto 1fr;
+      gap: 40px;
+    }
+    .slide-2 .label { font-size: 13px; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: #00E676; margin-bottom: 6px; }
+    .slide-2 h1 { font-size: 52px; font-weight: 800; letter-spacing: -0.02em; line-height: 1.1; max-width: 20ch; }
+    .slide-2 h1 em { color: #00E676; font-style: normal; }
+    .outcomes {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 24px; align-self: end;
+    }
+    .outcome-card {
+      padding: 28px 24px;
+      background: rgba(255,255,255,0.04);
+      border-top: 3px solid #00E676;
+      border-radius: 10px;
+    }
+    .outcome-card .ic { width: 36px; height: 36px; background: rgba(0, 230, 118, 0.12); border-radius: 8px; display: flex; align-items: center; justify-content: center; color: #00E676; margin-bottom: 16px; }
+    .outcome-card h3 { font-size: 18px; font-weight: 700; margin-bottom: 10px; }
+    .outcome-card p { font-size: 14px; color: rgba(255,255,255,0.7); line-height: 1.55; }
+    .price-strip {
+      padding: 24px 32px; margin-top: 12px;
+      background: rgba(255, 215, 0, 0.08);
+      border: 1px solid rgba(255, 215, 0, 0.25);
+      border-radius: 10px;
+      display: flex; justify-content: space-between; align-items: center;
+      flex-wrap: wrap; gap: 16px;
+    }
+    .price-strip .p-item { display: flex; flex-direction: column; }
+    .price-strip .p-item .k { font-size: 11px; text-transform: uppercase; letter-spacing: 0.12em; color: rgba(255,255,255,0.6); margin-bottom: 6px; font-weight: 700; }
+    .price-strip .p-item .v { font-size: 22px; font-weight: 800; color: #FFD700; }
+    .price-strip .p-item .v span { font-size: 13px; color: rgba(255,255,255,0.6); font-weight: 500; }
+    .price-strip .tag {
+      background: #00E676; color: #0A1628;
+      padding: 10px 16px; border-radius: 6px;
+      font-size: 12px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase;
+    }
+
+    /* SLIDE 3 - The Ask */
+    .slide-3 {
+      background: linear-gradient(180deg, #060E1A 0%, #0A1628 100%);
+      grid-template-rows: auto 1fr auto;
+      gap: 32px;
+    }
+    .slide-3 .label { font-size: 13px; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: #FFD700; }
+    .slide-3 h1 { font-size: 52px; font-weight: 800; line-height: 1.1; letter-spacing: -0.02em; margin-bottom: 6px; }
+    .slide-3 .sub { font-size: 18px; color: rgba(255,255,255,0.75); max-width: 600px; }
+    .criteria-list {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 20px 32px;
+      align-self: center;
+      margin-top: 24px;
+    }
+    .crit-item {
+      display: flex; gap: 16px; align-items: flex-start;
+      padding: 14px 0;
+    }
+    .crit-item .box {
+      width: 22px; height: 22px; border: 2px solid #00E676;
+      border-radius: 5px; flex-shrink: 0; margin-top: 4px;
+      position: relative;
+    }
+    .crit-item .box::after {
+      content: ""; position: absolute;
+      left: 4px; top: -2px; width: 8px; height: 14px;
+      border-right: 3px solid #00E676;
+      border-bottom: 3px solid #00E676;
+      transform: rotate(45deg);
+    }
+    .crit-item .txt { font-size: 16px; font-weight: 500; color: rgba(255,255,255,0.88); line-height: 1.45; }
+    .crit-item .txt strong { color: #fff; font-weight: 700; display: block; margin-bottom: 2px; font-size: 17px; }
+
+    .cta-row {
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 24px; margin-top: 8px; padding-top: 28px;
+      border-top: 1px solid rgba(255,255,255,0.1);
+    }
+    .cta-row .cta-btn {
+      display: inline-flex; align-items: center; gap: 14px;
+      padding: 18px 32px; background: #25D366; color: #fff;
+      border-radius: 10px; font-size: 17px; font-weight: 700;
+      text-decoration: none;
+    }
+    .cta-row .cta-btn svg { width: 22px; height: 22px; }
+    .cta-row .by {
+      font-size: 13px; color: rgba(255,255,255,0.6);
+      text-align: right;
+    }
+    .cta-row .by strong { color: #fff; display: block; font-size: 15px; font-weight: 700; margin-bottom: 4px; }
+
+    .footer-stamp {
+      text-align: center; font-size: 11px;
+      color: rgba(255,255,255,0.4);
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      padding: 16px 0;
+    }
+
+    @media print {
+      body { background: #fff; padding: 0; }
+      .slide { max-width: 100%; margin: 0; page-break-after: always; box-shadow: none; border-radius: 0; }
+      .footer-stamp { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- SLIDE 1: PROBLEM -->
+  <div class="slide slide-1">
+    <div>
+      <div class="label">Priya Studio Interiors - Pune</div>
+      <h1>Seven Excel sheets per client. Two verbal standups a day. <em>Revisions getting lost in between.</em></h1>
+      <p class="lead">You already know the pattern. It worked until project number twenty five. Now it costs real time every week.</p>
+    </div>
+    <div class="stat-grid">
+      <div class="stat-card">
+        <div class="n">7-8</div>
+        <div class="u">sheets per client, times 30 live projects</div>
+      </div>
+      <div class="stat-card">
+        <div class="n">20-30</div>
+        <div class="u">hours to produce one BOQ (industry benchmark)</div>
+      </div>
+      <div class="stat-card">
+        <div class="n">8 years</div>
+        <div class="u">audit trail retention newly mandated by MCA Rule 3</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 2: OUR FIX -->
+  <div class="slide slide-2">
+    <div>
+      <div class="label">The Fix</div>
+      <h1>Studio Command Centre. One system, ten to twelve weeks, <em>live in your studio.</em></h1>
+    </div>
+    <div class="outcomes">
+      <div class="outcome-card">
+        <div class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M 9 12 l 2 2 4 -4"/><path d="M 21 12 c 0 4.97 -4.03 9 -9 9 s -9 -4.03 -9 -9 4.03 -9 9 -9 c 1.66 0 3.22 0.45 4.56 1.23"/><path d="M 22 4 L 12 14.01 l -3 -3"/></svg></div>
+        <h3>BOQ in minutes, not hours</h3>
+        <p>Versioned rate library, GST-aware, revisions take minutes not hours.</p>
+      </div>
+      <div class="outcome-card">
+        <div class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M 21 11.5 a 8.38 8.38 0 0 1 -0.9 3.8 8.5 8.5 0 0 1 -7.6 4.7 8.38 8.38 0 0 1 -3.8 -0.9 L 3 21 l 1.9 -5.7 a 8.38 8.38 0 0 1 -0.9 -3.8 8.5 8.5 0 0 1 4.7 -7.6 8.38 8.38 0 0 1 3.8 -0.9 h 0.5 a 8.48 8.48 0 0 1 8 8 v 0.5 z"/></svg></div>
+        <h3>WhatsApp replaces standups</h3>
+        <p>Designers post updates and site photos. Managers read one feed. No new app for anyone.</p>
+      </div>
+      <div class="outcome-card">
+        <div class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M 12 2 v 20"/><path d="M 17 5 H 9.5 a 3.5 3.5 0 0 0 0 7 h 5 a 3.5 3.5 0 0 1 0 7 H 6"/></svg></div>
+        <h3>Every rupee in one view</h3>
+        <p>Client inflows, contractor outflows, milestone payments - mapped to the Indian construction schedule.</p>
+      </div>
+    </div>
+    <div class="price-strip">
+      <div class="p-item">
+        <div class="k">Setup</div>
+        <div class="v">&#8377;5,50,000 <span>one-time</span></div>
+      </div>
+      <div class="p-item">
+        <div class="k">Monthly</div>
+        <div class="v">&#8377;15,000 <span>+ GST</span></div>
+      </div>
+      <div class="p-item">
+        <div class="k">Timeline</div>
+        <div class="v">10-12 <span>weeks to live</span></div>
+      </div>
+      <div class="tag">Recommended</div>
+    </div>
+  </div>
+
+  <!-- SLIDE 3: THE ASK -->
+  <div class="slide slide-3">
+    <div>
+      <div class="label">The Ask</div>
+      <h1>Here is how to evaluate this, if we were you.</h1>
+      <p class="sub">Five criteria that would matter if Priya put three vendor proposals side by side. This is the rubric.</p>
+    </div>
+
+    <div class="criteria-list">
+      <div class="crit-item">
+        <div class="box"></div>
+        <div class="txt"><strong>Time to first real value</strong>Can you see one project running in 3 weeks before committing the full budget? Yes, via the &#8377;60,000 Pilot.</div>
+      </div>
+      <div class="crit-item">
+        <div class="box"></div>
+        <div class="txt"><strong>Who owns the code and data</strong>Work-for-hire. Client owns the code and the data on day of payment. Weekly Excel export runs forever.</div>
+      </div>
+      <div class="crit-item">
+        <div class="box"></div>
+        <div class="txt"><strong>Pricing transparency</strong>Setup &#8377;5,50,000 + monthly &#8377;15,000. Same in the hero, the table, and the FAQ. No hidden totals.</div>
+      </div>
+      <div class="crit-item">
+        <div class="box"></div>
+        <div class="txt"><strong>Adoption safety net</strong>Week-6 checkpoint, contractually binding. 30% refund clause if the team is not using it.</div>
+      </div>
+      <div class="crit-item" style="grid-column: 1 / -1;">
+        <div class="box"></div>
+        <div class="txt"><strong>India-first specifics</strong>GST with correct SAC and HSN codes. MCA Rule 3 audit trail. Hindi and Marathi training videos. WhatsApp-native. Not a US template with a rupee sign.</div>
+      </div>
+    </div>
+
+    <div class="cta-row">
+      <a class="cta-btn" href="https://wa.me/919673758777?text=Hi%20Shruti%2C%20let%27s%20start%20the%20Studio%20Command%20Centre.">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.6 14.2c-.3-.2-1.8-.9-2.1-1-.3-.1-.5-.2-.7.2-.2.3-.8 1-.9 1.2-.2.2-.3.2-.6.1-.3-.2-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6.1-.1.3-.3.4-.5.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5-.1-.1-.7-1.7-.9-2.3-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.4s1.1 2.8 1.2 3c.2.2 2.1 3.3 5.2 4.6.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.8-.7 2-1.5.3-.7.3-1.4.2-1.5-.1-.1-.3-.2-.6-.3zM12 2C6.5 2 2 6.5 2 12c0 1.8.5 3.5 1.3 5L2 22l5.1-1.3c1.4.8 3.1 1.3 4.9 1.3 5.5 0 10-4.5 10-10S17.5 2 12 2z"/></svg>
+        WhatsApp Shruti on +91 96737 58777
+      </a>
+      <div class="by">
+        <strong>Tranquil Veda Private Limited</strong>
+        GSTIN 27AAHCT6956C1Z3 - Pune<br>
+        Ref: JAR-PSI-001 - 19 April 2026
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-stamp">
+    To export as PDF: print this page (Ctrl/Cmd + P), select "Save as PDF", and choose "Landscape" orientation.
+  </div>
+
+</body>
+</html>
