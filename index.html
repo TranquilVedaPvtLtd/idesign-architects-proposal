@@ -375,13 +375,16 @@
     .scope-table td:last-child { color: var(--text-soft); }
 
     .price-grid {
-      display: grid; grid-template-columns: repeat(3, 1fr);
-      gap: 24px; margin: 40px 0 32px;
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      gap: 18px; margin: 40px 0 32px;
+    }
+    @media (max-width: 1100px) {
+      .price-grid { grid-template-columns: repeat(2, 1fr); gap: 18px; }
     }
     .price-card {
       background: var(--bg);
       border: 1px solid var(--border);
-      border-radius: 16px; padding: 32px 28px;
+      border-radius: 14px; padding: 26px 22px;
       position: relative; transition: all .25s ease;
       display: flex; flex-direction: column;
     }
@@ -389,34 +392,35 @@
       background: linear-gradient(180deg, var(--primary-dark) 0%, var(--primary) 100%);
       color: #fff; border: 0;
       box-shadow: var(--shadow-lg);
-      transform: scale(1.02);
+      transform: scale(1.03);
+      z-index: 2;
     }
     .price-card .plan-tag {
-      font-size: 11px; font-weight: 700; text-transform: uppercase;
-      letter-spacing: 0.14em; color: var(--text-mute); margin-bottom: 12px;
+      font-size: 10.5px; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 0.14em; color: var(--text-mute); margin-bottom: 10px;
     }
     .price-card.featured .plan-tag { color: var(--gold-soft); }
     .price-card.featured .plan-tag::before {
       content: "Recommended  "; color: var(--gold-soft);
     }
-    .price-card h3 { font-size: 20px; margin-bottom: 8px; font-weight: 800; }
-    .price-card .who { font-size: 13.5px; color: var(--text-soft); margin-bottom: 22px; min-height: 44px; }
+    .price-card h3 { font-size: 18px; margin-bottom: 8px; font-weight: 800; line-height: 1.2; }
+    .price-card .who { font-size: 13px; color: var(--text-soft); margin-bottom: 18px; min-height: 52px; line-height: 1.5; }
     .price-card.featured .who { color: rgba(255,255,255,0.7); }
     .price-card .amount {
-      font-size: 36px; font-weight: 800; color: var(--text);
+      font-size: 30px; font-weight: 800; color: var(--text);
       letter-spacing: -0.02em; line-height: 1;
     }
     .price-card.featured .amount { color: #fff; }
-    .price-card .amount-note { font-size: 14px; color: var(--text-soft); margin-top: 6px; margin-bottom: 4px; }
+    .price-card .amount-note { font-size: 13px; color: var(--text-soft); margin-top: 6px; margin-bottom: 4px; }
     .price-card.featured .amount-note { color: rgba(255,255,255,0.7); }
     .price-card .recurring {
-      font-size: 17px; font-weight: 600; color: var(--text); margin-top: 10px;
+      font-size: 15.5px; font-weight: 600; color: var(--text); margin-top: 8px;
     }
     .price-card.featured .recurring { color: var(--gold-soft); }
-    .price-card ul { list-style: none; padding: 0; margin: 24px 0 0; flex: 1; }
+    .price-card ul { list-style: none; padding: 0; margin: 20px 0 0; flex: 1; }
     .price-card li {
-      padding: 9px 0 9px 26px; position: relative;
-      font-size: 14px; color: var(--text-soft); line-height: 1.55;
+      padding: 7px 0 7px 22px; position: relative;
+      font-size: 13px; color: var(--text-soft); line-height: 1.5;
     }
     .price-card.featured li { color: rgba(255,255,255,0.78); }
     .price-card li::before {
@@ -448,6 +452,65 @@
       content: "-"; position: absolute; left: 0; color: var(--text-mute); font-weight: 700;
     }
     .not-included p { margin-top: 14px; font-size: 13.5px; color: var(--text-mute); font-style: italic; }
+
+    /* PROPOSAL ENGINE WORKFLOW BLOCK */
+    .pe-workflow {
+      margin: 40px 0 48px;
+      padding: 36px 38px;
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #fff;
+      border-radius: 18px;
+      box-shadow: var(--shadow-lg);
+      position: relative;
+      overflow: hidden;
+    }
+    .pe-workflow::before {
+      content: ""; position: absolute;
+      top: -50%; right: -15%;
+      width: 60%; height: 180%;
+      background: radial-gradient(ellipse, rgba(255, 215, 0, 0.12) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .pe-workflow .pe-label { font-size: 11.5px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.14em; color: var(--gold-soft); margin-bottom: 12px; display: inline-block; position: relative; }
+    .pe-workflow h3 { font-size: 26px; color: #fff; margin-bottom: 10px; font-weight: 800; letter-spacing: -0.02em; position: relative; }
+    .pe-workflow .pe-sub { font-size: 15.5px; color: rgba(255,255,255,0.78); max-width: 620px; margin-bottom: 32px; position: relative; }
+    .pe-steps {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 8px;
+      position: relative;
+      align-items: flex-start;
+    }
+    .pe-step {
+      padding: 20px 16px 18px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 10px;
+      position: relative;
+    }
+    .pe-step .pe-n {
+      width: 26px; height: 26px;
+      border-radius: 50%;
+      background: var(--gold-soft);
+      color: var(--primary-dark);
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 800; font-size: 13px;
+      margin-bottom: 12px;
+    }
+    .pe-step h4 { font-size: 14px; font-weight: 700; color: #fff; margin-bottom: 6px; line-height: 1.3; }
+    .pe-step p { font-size: 12.5px; color: rgba(255,255,255,0.68); line-height: 1.45; }
+    .pe-arrow {
+      align-self: center;
+      display: flex; justify-content: center;
+      color: rgba(255, 215, 0, 0.5);
+      font-size: 20px; font-weight: 700;
+      padding-top: 24px;
+    }
+    @media (max-width: 960px) {
+      .pe-workflow { padding: 28px 22px; }
+      .pe-steps { grid-template-columns: 1fr 1fr; gap: 12px; }
+      .pe-arrow { display: none; }
+    }
 
     /* E-SIGN */
     .esign-panel {
@@ -730,10 +793,10 @@
     </div>
     <div class="container">
       <span class="badge">Prepared for Ar. Swati Vaidya - iDesign Architects, Pune</span>
-      <h1>Every project, every rupee, every drawing <span class="accent">in one place.</span></h1>
-      <p class="subtitle">Studio Command Centre, built around your workflow. Live in your studio in 10 to 12 weeks.</p>
-      <div class="price-anchor">From <strong>&#8377;5,50,000</strong> setup + <strong>&#8377;15,000 / month</strong>. GST as applicable.</div>
-      <a class="cta-primary" href="https://wa.me/919673758777?text=Hi%20Shruti%2C%20I%20reviewed%20the%20Studio%20Command%20Centre%20proposal.">
+      <h1>Stop writing proposals <span class="accent">from scratch.</span></h1>
+      <p class="subtitle">Your templates, your rate library, your voice - turned into a sign-off-ready draft in under 10 minutes. Review, edit, send. Every new project starts with AI, finishes with your signature.</p>
+      <div class="price-anchor">Start from <strong>&#8377;1,50,000</strong> setup + <strong>&#8377;5,000 / month</strong>. Full Studio Command Centre from &#8377;5,50,000. GST as applicable.</div>
+      <a class="cta-primary" href="https://wa.me/919673758777?text=Hi%20Shruti%2C%20I%20reviewed%20the%20Proposal%20Engine%20and%20Command%20Centre%20proposal.">
         <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.6 14.2c-.3-.2-1.8-.9-2.1-1-.3-.1-.5-.2-.7.2-.2.3-.8 1-.9 1.2-.2.2-.3.2-.6.1-.3-.2-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6.1-.1.3-.3.4-.5.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5-.1-.1-.7-1.7-.9-2.3-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.4s1.1 2.8 1.2 3c.2.2 2.1 3.3 5.2 4.6.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.8-.7 2-1.5.3-.7.3-1.4.2-1.5-.1-.1-.3-.2-.6-.3zM12 2C6.5 2 2 6.5 2 12c0 1.8.5 3.5 1.3 5L2 22l5.1-1.3c1.4.8 3.1 1.3 4.9 1.3 5.5 0 10-4.5 10-10S17.5 2 12 2zm0 18.2c-1.6 0-3.1-.4-4.4-1.2l-.3-.2-3.2.8.8-3.1-.2-.3c-.9-1.4-1.3-2.9-1.3-4.5C3.4 7.3 7.3 3.4 12 3.4s8.6 3.9 8.6 8.6-3.9 8.2-8.6 8.2z"/></svg>
         WhatsApp Shruti now
       </a>
@@ -770,7 +833,7 @@
           <a href="https://wa.me/919673758777">WhatsApp +91 96737 58777</a>
         </div>
       </div>
-      <p class="strip-pain">Seven Excel sheets per client. Verbal reporting at 2pm and 4pm. Revisions slipping between BOQ, costing and cashflow. You already know the pattern.</p>
+      <p class="strip-pain">Three to four hours per client proposal. Seven Excel sheets each. Around 70% of those proposals never convert. That time is your most expensive hidden cost.</p>
       <div class="strip-meta">
         <div>
           <strong>Ref</strong>
@@ -789,38 +852,38 @@
     <div class="container">
       <div class="block-header">
         <span class="label">What we heard</span>
-        <h2>Where iDesign Architects is right now.</h2>
-        <p class="lead">Most Pune design studios we meet at your scale run on the same operating stack: Excel, WhatsApp and verbal standups. It works until about project number twenty five, and then it starts to cost real money.</p>
+        <h2>Your most expensive hidden cost is proposal-writing time.</h2>
+        <p class="lead">You have beautiful standard templates. You have years of rate data. What you do not have is a system that takes those inputs and gives you a draft. So every new project starts with you, alone at a laptop, assembling line items by hand. Three hours per proposal. Seventy percent of them never convert. That is your real cost.</p>
       </div>
 
       <div class="ctx-grid">
         <div class="ctx-card">
           <div class="kicker">Here is what you are dealing with</div>
-          <h3>The Excel backbone has quietly become the bottleneck.</h3>
+          <h3>Proposal-writing is the tax you pay for every lead.</h3>
           <ul>
-            <li>A 7 to 8 sheet workbook per client: <strong>BOQ, proposal, costing, payments, contractor outflows, cashflows, revisions, drawings index</strong>. Roughly 30 live projects means 200 plus workbooks to keep consistent.</li>
-            <li>A principal designer plus <strong>4 to 8 designers and 2 managers</strong> depending on the week, reporting verbally at 2pm and 4pm. No written audit trail beyond what people remember.</li>
-            <li>A BOQ for a mid-sized residence takes <strong>20 to 30 working hours</strong> the first time and another 8 to 12 hours every time the client revises. Industry benchmark, not a guess.</li>
-            <li>Revisions are the single most painful moment: the BOQ moves, the proposal moves, the cashflow should move, and sometimes it does not. When a contractor calls about a payment, the answer lives in three places.</li>
+            <li><strong>3 to 4 hours per client proposal</strong>, assembled by hand from your standard templates across 5 to 7 Excel tabs. Done by you, because nobody else in the studio knows the pricing logic.</li>
+            <li>Industry conversion on mid-to-high-ticket interior proposals is <strong>20% to 30%</strong>. Meaning roughly 70% of that proposal time is effectively unpaid.</li>
+            <li>Every revision round the client asks for is another <strong>60 to 90 minutes</strong> - open the workbook, change the rates, re-version the tabs, re-send. Two or three revisions is normal.</li>
+            <li>Behind that, the studio's full operating stack: a 7 to 8 sheet workbook per client (BOQ, proposal, costing, payments, contractor outflows, cashflow, revisions, drawings index). A team of <strong>4 to 8 designers plus 2 managers</strong>, reporting verbally at 2pm and 4pm. No audit trail beyond what people remember.</li>
           </ul>
         </div>
 
         <div class="ctx-card">
           <div class="kicker">Here is what you asked for</div>
-          <h3>A single Command Centre that holds it all.</h3>
+          <h3>AI that drafts in your voice, using your templates.</h3>
           <ul>
-            <li>One system that keeps <strong>BOQ, proposal, costing, payments, cashflow</strong> in sync, without rebuilding your process.</li>
-            <li>GST-aware from day one, with <strong>SAC 998391 for design services, SAC 9954 for site execution, HSN 9403 for furniture</strong>, so your CA gets clean input every month.</li>
-            <li>WhatsApp-native team surface. Replace the 2pm and 4pm verbal standup with short written updates your managers actually read.</li>
-            <li>AI-assisted proposal generation from the approved BOQ, with a human sign-off gate. Never auto-sent to a client.</li>
-            <li>Drawings and revisions indexed and findable. Not another folder structure nobody trusts.</li>
+            <li><strong>AI-drafted proposals from your approved rate library</strong>, in your language, in your format. You review and sign off - never auto-sent to a client.</li>
+            <li>A single <strong>template + rate library</strong> that every proposal pulls from, so pricing stays consistent across projects and nobody hunts for last quarter's Excel.</li>
+            <li>Optional full ops layer: BOQ engine, cashflow, milestone payments, WhatsApp team surface - for when you are ready to digitise beyond proposals.</li>
+            <li>GST-aware from day one with <strong>SAC 998391 for design, SAC 9954 for site execution, HSN 9403 for furniture</strong>. Clean input for your CA.</li>
+            <li>No lock-in. Weekly Excel export to your Google Drive, forever.</li>
           </ul>
         </div>
       </div>
 
       <div class="ctx-warn">
         <h3>What happens if nothing changes.</h3>
-        <p>From FY 2024-25 onwards, the Ministry of Corporate Affairs requires every company using accounting software to maintain an <strong>audit trail that is tamper-proof and retained for 8 years</strong> (MCA Rule 3, Companies Amendment Rules 2022). Spreadsheets do not produce that trail. You are one audit away from reconstructing three years of project-level inflows and outflows from memory, WhatsApp screenshots and bank statements. The Command Centre puts that audit trail in place on day one of the build.</p>
+        <p>Two costs keep compounding. First, every unconverted proposal is three hours you will not get back, and the studio's proposal volume only grows. Second, from FY 2024-25 onwards, the Ministry of Corporate Affairs requires every company using accounting software to maintain an <strong>audit trail that is tamper-proof and retained for 8 years</strong> (MCA Rule 3, Companies Amendment Rules 2022). Spreadsheets do not produce that trail. You are one audit away from reconstructing three years of project-level inflows and outflows from memory.</p>
       </div>
     </div>
   </section>
@@ -830,9 +893,46 @@
     <div class="container">
       <div class="block-header">
         <span class="label">What you get and what it costs</span>
-        <h2>Studio Command Centre, scope and price.</h2>
-        <p class="lead">Every line item names a deliverable and the outcome it produces in your studio. No line item is abstract, no line item is sold before it is scoped.</p>
+        <h2>Four ways to start. Pick the one that fits this quarter.</h2>
+        <p class="lead">Every engagement solves the proposal-time pain on day one. The only question is how far you want to go beyond proposals - into BOQ, cashflow, contractor dashboards, and the full studio operating system. Descriptive names, no milestone codes, no hidden totals.</p>
       </div>
+
+      <!-- PROPOSAL ENGINE WORKFLOW BLOCK -->
+      <div class="pe-workflow">
+        <span class="pe-label">The Proposal Engine, step by step</span>
+        <h3>From blank Excel to sign-off draft in under 10 minutes.</h3>
+        <p class="pe-sub">This is how a new client enquiry becomes a proposal in your voice, using your templates and your rate library. The AI drafts. You review, edit, sign off. Never auto-sent.</p>
+        <div class="pe-steps">
+          <div class="pe-step">
+            <div class="pe-n">1</div>
+            <h4>Your templates, imported</h4>
+            <p>Your standard proposal templates and your rate library are loaded once. The system learns your tone and pricing logic.</p>
+          </div>
+          <div class="pe-step">
+            <div class="pe-n">2</div>
+            <h4>New client brief in</h4>
+            <p>Paste or upload the client brief. Room count, budget range, scope, material preferences - any shape you have it in.</p>
+          </div>
+          <div class="pe-step">
+            <div class="pe-n">3</div>
+            <h4>AI drafts in your voice</h4>
+            <p>Under 10 minutes. Output shown in 3 columns: AI draft, your historical pattern for similar projects, final.</p>
+          </div>
+          <div class="pe-step">
+            <div class="pe-n">4</div>
+            <h4>You review and edit</h4>
+            <p>Every line item is editable. Confidence score flagged when AI diverges from your historical pattern by more than 10%.</p>
+          </div>
+          <div class="pe-step">
+            <div class="pe-n">5</div>
+            <h4>Sign off and send</h4>
+            <p>One-click export to PDF. WhatsApp, email or download. Never auto-sent. Audit log retained for 8 years.</p>
+          </div>
+        </div>
+      </div>
+
+      <h3 style="margin-top:12px;margin-bottom:6px;font-size:20px;">What is in the full Studio Command Centre.</h3>
+      <p style="font-size:14.5px;color:var(--text-soft);margin-bottom:16px;max-width:720px;">Every row below is part of the full Command Centre build. The Proposal Engine SKU is a focused subset - rows 1, 2, 10 and 12 only. Starter Pilot covers row 1 and a subset of row 2 against one live project.</p>
 
       <table class="scope-table" aria-label="Scope and outcomes">
         <thead>
@@ -857,45 +957,62 @@
       <div class="price-grid">
 
         <div class="price-card">
-          <div class="plan-tag">Optional on-ramp</div>
+          <div class="plan-tag">Lowest-barrier trial</div>
           <h3>Studio Starter Pilot</h3>
-          <p class="who">Migrate one live project in three weeks. See the system running before you commit to the full build.</p>
+          <p class="who">Migrate one live project in three weeks. See how the system handles your real workflow.</p>
           <div class="amount">&#8377;60,000</div>
           <div class="amount-note">one-time, three weeks. GST as applicable.</div>
           <ul>
-            <li>One active project migrated into Sheets + rented backbone</li>
+            <li>One active project migrated</li>
             <li>Read-only mirror, Excel stays running</li>
-            <li>BOQ rate library + weekly Excel export operational</li>
-            <li>100% credited back if you proceed to Command Centre within 60 days</li>
+            <li>Rate library + weekly Excel export operational</li>
+            <li>100% credited back if you proceed to Proposal Engine or Command Centre within 60 days</li>
           </ul>
         </div>
 
         <div class="price-card featured">
-          <div class="plan-tag">Lead offer</div>
-          <h3>Studio Command Centre</h3>
-          <p class="who">The full build. Every artifact in the table above, phased across 10 to 12 weeks.</p>
-          <div class="amount">&#8377;5,50,000</div>
+          <div class="plan-tag">Start here</div>
+          <h3>Proposal Engine</h3>
+          <p class="who">Solve the proposal-writing pain first. The one feature you will use every week from week four.</p>
+          <div class="amount">&#8377;1,50,000</div>
           <div class="amount-note">one-time setup. GST as applicable.</div>
-          <div class="recurring">+ &#8377;15,000 / month</div>
+          <div class="recurring">+ &#8377;5,000 / month</div>
           <ul>
-            <li>Foundation phase (weeks 1 to 3) - schema migration, rate library, Excel mirror</li>
-            <li>Manager Tools phase (weeks 4 to 7) - AI proposal, payment tracker, cashflow, WhatsApp surface</li>
-            <li>Team Workflow phase (weeks 8 to 12) - site capture, revision diff, contractor dashboard, training, hypercare</li>
-            <li>Monthly covers hosting, AI API usage, L2 support and feature upkeep</li>
+            <li>AI proposal generator in your voice, using your templates</li>
+            <li>Versioned rate library with GST/SAC/HSN tagging</li>
+            <li>Unlimited drafts per month + PDF export + WhatsApp-send</li>
+            <li>4 weeks to live, Hindi and Marathi training videos</li>
+            <li>100% creditable toward Command Centre within 90 days</li>
           </ul>
         </div>
 
         <div class="price-card">
-          <div class="plan-tag">If you prefer no monthly</div>
+          <div class="plan-tag">Full studio build</div>
+          <h3>Studio Command Centre</h3>
+          <p class="who">Every artifact in the scope table above. BOQ, cashflow, WhatsApp, contractors, audit trail.</p>
+          <div class="amount">&#8377;5,50,000</div>
+          <div class="amount-note">one-time setup. GST as applicable.</div>
+          <div class="recurring">+ &#8377;15,000 / month</div>
+          <ul>
+            <li>Includes everything in Proposal Engine</li>
+            <li>Plus BOQ engine, cashflow, WhatsApp team surface</li>
+            <li>Plus milestone payments, contractor dashboard, site capture</li>
+            <li>Plus MCA Rule 3 audit trail, GST invoicing, 30-day hypercare</li>
+            <li>10 to 12 weeks to live</li>
+          </ul>
+        </div>
+
+        <div class="price-card">
+          <div class="plan-tag">No monthly, one cheque</div>
           <h3>Command Centre Prepaid</h3>
-          <p class="who">Same full build. Year one monthly fees bundled into a single upfront payment.</p>
+          <p class="who">Same full build. Year one monthly bundled into setup, clean capex line for your CA.</p>
           <div class="amount">&#8377;6,50,000</div>
-          <div class="amount-note">one-time, covers build + 12 months. GST as applicable.</div>
+          <div class="amount-note">one-time, build + 12 months. GST as applicable.</div>
           <ul>
             <li>Identical scope to Command Centre</li>
             <li>No monthly invoice for 12 months from go-live</li>
-            <li>Year two renewal at &#8377;1,80,000 per year, framed as Compliance, Hosting &amp; Continuity</li>
-            <li>Recommended if your team prefers capex over recurring opex</li>
+            <li>Year two renewal &#8377;1,80,000 / year as Compliance, Hosting &amp; Continuity</li>
+            <li>Recommended if your books prefer capex over recurring opex</li>
           </ul>
         </div>
 
@@ -904,8 +1021,8 @@
       <p style="font-size:14px;color:var(--text-mute);margin-top:8px;">Prices valid for 14 days from proposal date. + GST as applicable (9% CGST + 9% SGST, same-state Maharashtra). Prices include all training, hypercare and Pune onsite visits.</p>
 
       <div class="why-price">
-        <h4>Why this price.</h4>
-        <p>Roughly 150 engineering hours of orchestration and configuration at a blended rate, plus training video production in Hindi and Marathi, plus 30 days of hypercare, plus infrastructure pass-through during the build phase. Shown as a flat number not because the hours are hidden, but because you should not have to watch a timesheet to know what you are paying for.</p>
+        <h4>Why these prices.</h4>
+        <p><strong>Proposal Engine (&#8377;1,50,000)</strong> covers roughly 45 engineering hours of template ingestion, prompt engineering, rate-library migration and AI orchestration, plus Hindi/Marathi training videos and 14 days of hypercare. <strong>Studio Command Centre (&#8377;5,50,000)</strong> covers roughly 150 engineering hours for the full phased build, plus 30 days of hypercare and the 2-day Pune onsite. Both shown as flat numbers because you should not have to watch a timesheet to know what you are paying for.</p>
       </div>
 
       <div class="not-included">
@@ -942,7 +1059,31 @@
         <details>
           <summary><span class="tag-role">For Finance</span>Full line items and payment schedule.</summary>
           <div class="accordion-body">
-            <p><strong>Setup build - &#8377;5,50,000 total</strong></p>
+
+            <p style="font-size:15px;font-weight:700;color:var(--text);margin-top:4px;">Option A - Proposal Engine</p>
+            <p style="font-size:13.5px;color:var(--text-soft);margin-bottom:10px;">4 weeks to live. &#8377;1,50,000 setup + &#8377;5,000 / month.</p>
+            <table>
+              <thead><tr><th>Line item</th><th>Amount</th></tr></thead>
+              <tbody>
+                <tr><td>Discovery + your template and rate library audit</td><td class="amt">&#8377;30,000</td></tr>
+                <tr><td>AI proposal generator build (prompt engineering, 3-column output, human sign-off gate, PDF export)</td><td class="amt">&#8377;70,000</td></tr>
+                <tr><td>Rate library migration + GST/SAC/HSN tagging + weekly Excel export</td><td class="amt">&#8377;25,000</td></tr>
+                <tr><td>Training videos (Hindi + Marathi + English) + 14-day hypercare</td><td class="amt">&#8377;25,000</td></tr>
+                <tr><td><strong>Proposal Engine setup total</strong></td><td class="amt"><strong>&#8377;1,50,000</strong></td></tr>
+              </tbody>
+            </table>
+            <table style="margin-top:10px;">
+              <thead><tr><th>Payment schedule</th><th>Amount</th></tr></thead>
+              <tbody>
+                <tr><td>On signature of SOW (50%)</td><td class="amt">&#8377;75,000</td></tr>
+                <tr><td>On go-live (50%)</td><td class="amt">&#8377;75,000</td></tr>
+                <tr><td><strong>Payment schedule total</strong></td><td class="amt"><strong>&#8377;1,50,000</strong></td></tr>
+              </tbody>
+            </table>
+            <p style="margin-top:12px;font-size:13.5px;"><strong>Monthly &#8377;5,000</strong> covers AI API usage up to 40 proposal drafts, hosting, L2 support up to 2 hours. Billed in advance on the 1st, 7-day payment terms, starts one month after go-live. + GST.</p>
+
+            <p style="font-size:15px;font-weight:700;color:var(--text);margin-top:28px;">Option B - Studio Command Centre</p>
+            <p style="font-size:13.5px;color:var(--text-soft);margin-bottom:10px;">10 to 12 weeks to live. &#8377;5,50,000 setup + &#8377;15,000 / month.</p>
             <table>
               <thead><tr><th>Line item</th><th>Amount</th></tr></thead>
               <tbody>
@@ -950,21 +1091,44 @@
                 <tr><td>Core Command Centre build (BOQ engine, proposal, payments, cashflow, WhatsApp surface)</td><td class="amt">&#8377;2,80,000</td></tr>
                 <tr><td>Team rollout: Hindi/Marathi training videos + 2-day Pune onsite</td><td class="amt">&#8377;80,000</td></tr>
                 <tr><td>30 days hypercare after go-live</td><td class="amt">&#8377;70,000</td></tr>
-                <tr><td><strong>Setup total</strong></td><td class="amt"><strong>&#8377;5,50,000</strong></td></tr>
+                <tr><td><strong>Command Centre setup total</strong></td><td class="amt"><strong>&#8377;5,50,000</strong></td></tr>
               </tbody>
             </table>
-            <p style="margin-top:18px;"><strong>Payment schedule</strong></p>
-            <table>
-              <thead><tr><th>Milestone</th><th>Amount</th></tr></thead>
+            <table style="margin-top:10px;">
+              <thead><tr><th>Payment schedule</th><th>Amount</th></tr></thead>
               <tbody>
-                <tr><td>On signature of SOW</td><td class="amt">&#8377;2,75,000</td></tr>
-                <tr><td>On build kickoff (day 1 of Foundation phase)</td><td class="amt">&#8377;1,37,500</td></tr>
-                <tr><td>On go-live (start of hypercare)</td><td class="amt">&#8377;1,37,500</td></tr>
+                <tr><td>On signature of SOW (50%)</td><td class="amt">&#8377;2,75,000</td></tr>
+                <tr><td>On build kickoff (25%)</td><td class="amt">&#8377;1,37,500</td></tr>
+                <tr><td>On go-live (25%)</td><td class="amt">&#8377;1,37,500</td></tr>
                 <tr><td><strong>Payment schedule total</strong></td><td class="amt"><strong>&#8377;5,50,000</strong></td></tr>
               </tbody>
             </table>
-            <p style="margin-top:18px;"><strong>Monthly - &#8377;15,000 / month, billed monthly in advance on the 1st, 7-day payment terms, starts one month after go-live. Covers hosting, AI API usage up to 50 proposals per month, L2 support up to 4 hours, and ongoing feature upkeep. + GST as applicable.</strong></p>
-            <p style="margin-top:14px;"><strong>TDS.</strong> You may deduct TDS at 2% under section 194C or 10% under section 194J as applicable. TDS certificate Form 16A expected quarterly.</p>
+            <p style="margin-top:12px;font-size:13.5px;"><strong>Monthly &#8377;15,000</strong> covers hosting, AI API up to 50 drafts, L2 support up to 4 hours, feature upkeep. Billed in advance on the 1st, 7-day payment terms, starts one month after go-live. + GST.</p>
+
+            <p style="font-size:15px;font-weight:700;color:var(--text);margin-top:28px;">Option C - Command Centre Prepaid</p>
+            <p style="font-size:13.5px;color:var(--text-soft);margin-bottom:10px;">Same Command Centre scope. Y1 monthly bundled into setup.</p>
+            <table>
+              <thead><tr><th>Payment schedule</th><th>Amount</th></tr></thead>
+              <tbody>
+                <tr><td>On signature of SOW (50%)</td><td class="amt">&#8377;3,25,000</td></tr>
+                <tr><td>On build kickoff (50%)</td><td class="amt">&#8377;3,25,000</td></tr>
+                <tr><td><strong>Prepaid total</strong></td><td class="amt"><strong>&#8377;6,50,000</strong></td></tr>
+              </tbody>
+            </table>
+            <p style="margin-top:12px;font-size:13.5px;">No monthly for 12 months from go-live. Year 2 renewal &#8377;1,80,000 / year as Compliance, Hosting &amp; Continuity.</p>
+
+            <p style="font-size:15px;font-weight:700;color:var(--text);margin-top:28px;">Option D - Studio Starter Pilot</p>
+            <p style="font-size:13.5px;color:var(--text-soft);margin-bottom:10px;">3 weeks. &#8377;60,000 one-time. 100% creditable within 60 days.</p>
+            <table>
+              <thead><tr><th>Payment schedule</th><th>Amount</th></tr></thead>
+              <tbody>
+                <tr><td>On signature</td><td class="amt">&#8377;30,000</td></tr>
+                <tr><td>On completion of the 3-week pilot</td><td class="amt">&#8377;30,000</td></tr>
+                <tr><td><strong>Pilot total</strong></td><td class="amt"><strong>&#8377;60,000</strong></td></tr>
+              </tbody>
+            </table>
+
+            <p style="margin-top:20px;"><strong>TDS.</strong> You may deduct TDS at 2% under section 194C or 10% under section 194J as applicable. TDS certificate Form 16A expected quarterly, all options.</p>
           </div>
         </details>
 
@@ -1001,12 +1165,14 @@
           <summary><span class="tag-role">For the Principal Architect</span>Frequently asked questions.</summary>
           <div class="accordion-body">
             <ol style="padding-left:22px;">
-              <li style="margin-bottom:14px;"><strong>Is my team going to have to learn new software?</strong><br>The team-facing surface is WhatsApp. They already use it every day. The new screens are only seen by the two managers and yourself.</li>
-              <li style="margin-bottom:14px;"><strong>What if we sign, start, and the team refuses to use it in month three?</strong><br>There is a week-6 adoption checkpoint written into the SOW. If fewer than 40% of your new projects are in the system by then, we pause the remaining build and refund 30% of the unused Phase C fees. This is a contractual clause, not a polite promise.</li>
-              <li style="margin-bottom:14px;"><strong>Am I locked in?</strong><br>No. Excel export to your own Google Drive runs every week. If you ever stop paying, you walk away with every project in Excel format, exactly as you use it today. Month-to-month after year one with a 90-day exit notice.</li>
+              <li style="margin-bottom:14px;"><strong>Which one do I pick - Pilot, Proposal Engine, or Command Centre?</strong><br>If you want to see a real project in the system before committing, start with the <strong>&#8377;60,000 Pilot</strong> (3 weeks). If you want to solve the proposal pain immediately without changing the rest of your operations, start with the <strong>&#8377;1,50,000 Proposal Engine</strong> (4 weeks). If you already know you want the full ops layer, start with the <strong>&#8377;5,50,000 Command Centre</strong> (10 to 12 weeks). Pilot credits against either of the other two. Proposal Engine credits toward Command Centre for 90 days.</li>
+              <li style="margin-bottom:14px;"><strong>Does the AI draft in my actual voice?</strong><br>Yes. During the template audit we ingest at least 5 of your past approved proposals. The AI is instructed to match your tone, your section order, your phrasing conventions. You review every draft and can edit freely before sign-off. Confidence score shown on every AI line; anything more than 10% off your historical pattern is flagged visually.</li>
+              <li style="margin-bottom:14px;"><strong>Does the AI send proposals to my clients without my approval?</strong><br>No. There is no auto-send, in any SKU. Every proposal requires your explicit sign-off before it reaches a client. The AI drafts, you review, you send.</li>
+              <li style="margin-bottom:14px;"><strong>Is my team going to have to learn new software?</strong><br>In the Proposal Engine, the only user is you. In the Command Centre, the team-facing surface is WhatsApp, which they already use. The new screens are only seen by the 2 managers and yourself.</li>
+              <li style="margin-bottom:14px;"><strong>What if we sign Command Centre, start, and the team refuses to use it in month three?</strong><br>Week-6 adoption checkpoint is written into the SOW. If fewer than 40% of your new projects are in the system by week 6, we pause the remaining build and refund 30% of the unused Phase C fees, and offer to pivot to the Proposal Engine at &#8377;1,50,000. Contractual, not a polite promise.</li>
+              <li style="margin-bottom:14px;"><strong>Am I locked in?</strong><br>No. Weekly Excel export to your own Google Drive runs in every SKU. If you ever stop paying, you walk away with every proposal, every rate line and every project in Excel format. Month-to-month after year one with a 90-day exit notice.</li>
+              <li style="margin-bottom:14px;"><strong>What is &#8377;1,50,000 again? And &#8377;5,50,000?</strong><br>&#8377;1,50,000 is the one-time setup for the Proposal Engine. Monthly is &#8377;5,000. &#8377;5,50,000 is the one-time setup for the full Command Centre. Monthly is &#8377;15,000. The Prepaid variant (&#8377;6,50,000 one-time) bundles year one monthly into setup.</li>
               <li style="margin-bottom:14px;"><strong>What about my setup cost if we cancel early?</strong><br>Setup is non-refundable after build kickoff. Monthly is pro-rated for the termination month.</li>
-              <li style="margin-bottom:14px;"><strong>Does the AI send proposals to my clients without my approval?</strong><br>No. There is no auto-send. Every proposal requires your written approval before it reaches a client's inbox. The AI drafts, you sign off.</li>
-              <li style="margin-bottom:14px;"><strong>What is &#8377;5,50,000 again?</strong><br>That is the one-time setup for the Studio Command Centre. Monthly is &#8377;15,000. Prepaid option (&#8377;6,50,000 one-time) bundles year one monthly into setup.</li>
               <li style="margin-bottom:14px;"><strong>Will you name our studio publicly?</strong><br>Only with your written consent, after 90 days of live usage. Founder-status references get a 15% lifetime discount on monthly as the thank-you.</li>
             </ol>
           </div>
@@ -1033,7 +1199,7 @@
             <svg class="icon-warn" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
             You keep running Excel in parallel and never fully migrate.
           </div>
-          <div class="risk-mit"><strong>Mitigation.</strong> Optional paid pilot tests this before the full build starts. Week-6 adoption KPI is written into the SOW: fewer than 40% of new projects in-system triggers a 30% refund and a pivot to a thin AI-proposal-only SKU. Your 2 hours per week of UAT time is a signed clause.</div>
+          <div class="risk-mit"><strong>Mitigation.</strong> Two built-in safety nets. First, you can start at <strong>Proposal Engine (&#8377;1,50,000)</strong> or <strong>Pilot (&#8377;60,000)</strong> instead of the full Command Centre - both are designed so you can stop there if that's all you actually use. Second, if you do take the full Command Centre, the week-6 adoption KPI is written into the SOW: fewer than 40% of new projects in-system triggers a 30% refund and a pivot back to the Proposal Engine SKU. Your 2 hours per week of UAT time is a signed clause.</div>
         </div>
 
         <div class="risk-row">

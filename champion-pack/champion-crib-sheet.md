@@ -12,8 +12,10 @@ Send this alongside the Loom and the proposal link. It is the single most effect
 
 | What she'll ask internally | One-line answer to hand her team | Proposal section |
 |---|---|---|
-| Will my team have to learn new software? | No - the team-facing surface is WhatsApp. New screens are only for the two managers and you. | [Scope & Pricing → FAQ for the Principal Architect](../index.html#scope-pricing) |
-| What if I hate it in three months? | Week-6 adoption checkpoint is in the SOW. If <40% of your new projects are in-system, we refund 30% of Phase C fees and pivot to a thin proposal-only SKU. | [Risk block → Risk 1 mitigation](../index.html#risk) |
+| Which of the four options do I pick? | Proposal Engine (Rs 1.5L + Rs 5K/mo, 4 weeks) if you want to solve the proposal pain without changing anything else. Command Centre (Rs 5.5L + Rs 15K/mo, 10-12 weeks) if you want the full ops layer too. Pilot (Rs 60K) if you want to see it before deciding. Prepaid (Rs 6.5L one-time) if your books prefer capex. | [Scope & Pricing → Four ways to start](../index.html#scope-pricing) |
+| Does the AI draft in my actual voice? | Yes. We ingest 5+ of your past approved proposals during the template audit. The AI matches your tone, section order, phrasing. Confidence score on every line. You edit before sign-off. | [FAQ question 2](../index.html#scope-pricing) |
+| Will my team have to learn new software? | In Proposal Engine, the only user is you. In Command Centre, the team-facing surface is WhatsApp - they already use it. New screens only for the 2 managers and yourself. | [Scope & Pricing → FAQ](../index.html#scope-pricing) |
+| What if I hate it in three months? | Week-6 adoption checkpoint in the SOW. If <40% of new projects in-system, we refund 30% of Phase C fees and pivot back to the Proposal Engine SKU. | [Risk block → Risk 1 mitigation](../index.html#risk) |
 | How do I know this is real and not vapourware? | Four similar builds shipped (real estate, MF distributor, sports retailer, financial advisor). Reference calls available after the first conversation. | [Proof block](../index.html#proof) |
 
 ### 2. The Chartered Accountant / Finance
