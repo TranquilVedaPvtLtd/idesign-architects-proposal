@@ -175,7 +175,9 @@
     }
     .hero-video-wrap::after {
       content: ""; position: absolute; inset: 0;
-      background: linear-gradient(180deg, rgba(6,14,26,0) 0%, rgba(6,14,26,0.15) 38%, rgba(6,14,26,0.72) 75%, rgba(6,14,26,0.95) 100%);
+      background:
+        linear-gradient(180deg, rgba(6,14,26,0.2) 0%, rgba(6,14,26,0.15) 30%, rgba(6,14,26,0.82) 72%, rgba(6,14,26,0.98) 100%),
+        linear-gradient(90deg, rgba(6,14,26,0.55) 0%, rgba(6,14,26,0.15) 55%, rgba(6,14,26,0) 100%);
     }
     .hero .container {
       position: relative; z-index: 2;
@@ -184,43 +186,56 @@
     }
     .badge {
       display: inline-flex; align-items: center; gap: 10px;
-      padding: 8px 18px; border: 1px solid rgba(255, 215, 0, 0.45);
-      border-radius: 60px; font-size: 12.5px; font-weight: 600;
-      color: var(--gold-soft); background: rgba(255, 215, 0, 0.08);
-      margin-bottom: 20px;
-      backdrop-filter: blur(4px);
+      padding: 10px 22px;
+      border: 1px solid rgba(255, 215, 0, 0.6);
+      border-radius: 60px;
+      font-size: 13px; font-weight: 700;
+      letter-spacing: 0.02em;
+      color: var(--gold-soft);
+      background: rgba(6, 14, 26, 0.82);
+      margin-bottom: 22px;
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.35), 0 0 0 1px rgba(0, 0, 0, 0.2) inset;
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
     }
     .badge::before {
-      content: ""; width: 7px; height: 7px; border-radius: 50%;
-      background: var(--gold-soft); box-shadow: 0 0 12px var(--gold-soft);
+      content: ""; width: 8px; height: 8px; border-radius: 50%;
+      background: var(--gold-soft); box-shadow: 0 0 14px var(--gold-soft);
     }
     .hero h1 {
       font-size: clamp(30px, 5.2vw, 60px);
-      margin-bottom: 16px;
+      margin-bottom: 18px;
       max-width: 16ch;
       line-height: 1.08;
       font-weight: 800;
       letter-spacing: -0.02em;
+      color: #fff;
+      text-shadow: 0 2px 28px rgba(0, 0, 0, 0.6), 0 1px 3px rgba(0, 0, 0, 0.45);
     }
-    .hero h1 .accent { color: var(--gold-soft); }
+    .hero h1 .accent { color: var(--gold-soft); text-shadow: 0 2px 28px rgba(0, 0, 0, 0.6), 0 0 22px rgba(255, 215, 0, 0.2); }
     .hero .subtitle {
       font-size: clamp(15px, 1.7vw, 19px);
-      color: rgba(255,255,255,0.88);
-      max-width: 600px; margin-bottom: 24px;
-      font-weight: 400; line-height: 1.5;
+      color: #fff;
+      max-width: 600px; margin-bottom: 26px;
+      font-weight: 500; line-height: 1.5;
+      text-shadow: 0 1px 14px rgba(0, 0, 0, 0.55), 0 1px 2px rgba(0, 0, 0, 0.4);
     }
     .hero .price-anchor {
       display: inline-block;
-      font-size: 15px; font-weight: 500;
-      color: rgba(255,255,255,0.95);
-      padding: 11px 20px;
-      border: 1px solid rgba(255,255,255,0.22);
+      font-size: 15px; font-weight: 600;
+      color: #fff;
+      padding: 12px 22px;
+      border: 1px solid rgba(255, 215, 0, 0.3);
       border-radius: 10px;
-      margin-bottom: 26px;
-      background: rgba(255,255,255,0.06);
-      backdrop-filter: blur(4px);
+      margin-bottom: 28px;
+      background: rgba(6, 14, 26, 0.72);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      box-shadow: 0 4px 18px rgba(0, 0, 0, 0.3);
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
     }
-    .hero .price-anchor strong { color: var(--gold-soft); font-weight: 700; }
+    .hero .price-anchor strong { color: var(--gold-soft); font-weight: 800; }
     .cta-primary {
       display: inline-flex; align-items: center; gap: 12px;
       background: #25D366; color: #fff;
