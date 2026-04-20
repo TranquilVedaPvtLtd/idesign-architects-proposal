@@ -89,22 +89,113 @@
     .btn-download:hover { background: var(--gold); transform: translateY(-1px); }
     .btn-download svg { width: 14px; height: 14px; }
 
-    /* =================== HERO =================== */
+    /* =================== HERO WITH VIDEO =================== */
     .hero {
-      background: linear-gradient(170deg, var(--primary-dark) 0%, var(--primary) 50%, var(--primary-light) 100%);
+      background: var(--primary-dark);
       color: #fff;
-      padding: 100px 0 110px;
+      padding: 120px 0 110px;
       position: relative;
       overflow: hidden;
+      min-height: 640px;
+      display: flex; align-items: center;
     }
-    .hero::before {
+    .hero-video-wrap {
+      position: absolute; inset: 0; z-index: 0; overflow: hidden;
+    }
+    .hero-video-wrap video {
+      width: 100%; height: 100%;
+      object-fit: cover; object-position: center;
+    }
+    .hero-video-wrap::after {
       content: ""; position: absolute; inset: 0;
-      background-image:
-        radial-gradient(circle at 25% 20%, rgba(255, 215, 0, 0.1), transparent 55%),
-        radial-gradient(circle at 78% 80%, rgba(0, 230, 118, 0.06), transparent 55%);
+      background:
+        linear-gradient(180deg, rgba(6,14,26,0.35) 0%, rgba(6,14,26,0.65) 60%, rgba(6,14,26,0.92) 100%),
+        linear-gradient(90deg, rgba(6,14,26,0.55) 0%, rgba(6,14,26,0.1) 55%, rgba(6,14,26,0) 100%);
+    }
+    .hero .container { position: relative; z-index: 2; width: 100%; }
+
+    /* "Refined pack" callout banner */
+    .refine-callout {
+      display: flex; align-items: flex-start; gap: 16px;
+      padding: 18px 22px;
+      background: linear-gradient(90deg, rgba(0, 230, 118, 0.12) 0%, rgba(0, 230, 118, 0.02) 100%);
+      border: 1px solid rgba(0, 230, 118, 0.3);
+      border-left: 3px solid var(--accent-bright);
+      border-radius: 10px;
+      margin-bottom: 28px;
+      max-width: 760px;
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+    }
+    .refine-callout .ic {
+      width: 32px; height: 32px; flex-shrink: 0;
+      border-radius: 50%;
+      background: rgba(0, 230, 118, 0.2);
+      color: var(--accent-bright);
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 800; font-size: 15px;
+      margin-top: 2px;
+    }
+    .refine-callout strong { color: #fff; font-weight: 700; }
+    .refine-callout p {
+      font-size: 14px; line-height: 1.55;
+      color: rgba(255,255,255,0.85);
+      margin: 0;
+    }
+    .refine-callout p + p { margin-top: 5px; font-size: 12.5px; color: rgba(255,255,255,0.6); }
+
+    /* Cinematic band between sections */
+    .cine-band {
+      position: relative;
+      padding: 84px 24px;
+      background: linear-gradient(135deg, #0A1628 0%, #152238 50%, #0A1628 100%);
+      color: #fff;
+      overflow: hidden;
+      text-align: center;
+    }
+    .cine-band::before {
+      content: "";
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(circle at 15% 30%, rgba(255, 215, 0, 0.08), transparent 55%),
+        radial-gradient(circle at 85% 70%, rgba(0, 230, 118, 0.05), transparent 55%);
       pointer-events: none;
     }
-    .hero .container { position: relative; z-index: 2; }
+    .cine-band::after {
+      content: "";
+      position: absolute; bottom: 0; left: 0; right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent 0%, var(--gold-soft) 50%, transparent 100%);
+      opacity: 0.3;
+    }
+    .cine-band-inner {
+      position: relative; z-index: 2;
+      max-width: 900px; margin: 0 auto;
+    }
+    .cine-band .arch-motif {
+      display: flex; justify-content: center; margin-bottom: 28px;
+      opacity: 0.35;
+    }
+    .cine-band .arch-motif svg { color: var(--gold-soft); }
+    .cine-band .quote {
+      font-size: clamp(22px, 2.8vw, 32px);
+      font-weight: 300;
+      font-style: italic;
+      letter-spacing: -0.01em;
+      line-height: 1.35;
+      color: #fff;
+      max-width: 800px;
+      margin: 0 auto 14px;
+    }
+    .cine-band .quote em {
+      color: var(--gold-soft);
+      font-style: normal; font-weight: 500;
+    }
+    .cine-band .cite {
+      font-size: 12px; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.16em;
+      color: rgba(255, 255, 255, 0.5);
+    }
     .hero .badge {
       display: inline-flex; align-items: center; gap: 10px;
       padding: 9px 20px;
@@ -1040,9 +1131,19 @@
     </div>
   </div>
 
-  <!-- ============== HERO ============== -->
+  <!-- ============== HERO WITH VIDEO ============== -->
   <section class="hero" id="hero">
+    <div class="hero-video-wrap">
+      <video autoplay muted loop playsinline preload="auto" id="heroVideo" poster=""></video>
+    </div>
     <div class="container">
+      <div class="refine-callout">
+        <div class="ic">&#10003;</div>
+        <div>
+          <p><strong>Refined pack for the iDesign Architects team.</strong> Price held at Rs 1,50,000. We have added a natural-language chatbot on the dashboard so you can edit any proposal in plain English, just by typing what you want changed.</p>
+          <p>60 drafts per month (up from 40). 21-day hypercare (up from 14). Screen 4 below shows exactly how the chat works.</p>
+        </div>
+      </div>
       <span class="badge">For the iDesign Architects team</span>
       <h1>How your team will actually use the <span class="accent">Proposal Engine.</span></h1>
       <p class="lead">Five screens. Three hours become ten minutes. No software to install. Built for the two-to-three people on your side who check every proposal before it goes out. Everything you see in the next few scrolls is what the tool will look like in your browser.</p>
@@ -1062,6 +1163,25 @@
       </div>
     </div>
   </section>
+  <script>
+    (function() {
+      var v = document.getElementById('heroVideo');
+      if (!v) return;
+      var DESKTOP = '../assets/hero-desktop.mp4';
+      var MOBILE  = '../assets/hero-mobile.mp4';
+      var mq = window.matchMedia('(max-width: 768px)');
+      function setSrc(src) {
+        if (v.currentSrc && v.currentSrc.indexOf(src.split('/').pop()) !== -1) return;
+        v.src = src; v.load();
+        var p = v.play();
+        if (p && typeof p.catch === 'function') p.catch(function(){});
+      }
+      setSrc(mq.matches ? MOBILE : DESKTOP);
+      var onChange = function(e) { setSrc(e.matches ? MOBILE : DESKTOP); };
+      if (typeof mq.addEventListener === 'function') mq.addEventListener('change', onChange);
+      else if (typeof mq.addListener === 'function') mq.addListener(onChange);
+    })();
+  </script>
 
   <!-- ============== SCREEN 1: DASHBOARD ============== -->
   <section class="block">
@@ -1390,6 +1510,27 @@
     </div>
   </section>
 
+  <!-- ============== CINEMATIC BAND 1 ============== -->
+  <div class="cine-band">
+    <div class="cine-band-inner">
+      <div class="arch-motif">
+        <svg width="180" height="44" viewBox="0 0 180 44" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round">
+          <line x1="0" y1="43" x2="180" y2="43"/>
+          <path d="M 20 43 Q 20 20 40 20 Q 60 20 60 43"/>
+          <path d="M 70 43 L 70 14 L 90 14 L 90 43"/>
+          <path d="M 100 43 Q 100 20 120 20 Q 140 20 140 43"/>
+          <path d="M 150 43 L 150 14 L 170 14 L 170 43"/>
+          <circle cx="40" cy="20" r="2" fill="currentColor"/>
+          <circle cx="80" cy="14" r="2" fill="currentColor"/>
+          <circle cx="120" cy="20" r="2" fill="currentColor"/>
+          <circle cx="160" cy="14" r="2" fill="currentColor"/>
+        </svg>
+      </div>
+      <p class="quote">The best design brief your clients will see is the <em>one you direct in your own voice.</em></p>
+      <div class="cite">Design is how it works - and now, how it writes itself</div>
+    </div>
+  </div>
+
   <!-- ============== SCREEN 4: CHAT (FEATURED) ============== -->
   <section class="block alt">
     <div class="container">
@@ -1582,6 +1723,29 @@
       </div>
     </div>
   </section>
+
+  <!-- ============== CINEMATIC BAND 2 ============== -->
+  <div class="cine-band">
+    <div class="cine-band-inner">
+      <div class="arch-motif">
+        <svg width="200" height="40" viewBox="0 0 200 40" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round">
+          <line x1="0" y1="38" x2="200" y2="38"/>
+          <line x1="0" y1="2" x2="200" y2="2"/>
+          <line x1="30" y1="2" x2="30" y2="38"/>
+          <line x1="70" y1="2" x2="70" y2="38"/>
+          <line x1="130" y1="2" x2="130" y2="38"/>
+          <line x1="170" y1="2" x2="170" y2="38"/>
+          <path d="M 30 20 L 70 20"/>
+          <path d="M 130 20 L 170 20"/>
+          <circle cx="50" cy="20" r="3" fill="currentColor" opacity="0.4"/>
+          <circle cx="100" cy="20" r="3" fill="currentColor" opacity="0.6"/>
+          <circle cx="150" cy="20" r="3" fill="currentColor" opacity="0.4"/>
+        </svg>
+      </div>
+      <p class="quote">Every client proposal becomes a <em>quiet advertisement</em> for the studio that made it.</p>
+      <div class="cite">And your clients can reopen the link a year later</div>
+    </div>
+  </div>
 
   <!-- ============== DOES / DOESN'T ============== -->
   <section class="block alt">
