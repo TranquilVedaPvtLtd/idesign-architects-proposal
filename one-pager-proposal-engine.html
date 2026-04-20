@@ -1,0 +1,1710 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="description" content="How the Proposal Engine will work for the iDesign Architects team. Confidential.">
+  <meta name="data-published" content="2026-04-20">
+  <title>iDesign Architects - Proposal Engine Team Guide</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #0A1628;
+      --primary-light: #152238;
+      --primary-dark: #060E1A;
+      --accent: #00C853;
+      --accent-bright: #00E676;
+      --gold: #FFD700;
+      --gold-soft: #F4C95D;
+      --amber: #F5A623;
+      --red: #FF1744;
+      --bg: #FFFFFF;
+      --bg-alt: #F8FAFC;
+      --bg-soft: #F1F5F9;
+      --text: #0A1628;
+      --text-soft: #475569;
+      --text-mute: #94A3B8;
+      --border: #E2E8F0;
+      --border-soft: #F1F5F9;
+      --shadow: 0 10px 40px rgba(10, 22, 40, 0.08);
+      --shadow-lg: 0 20px 60px rgba(10, 22, 40, 0.14);
+      --shadow-xl: 0 30px 90px rgba(10, 22, 40, 0.22);
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      color: var(--text);
+      background: var(--bg);
+      line-height: 1.65;
+      font-weight: 400;
+      -webkit-font-smoothing: antialiased;
+    }
+    img, svg, video { max-width: 100%; display: block; }
+    a { color: inherit; text-decoration: none; }
+    .container { max-width: 1160px; margin: 0 auto; padding: 0 24px; }
+
+    h1, h2, h3, h4 { font-weight: 800; letter-spacing: -0.02em; line-height: 1.15; color: var(--text); }
+    h1 { font-size: clamp(32px, 5.2vw, 56px); }
+    h2 { font-size: clamp(26px, 3.4vw, 40px); margin-bottom: 16px; }
+    h3 { font-size: 22px; font-weight: 700; }
+    h4 { font-size: 17px; font-weight: 700; }
+    p { color: var(--text-soft); }
+
+    .reveal { opacity: 0; transform: translateY(28px); transition: opacity .8s ease, transform .8s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* =================== HEADER BAR =================== */
+    .top-bar {
+      position: sticky; top: 0; z-index: 60;
+      background: rgba(10, 22, 40, 0.88);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      color: #fff;
+    }
+    .top-bar .container {
+      display: flex; align-items: center; justify-content: space-between;
+      padding-top: 14px; padding-bottom: 14px;
+    }
+    .top-bar .tb-left { display: flex; align-items: center; gap: 16px; font-size: 13px; color: rgba(255,255,255,0.72); }
+    .top-bar .tb-left strong { color: #fff; font-weight: 700; font-size: 14px; }
+    .top-bar .tb-left .sep { opacity: 0.3; }
+    .top-bar a.back {
+      color: rgba(255,255,255,0.6); font-size: 13px;
+      display: inline-flex; align-items: center; gap: 6px;
+    }
+    .top-bar a.back:hover { color: #fff; }
+    .top-bar .tb-right { display: flex; gap: 10px; align-items: center; }
+    .btn-download {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--gold-soft); color: var(--primary-dark);
+      padding: 9px 16px; border-radius: 8px;
+      font-size: 13px; font-weight: 700;
+      transition: all .22s ease;
+    }
+    .btn-download:hover { background: var(--gold); transform: translateY(-1px); }
+    .btn-download svg { width: 14px; height: 14px; }
+
+    /* =================== HERO =================== */
+    .hero {
+      background: linear-gradient(170deg, var(--primary-dark) 0%, var(--primary) 50%, var(--primary-light) 100%);
+      color: #fff;
+      padding: 100px 0 110px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: ""; position: absolute; inset: 0;
+      background-image:
+        radial-gradient(circle at 25% 20%, rgba(255, 215, 0, 0.1), transparent 55%),
+        radial-gradient(circle at 78% 80%, rgba(0, 230, 118, 0.06), transparent 55%);
+      pointer-events: none;
+    }
+    .hero .container { position: relative; z-index: 2; }
+    .hero .badge {
+      display: inline-flex; align-items: center; gap: 10px;
+      padding: 9px 20px;
+      border: 1px solid rgba(255, 215, 0, 0.55);
+      background: rgba(6, 14, 26, 0.55);
+      border-radius: 60px;
+      font-size: 12.5px; font-weight: 700;
+      color: var(--gold-soft);
+      letter-spacing: 0.02em;
+      margin-bottom: 26px;
+      backdrop-filter: blur(10px);
+    }
+    .hero .badge::before {
+      content: ""; width: 7px; height: 7px; border-radius: 50%;
+      background: var(--gold-soft); box-shadow: 0 0 12px var(--gold-soft);
+    }
+    .hero h1 { color: #fff; max-width: 22ch; margin-bottom: 20px; }
+    .hero h1 .accent { color: var(--gold-soft); }
+    .hero .lead {
+      font-size: clamp(16px, 1.8vw, 20px);
+      color: rgba(255,255,255,0.82);
+      max-width: 640px; margin-bottom: 36px;
+      font-weight: 400; line-height: 1.6;
+    }
+    .hero .hero-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+      max-width: 780px;
+      margin-top: 8px;
+    }
+    .hero-stat {
+      padding: 22px 24px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.09);
+      border-left: 3px solid var(--gold-soft);
+      border-radius: 10px;
+    }
+    .hero-stat .n {
+      font-size: 28px; font-weight: 800; color: #fff;
+      letter-spacing: -0.02em; line-height: 1; margin-bottom: 6px;
+    }
+    .hero-stat .u {
+      font-size: 12.5px; color: rgba(255,255,255,0.58);
+      line-height: 1.45;
+    }
+
+    /* =================== SECTION WRAPPERS =================== */
+    section.block { padding: 96px 0; position: relative; }
+    section.alt { background: var(--bg-alt); }
+    section.dark {
+      background: linear-gradient(180deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #fff;
+    }
+    section.dark h2, section.dark h3, section.dark h4 { color: #fff; }
+    section.dark p, section.dark li { color: rgba(255,255,255,0.78); }
+
+    .sec-header { margin-bottom: 48px; max-width: 820px; }
+    .sec-label {
+      font-size: 12px; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 0.14em; color: var(--accent);
+      margin-bottom: 14px; display: inline-block;
+    }
+    section.dark .sec-label { color: var(--gold-soft); }
+    .sec-header p { font-size: 17.5px; line-height: 1.65; }
+
+    /* =================== SCREEN COMPONENTS =================== */
+    .screen {
+      margin-bottom: 96px;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 40px;
+      align-items: start;
+    }
+    .screen:last-child { margin-bottom: 0; }
+    .screen-heading {
+      display: inline-flex; align-items: center; gap: 14px;
+      margin-bottom: 14px;
+    }
+    .screen-num {
+      width: 38px; height: 38px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--gold) 0%, var(--gold-soft) 100%);
+      color: var(--primary-dark);
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 800; font-size: 16px;
+      flex-shrink: 0;
+      box-shadow: 0 6px 20px rgba(255, 215, 0, 0.28);
+    }
+    .screen-title { font-size: clamp(22px, 2.6vw, 30px); font-weight: 800; letter-spacing: -0.02em; }
+    .screen-narrative {
+      font-size: 16.5px;
+      line-height: 1.7;
+      color: var(--text-soft);
+      max-width: 720px;
+    }
+    .screen-sidebar-note {
+      margin-top: 20px;
+      padding: 18px 22px;
+      background: rgba(255, 215, 0, 0.08);
+      border-left: 3px solid var(--gold);
+      border-radius: 8px;
+      font-size: 14.5px;
+      color: var(--text-soft);
+      max-width: 720px;
+    }
+    .screen-sidebar-note strong { color: var(--text); font-weight: 700; }
+    .screen.featured {
+      padding: 44px 44px;
+      margin-left: -44px; margin-right: -44px;
+      background: linear-gradient(135deg, rgba(255, 215, 0, 0.04) 0%, rgba(255, 215, 0, 0.015) 100%);
+      border-radius: 24px;
+      border: 1px solid rgba(255, 215, 0, 0.14);
+    }
+    .screen.featured .screen-num {
+      background: linear-gradient(135deg, var(--accent-bright) 0%, var(--accent) 100%);
+      color: #fff;
+      box-shadow: 0 8px 26px rgba(0, 230, 118, 0.34);
+    }
+
+    /* =================== MAC WINDOW CHROME =================== */
+    .mac-frame {
+      background: #FFFFFF;
+      border-radius: 12px;
+      box-shadow: var(--shadow-xl);
+      overflow: hidden;
+      border: 1px solid var(--border);
+      width: 100%;
+    }
+    .mac-chrome {
+      display: flex; align-items: center; gap: 8px;
+      padding: 12px 16px;
+      background: linear-gradient(180deg, #F3F4F6 0%, #E5E7EB 100%);
+      border-bottom: 1px solid #D1D5DB;
+    }
+    .mac-chrome .dots { display: flex; gap: 6px; }
+    .mac-chrome .dot { width: 12px; height: 12px; border-radius: 50%; }
+    .mac-chrome .dot.red    { background: #FF605C; }
+    .mac-chrome .dot.yellow { background: #FFBD44; }
+    .mac-chrome .dot.green  { background: #00CA4E; }
+    .mac-chrome .addr {
+      flex: 1;
+      margin: 0 auto;
+      max-width: 460px;
+      background: #FFFFFF;
+      border: 1px solid #D1D5DB;
+      border-radius: 6px;
+      padding: 4px 12px;
+      font-size: 11.5px;
+      color: #475569;
+      font-family: 'Inter', monospace;
+      text-align: center;
+      letter-spacing: 0.01em;
+    }
+    .mac-chrome .addr .lock {
+      display: inline-block;
+      margin-right: 6px;
+      color: var(--accent);
+      font-size: 10px;
+    }
+    .mac-body {
+      background: #FFFFFF;
+      min-height: 480px;
+      position: relative;
+    }
+
+    /* =================== SCREEN 1: DASHBOARD =================== */
+    .dash {
+      display: grid;
+      grid-template-columns: 208px 1fr;
+      min-height: 520px;
+    }
+    .dash-side {
+      background: #0F1A2E;
+      color: #fff;
+      padding: 22px 14px;
+    }
+    .dash-brand {
+      display: flex; align-items: center; gap: 8px;
+      margin-bottom: 26px; padding: 0 6px;
+    }
+    .dash-brand-dot {
+      width: 28px; height: 28px; border-radius: 6px;
+      background: linear-gradient(135deg, var(--gold) 0%, var(--gold-soft) 100%);
+      color: var(--primary-dark);
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 800; font-size: 13px;
+    }
+    .dash-brand-name { font-size: 13px; font-weight: 700; color: #fff; }
+    .dash-brand-sub { font-size: 10.5px; color: rgba(255,255,255,0.55); }
+    .dash-nav { display: flex; flex-direction: column; gap: 2px; }
+    .dash-nav-item {
+      display: flex; align-items: center; gap: 10px;
+      padding: 9px 12px; border-radius: 6px;
+      font-size: 13px; color: rgba(255,255,255,0.72);
+      cursor: pointer;
+    }
+    .dash-nav-item.active {
+      background: rgba(255, 215, 0, 0.12);
+      color: var(--gold-soft);
+      font-weight: 600;
+    }
+    .dash-nav-ico { width: 15px; height: 15px; opacity: 0.8; }
+    .dash-side .spacer { height: 22px; }
+    .dash-side .section-label {
+      font-size: 10px; text-transform: uppercase;
+      letter-spacing: 0.12em; color: rgba(255,255,255,0.35);
+      padding: 0 12px; margin-bottom: 10px; font-weight: 700;
+    }
+
+    .dash-main {
+      padding: 24px 28px;
+      background: #FFFFFF;
+      overflow: hidden;
+    }
+    .dash-head {
+      display: flex; justify-content: space-between; align-items: center;
+      margin-bottom: 20px;
+    }
+    .dash-head h4 {
+      font-size: 18px; font-weight: 800; color: var(--text);
+    }
+    .dash-new-btn {
+      background: var(--accent);
+      color: #fff;
+      padding: 9px 16px;
+      border-radius: 6px;
+      font-size: 12.5px; font-weight: 700;
+      display: inline-flex; align-items: center; gap: 6px;
+    }
+    .dash-search {
+      display: flex; align-items: center; gap: 10px;
+      padding: 9px 14px;
+      background: var(--bg-soft);
+      border-radius: 8px;
+      font-size: 12.5px; color: var(--text-mute);
+      margin-bottom: 20px;
+    }
+    .dash-analytics {
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      gap: 12px; margin-bottom: 22px;
+    }
+    .dash-stat {
+      padding: 14px 16px;
+      background: var(--bg-alt);
+      border: 1px solid var(--border-soft);
+      border-radius: 8px;
+    }
+    .dash-stat .n { font-size: 22px; font-weight: 800; color: var(--text); letter-spacing: -0.02em; }
+    .dash-stat .l { font-size: 11px; color: var(--text-mute); margin-top: 2px; text-transform: uppercase; letter-spacing: 0.08em; font-weight: 600; }
+    .dash-list { display: flex; flex-direction: column; gap: 8px; }
+    .dash-row {
+      display: grid;
+      grid-template-columns: 1fr 110px 90px 90px;
+      gap: 14px;
+      padding: 12px 14px;
+      border: 1px solid var(--border-soft);
+      border-radius: 8px;
+      align-items: center;
+      background: #FFFFFF;
+    }
+    .dash-row:hover { background: var(--bg-alt); }
+    .dash-client { font-size: 13.5px; font-weight: 600; color: var(--text); }
+    .dash-client-meta { font-size: 11px; color: var(--text-mute); margin-top: 2px; }
+    .pill {
+      display: inline-block; padding: 3px 10px; border-radius: 60px;
+      font-size: 10.5px; font-weight: 700; letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+    .pill.draft    { background: rgba(148, 163, 184, 0.14); color: #64748B; }
+    .pill.review   { background: rgba(245, 166, 35, 0.14); color: #B8790F; }
+    .pill.sent     { background: rgba(37, 211, 102, 0.14); color: #0F8F4A; }
+    .pill.approved { background: rgba(0, 200, 83, 0.16); color: #0F8F4A; }
+    .dash-amt { font-size: 12.5px; font-weight: 700; color: var(--text); font-variant-numeric: tabular-nums; }
+    .dash-date { font-size: 11px; color: var(--text-mute); }
+
+    /* =================== SCREEN 2: NEW PROPOSAL FORM =================== */
+    .form-backdrop {
+      position: relative;
+      min-height: 520px;
+      background: #FAFBFC;
+      display: flex; align-items: center; justify-content: center;
+      padding: 40px 20px;
+    }
+    .form-backdrop::before {
+      content: ""; position: absolute; inset: 0;
+      background:
+        linear-gradient(0deg, rgba(10, 22, 40, 0.04) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    .form-card {
+      position: relative; z-index: 2;
+      max-width: 520px;
+      width: 100%;
+      background: #FFFFFF;
+      border-radius: 14px;
+      box-shadow: var(--shadow-lg);
+      padding: 32px 36px;
+      border: 1px solid var(--border-soft);
+    }
+    .form-card h4 { font-size: 20px; margin-bottom: 4px; }
+    .form-card .sub { font-size: 13px; color: var(--text-mute); margin-bottom: 22px; }
+    .form-field { margin-bottom: 16px; }
+    .form-field label {
+      display: block; font-size: 11px; font-weight: 700;
+      color: var(--text-soft); text-transform: uppercase;
+      letter-spacing: 0.08em; margin-bottom: 6px;
+    }
+    .form-field input, .form-field textarea, .form-field .field-val {
+      width: 100%;
+      padding: 10px 14px;
+      border: 1px solid var(--border);
+      border-radius: 7px;
+      font-size: 13px;
+      font-family: inherit;
+      color: var(--text);
+      background: #FFFFFF;
+    }
+    .form-field .field-val {
+      display: block;
+      background: var(--bg-soft);
+      color: var(--text);
+    }
+    .form-field textarea {
+      resize: none; height: 64px;
+      line-height: 1.5;
+    }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .form-submit {
+      width: 100%;
+      background: var(--accent);
+      color: #fff;
+      padding: 13px;
+      border-radius: 8px;
+      font-size: 14px; font-weight: 700;
+      margin-top: 6px;
+      display: flex; align-items: center; justify-content: center; gap: 8px;
+      box-shadow: 0 8px 22px rgba(0, 200, 83, 0.22);
+    }
+    .form-hint {
+      text-align: center; font-size: 11.5px; color: var(--text-mute);
+      margin-top: 10px;
+    }
+
+    /* =================== SCREEN 3: AI DRAFT =================== */
+    .draft-layout {
+      display: grid;
+      grid-template-columns: 1fr 240px;
+      min-height: 620px;
+    }
+    .draft-preview {
+      background: #FFFFFF;
+      padding: 32px 34px;
+      overflow: hidden;
+      border-right: 1px solid var(--border);
+    }
+    .draft-hero-sec {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #fff;
+      border-radius: 10px;
+      padding: 26px 28px;
+      margin-bottom: 22px;
+      position: relative;
+      overflow: hidden;
+    }
+    .draft-hero-sec::after {
+      content: ""; position: absolute;
+      top: -40%; right: -20%;
+      width: 55%; height: 160%;
+      background: radial-gradient(ellipse, rgba(255, 215, 0, 0.12), transparent 70%);
+      pointer-events: none;
+    }
+    .draft-hero-sec .kicker {
+      font-size: 10.5px; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.12em;
+      color: var(--gold-soft); margin-bottom: 8px;
+      position: relative;
+    }
+    .draft-hero-sec h5 {
+      font-size: 22px; font-weight: 800;
+      color: #fff; letter-spacing: -0.02em;
+      line-height: 1.2; margin-bottom: 6px;
+      position: relative;
+    }
+    .draft-hero-sec .meta {
+      font-size: 12px; color: rgba(255,255,255,0.72);
+      display: flex; gap: 16px; flex-wrap: wrap;
+      position: relative;
+    }
+    .draft-sec {
+      margin-bottom: 20px;
+    }
+    .draft-sec-label {
+      font-size: 10.5px; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.12em;
+      color: var(--accent); margin-bottom: 8px;
+    }
+    .draft-sec h6 {
+      font-size: 15.5px; font-weight: 700; color: var(--text);
+      margin-bottom: 6px; letter-spacing: -0.01em;
+    }
+    .draft-sec p {
+      font-size: 12.5px; line-height: 1.55; color: var(--text-soft);
+    }
+    .draft-cost {
+      width: 100%; border-collapse: collapse; margin-top: 10px; font-size: 12px;
+    }
+    .draft-cost th, .draft-cost td {
+      padding: 8px 10px; text-align: left;
+      border-bottom: 1px solid var(--border-soft);
+    }
+    .draft-cost th {
+      background: var(--bg-alt);
+      font-size: 10.5px; font-weight: 700;
+      color: var(--text-soft);
+      text-transform: uppercase; letter-spacing: 0.08em;
+    }
+    .draft-cost td { color: var(--text-soft); }
+    .draft-cost td:last-child {
+      text-align: right; font-variant-numeric: tabular-nums;
+      font-weight: 700; color: var(--text);
+    }
+    .flag-row {
+      background: rgba(245, 166, 35, 0.08) !important;
+    }
+    .flag-row td { color: var(--text); }
+    .flag-inline {
+      display: inline-flex; align-items: center; gap: 5px;
+      font-size: 10px; padding: 2px 7px;
+      background: rgba(245, 166, 35, 0.2);
+      color: #96600A;
+      border-radius: 4px;
+      font-weight: 700;
+      margin-left: 6px;
+    }
+
+    .draft-side {
+      background: var(--bg-alt);
+      padding: 24px 20px;
+    }
+    .draft-side h6 {
+      font-size: 11px; font-weight: 700; color: var(--text-mute);
+      text-transform: uppercase; letter-spacing: 0.12em;
+      margin-bottom: 12px;
+    }
+    .draft-side-nav { display: flex; flex-direction: column; gap: 4px; margin-bottom: 22px; }
+    .draft-side-item {
+      padding: 7px 10px; border-radius: 5px;
+      font-size: 12.5px; color: var(--text-soft);
+      cursor: pointer;
+    }
+    .draft-side-item.active { background: #FFF; color: var(--text); font-weight: 600; }
+    .draft-side-tools { display: flex; flex-direction: column; gap: 8px; }
+    .draft-tool {
+      padding: 9px 12px;
+      background: #FFF;
+      border: 1px solid var(--border-soft);
+      border-radius: 6px;
+      font-size: 11.5px; color: var(--text-soft);
+      display: flex; align-items: center; gap: 7px;
+    }
+    .draft-tool.primary {
+      background: var(--primary);
+      color: #fff;
+      border-color: var(--primary);
+      font-weight: 700;
+    }
+
+    /* =================== SCREEN 4: CHAT =================== */
+    .chat-layout {
+      display: grid;
+      grid-template-columns: 1fr 340px;
+      min-height: 620px;
+    }
+    .chat-preview {
+      background: #FFFFFF;
+      padding: 28px 30px;
+      overflow: hidden;
+      border-right: 1px solid var(--border);
+    }
+    .chat-panel {
+      background: #FAFBFC;
+      display: flex; flex-direction: column;
+      padding: 0;
+      height: 620px;
+    }
+    .chat-panel-head {
+      padding: 16px 20px;
+      border-bottom: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: space-between;
+      background: #FFF;
+    }
+    .chat-panel-head h6 {
+      font-size: 13px; font-weight: 700; color: var(--text);
+      display: flex; align-items: center; gap: 8px;
+    }
+    .chat-dot {
+      width: 7px; height: 7px; border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 0 8px var(--accent);
+    }
+    .chat-scroll {
+      flex: 1;
+      overflow: hidden;
+      padding: 18px 18px 0;
+      display: flex; flex-direction: column; gap: 14px;
+    }
+    .chat-msg {
+      max-width: 92%;
+      padding: 12px 14px;
+      border-radius: 12px;
+      font-size: 12.5px;
+      line-height: 1.55;
+    }
+    .chat-msg.user {
+      align-self: flex-end;
+      background: var(--primary);
+      color: #fff;
+      border-bottom-right-radius: 4px;
+    }
+    .chat-msg.ai {
+      align-self: flex-start;
+      background: #FFF;
+      border: 1px solid var(--border-soft);
+      color: var(--text);
+      border-bottom-left-radius: 4px;
+    }
+    .chat-msg.ai strong { font-weight: 700; }
+    .chat-msg.ai ol { margin: 8px 0 4px; padding-left: 20px; }
+    .chat-msg.ai li { margin: 5px 0; color: var(--text-soft); }
+    .chat-msg.ai li b { color: var(--text); font-weight: 700; }
+    .chat-input-area {
+      padding: 14px 18px;
+      border-top: 1px solid var(--border-soft);
+      background: #FFF;
+    }
+    .chat-input {
+      display: flex; align-items: center; gap: 8px;
+      padding: 9px 12px;
+      background: var(--bg-soft);
+      border-radius: 8px;
+      font-size: 12px;
+      color: var(--text-mute);
+    }
+    .chat-input .send-ic {
+      width: 20px; height: 20px;
+      background: var(--accent);
+      color: #fff;
+      border-radius: 4px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 10px;
+    }
+    .diff-badge {
+      display: inline-flex; align-items: center; gap: 4px;
+      font-size: 9.5px; font-weight: 700;
+      padding: 2px 7px;
+      background: rgba(0, 200, 83, 0.18);
+      color: #0F8F4A;
+      border-radius: 4px;
+      margin-left: 6px;
+      vertical-align: middle;
+    }
+    .diff-strike {
+      text-decoration: line-through;
+      opacity: 0.55;
+      margin-right: 4px;
+    }
+    .diff-highlight-p {
+      background: rgba(0, 230, 118, 0.1);
+      border-left: 2px solid var(--accent);
+      padding: 8px 10px;
+      margin: 6px 0;
+      font-size: 11.5px;
+      color: var(--text);
+      border-radius: 0 4px 4px 0;
+      line-height: 1.5;
+    }
+
+    /* =================== SCREEN 5: PHONE =================== */
+    .phone-wrap {
+      display: flex; justify-content: center;
+      padding: 40px 0;
+      background: var(--bg-alt);
+    }
+    .phone {
+      width: 300px;
+      height: 612px;
+      background: #000;
+      border-radius: 36px;
+      padding: 8px;
+      box-shadow:
+        var(--shadow-xl),
+        inset 0 0 0 2px #2a2a2a;
+      position: relative;
+    }
+    .phone::before {
+      content: "";
+      position: absolute;
+      top: 14px; left: 50%;
+      transform: translateX(-50%);
+      width: 92px; height: 22px;
+      background: #000;
+      border-radius: 12px;
+      z-index: 3;
+    }
+    .phone-screen {
+      background: #FFFFFF;
+      border-radius: 28px;
+      overflow: hidden;
+      height: 100%;
+      position: relative;
+    }
+    .phone-status {
+      padding: 10px 20px 6px;
+      font-size: 10.5px; font-weight: 600; color: var(--text);
+      display: flex; justify-content: space-between; align-items: center;
+      height: 36px;
+    }
+    .phone-hero-sec {
+      background: linear-gradient(170deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #fff;
+      padding: 30px 22px 24px;
+      position: relative;
+      overflow: hidden;
+    }
+    .phone-hero-sec::after {
+      content: ""; position: absolute;
+      top: -20%; right: -30%;
+      width: 80%; height: 180%;
+      background: radial-gradient(ellipse, rgba(255, 215, 0, 0.18), transparent 70%);
+      pointer-events: none;
+    }
+    .phone-approved-stamp {
+      display: inline-flex; align-items: center; gap: 5px;
+      font-size: 9.5px; font-weight: 700;
+      padding: 4px 9px;
+      background: rgba(0, 230, 118, 0.22);
+      border: 1px solid rgba(0, 230, 118, 0.4);
+      color: var(--accent-bright);
+      border-radius: 20px;
+      margin-bottom: 12px;
+      letter-spacing: 0.04em;
+      position: relative;
+    }
+    .phone-hero-sec .kicker {
+      font-size: 10px; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.14em;
+      color: var(--gold-soft); margin-bottom: 8px;
+      position: relative;
+    }
+    .phone-hero-sec h5 {
+      font-size: 18px; color: #fff; font-weight: 800;
+      line-height: 1.2; margin-bottom: 6px;
+      letter-spacing: -0.02em;
+      position: relative;
+    }
+    .phone-hero-sec .sub {
+      font-size: 11.5px; color: rgba(255,255,255,0.72);
+      line-height: 1.5;
+      position: relative;
+    }
+    .phone-hero-sec .tap-cta {
+      margin-top: 16px;
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 9px 16px;
+      background: var(--accent);
+      color: #fff;
+      border-radius: 20px;
+      font-size: 11.5px; font-weight: 700;
+      position: relative;
+      box-shadow: 0 6px 18px rgba(0, 200, 83, 0.3);
+    }
+    .phone-sections {
+      padding: 18px 22px 16px;
+    }
+    .phone-sec-item {
+      padding: 14px 0;
+      border-bottom: 1px solid var(--border-soft);
+    }
+    .phone-sec-item:last-child { border-bottom: 0; }
+    .phone-sec-item .num {
+      font-size: 10px; font-weight: 700;
+      color: var(--gold-soft);
+      letter-spacing: 0.14em;
+    }
+    .phone-sec-item h6 {
+      font-size: 13px; font-weight: 700; color: var(--text);
+      margin: 4px 0 3px;
+    }
+    .phone-sec-item p {
+      font-size: 11px; color: var(--text-soft); line-height: 1.5;
+    }
+    .phone-foot {
+      padding: 16px 22px 22px;
+      background: var(--bg-alt);
+      display: flex; gap: 8px;
+    }
+    .phone-foot-btn {
+      flex: 1;
+      padding: 9px;
+      border-radius: 8px;
+      font-size: 11px; font-weight: 700;
+      text-align: center;
+      display: flex; align-items: center; justify-content: center; gap: 4px;
+    }
+    .phone-foot-btn.wa { background: #25D366; color: #fff; }
+    .phone-foot-btn.call { background: var(--primary); color: #fff; }
+
+    /* =================== THE SHIFT PANEL =================== */
+    .shift {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #fff;
+      border-radius: 20px;
+      padding: 48px 44px;
+      margin: 60px 0 80px;
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      gap: 32px;
+      align-items: center;
+      box-shadow: var(--shadow-lg);
+      position: relative;
+      overflow: hidden;
+    }
+    .shift::before {
+      content: ""; position: absolute;
+      top: -50%; left: 45%; transform: translateX(-50%);
+      width: 40%; height: 200%;
+      background: radial-gradient(ellipse, rgba(255, 215, 0, 0.08), transparent 70%);
+      pointer-events: none;
+    }
+    .shift-col { position: relative; z-index: 2; }
+    .shift-col .kicker {
+      font-size: 10.5px; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.14em;
+      margin-bottom: 8px;
+    }
+    .shift-col.before .kicker { color: rgba(255, 255, 255, 0.45); }
+    .shift-col.after  .kicker { color: var(--gold-soft); }
+    .shift-col h3 { color: #fff; font-size: 20px; margin-bottom: 10px; }
+    .shift-col.before h3 { color: rgba(255, 255, 255, 0.55); text-decoration: line-through; text-decoration-thickness: 2px; text-decoration-color: rgba(255, 100, 100, 0.5); }
+    .shift-col p { font-size: 14px; color: rgba(255, 255, 255, 0.65); line-height: 1.55; }
+    .shift-col.after p { color: rgba(255, 255, 255, 0.82); }
+    .shift-arrow {
+      font-size: 28px; color: var(--gold-soft); position: relative; z-index: 2;
+      font-weight: 300;
+    }
+
+    /* =================== DOES-DOESN'T PANELS =================== */
+    .dual-panel {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin-top: 40px;
+    }
+    .panel {
+      padding: 32px 32px 28px;
+      border-radius: 16px;
+      border: 1px solid var(--border);
+      background: #FFF;
+    }
+    .panel.warm {
+      background: linear-gradient(135deg, rgba(0, 200, 83, 0.04) 0%, rgba(0, 200, 83, 0.01) 100%);
+      border-color: rgba(0, 200, 83, 0.2);
+    }
+    .panel h3 { font-size: 18px; margin-bottom: 18px; }
+    .panel ul { list-style: none; padding: 0; }
+    .panel li {
+      padding: 9px 0 9px 28px;
+      position: relative;
+      font-size: 14.5px;
+      color: var(--text-soft);
+      line-height: 1.55;
+    }
+    .panel li::before {
+      content: ""; position: absolute; left: 0; top: 17px;
+      width: 12px; height: 2px; background: var(--accent);
+    }
+    .panel.strike li::before {
+      content: "";
+      width: 14px; height: 14px;
+      top: 11px;
+      background: none;
+      border: 2px solid var(--text-mute);
+      border-radius: 3px;
+    }
+    .panel.strike li::after {
+      content: "";
+      position: absolute; left: 3px; top: 16px;
+      width: 8px; height: 5px;
+      border-left: 2px solid var(--text-mute);
+      border-bottom: 2px solid var(--text-mute);
+      transform: rotate(-45deg);
+    }
+
+    /* =================== PRICING FOOTER =================== */
+    .recap {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #fff;
+      border-radius: 20px;
+      padding: 48px 44px;
+      margin-top: 80px;
+      box-shadow: var(--shadow-lg);
+    }
+    .recap-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+      margin-top: 22px;
+    }
+    .recap-item {
+      padding: 20px 20px 22px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 10px;
+    }
+    .recap-item .l {
+      font-size: 10.5px; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.12em;
+      color: rgba(255, 255, 255, 0.55);
+      margin-bottom: 8px;
+    }
+    .recap-item .v {
+      font-size: 24px; font-weight: 800; color: #fff;
+      letter-spacing: -0.02em; line-height: 1.1;
+    }
+    .recap-item .s {
+      font-size: 12px; color: rgba(255, 255, 255, 0.6);
+      margin-top: 5px;
+    }
+    .recap h2 { color: #fff; }
+    .recap p { color: rgba(255, 255, 255, 0.78); font-size: 16px; max-width: 760px; }
+    .recap-cta-row {
+      display: flex; gap: 14px; margin-top: 34px; flex-wrap: wrap;
+    }
+    .recap-cta-row a {
+      display: inline-flex; align-items: center; gap: 10px;
+      padding: 14px 26px;
+      border-radius: 10px;
+      font-size: 14.5px; font-weight: 700;
+      transition: all .22s ease;
+    }
+    .cta-wa {
+      background: #25D366;
+      color: #fff;
+      box-shadow: 0 8px 24px rgba(37, 211, 102, 0.3);
+    }
+    .cta-wa:hover { transform: translateY(-2px); box-shadow: 0 12px 32px rgba(37, 211, 102, 0.4); }
+    .cta-wa svg { width: 18px; height: 18px; }
+    .cta-ghost {
+      background: rgba(255, 255, 255, 0.06);
+      color: #fff;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    .cta-ghost:hover { background: rgba(255, 255, 255, 0.12); }
+
+    /* =================== CAVEAT + FOOTER =================== */
+    .caveat {
+      margin-top: 36px;
+      padding: 18px 22px;
+      background: rgba(255, 255, 255, 0.04);
+      border-left: 3px solid var(--gold-soft);
+      border-radius: 6px;
+      font-size: 12.5px;
+      color: rgba(255, 255, 255, 0.62);
+      font-style: italic;
+      line-height: 1.5;
+    }
+
+    footer.foot {
+      padding: 36px 0;
+      background: var(--primary-dark);
+      color: rgba(255, 255, 255, 0.6);
+      font-size: 12px;
+    }
+    footer.foot .container {
+      display: flex; justify-content: space-between; gap: 24px; flex-wrap: wrap;
+    }
+    footer.foot strong { color: #fff; font-weight: 700; }
+
+    /* =================== RESPONSIVE =================== */
+    @media (max-width: 960px) {
+      section.block { padding: 64px 0; }
+      .screen { margin-bottom: 64px; }
+      .screen.featured { margin-left: 0; margin-right: 0; padding: 24px 22px; border-radius: 16px; }
+      .dash { grid-template-columns: 160px 1fr; }
+      .dash-analytics { grid-template-columns: repeat(2, 1fr); }
+      .dash-row { grid-template-columns: 1fr auto; font-size: 12px; gap: 10px; }
+      .dash-row .dash-amt, .dash-row .dash-date { display: none; }
+      .draft-layout { grid-template-columns: 1fr; }
+      .draft-side { border-top: 1px solid var(--border); }
+      .chat-layout { grid-template-columns: 1fr; }
+      .chat-panel { height: auto; min-height: 380px; }
+      .shift { grid-template-columns: 1fr; gap: 20px; padding: 36px 28px; }
+      .shift-arrow { transform: rotate(90deg); justify-self: center; }
+      .dual-panel { grid-template-columns: 1fr; }
+      .recap-grid { grid-template-columns: repeat(2, 1fr); }
+      .hero-stats { grid-template-columns: 1fr; }
+      .hero { padding: 64px 0 72px; }
+      .top-bar .tb-left .sep, .top-bar .tb-left a.back { display: none; }
+    }
+    @media (max-width: 560px) {
+      .dash { grid-template-columns: 1fr; }
+      .dash-side { display: none; }
+      .recap-grid { grid-template-columns: 1fr; }
+      .recap { padding: 32px 22px; }
+    }
+
+    @media print {
+      body { background: #fff; }
+      .top-bar { position: static; }
+      .btn-download, .recap-cta-row { display: none; }
+      section.block { padding: 40px 0; }
+      .screen { page-break-inside: avoid; margin-bottom: 40px; }
+      .mac-frame, .phone { box-shadow: none; border: 1px solid #ccc; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ============== TOP BAR ============== -->
+  <div class="top-bar">
+    <div class="container">
+      <div class="tb-left">
+        <strong>Proposal Engine - Team Guide</strong>
+        <span class="sep">|</span>
+        <a class="back" href="index.html">Back to full proposal</a>
+      </div>
+      <div class="tb-right">
+        <a class="btn-download" href="one-pager-proposal-engine.pdf" download>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Download PDF
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============== HERO ============== -->
+  <section class="hero" id="hero">
+    <div class="container">
+      <span class="badge">For the iDesign Architects team</span>
+      <h1>How your team will actually use the <span class="accent">Proposal Engine.</span></h1>
+      <p class="lead">Five screens. Three hours become ten minutes. No software to install. Built for the two-to-three people on your side who check every proposal before it goes out. Everything you see in the next few scrolls is what the tool will look like in your browser.</p>
+      <div class="hero-stats">
+        <div class="hero-stat">
+          <div class="n">10 min</div>
+          <div class="u">to draft and send a proposal, from 3-4 hours today</div>
+        </div>
+        <div class="hero-stat">
+          <div class="n">0</div>
+          <div class="u">software to install, one browser tab is all you need</div>
+        </div>
+        <div class="hero-stat">
+          <div class="n">4 weeks</div>
+          <div class="u">from kickoff to live in your studio</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============== SCREEN 1: DASHBOARD ============== -->
+  <section class="block">
+    <div class="container">
+      <div class="sec-header">
+        <span class="sec-label">The team guide, in 5 screens</span>
+        <h2>This is what your team opens every morning.</h2>
+        <p>No apps, no logins to different tools. One URL, bookmarked, works on laptop or phone.</p>
+      </div>
+
+      <div class="screen">
+        <div>
+          <div class="screen-heading">
+            <div class="screen-num">1</div>
+            <h3 class="screen-title">Your dashboard.</h3>
+          </div>
+          <p class="screen-narrative">One web page. Opens in any browser. Logged in with email and OTP. Every active proposal your team is working on, visible in one list. No Excel tabs to hunt through, no folders to open, no files to search for.</p>
+        </div>
+
+        <!-- MAC FRAME: DASHBOARD -->
+        <div class="mac-frame">
+          <div class="mac-chrome">
+            <div class="dots">
+              <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
+            </div>
+            <div class="addr"><span class="lock">&#128274;</span>proposal.idesign-architects.com</div>
+            <div style="width:52px;"></div>
+          </div>
+          <div class="mac-body">
+            <div class="dash">
+              <aside class="dash-side">
+                <div class="dash-brand">
+                  <div class="dash-brand-dot">iD</div>
+                  <div>
+                    <div class="dash-brand-name">iDesign</div>
+                    <div class="dash-brand-sub">Proposal Engine</div>
+                  </div>
+                </div>
+                <div class="section-label">Workspace</div>
+                <div class="dash-nav">
+                  <div class="dash-nav-item active">
+                    <svg class="dash-nav-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M 14 2 H 6 a 2 2 0 0 0 -2 2 v 16 a 2 2 0 0 0 2 2 h 12 a 2 2 0 0 0 2 -2 V 8 z"/><polyline points="14 2 14 8 20 8"/></svg>
+                    Proposals
+                  </div>
+                  <div class="dash-nav-item">
+                    <svg class="dash-nav-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M 4 20 c 0 -4 4 -7 8 -7 s 8 3 8 7"/></svg>
+                    Clients
+                  </div>
+                  <div class="dash-nav-item">
+                    <svg class="dash-nav-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="9" y1="9" x2="15" y2="9"/><line x1="9" y1="13" x2="15" y2="13"/><line x1="9" y1="17" x2="13" y2="17"/></svg>
+                    Rate Library
+                  </div>
+                  <div class="dash-nav-item">
+                    <svg class="dash-nav-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M 12 15 a 3 3 0 1 0 0 -6 3 3 0 0 0 0 6 z"/><path d="M 19.4 15 a 1.65 1.65 0 0 0 0.33 1.82 l 0.06 0.06 a 2 2 0 1 1 -2.83 2.83 l -0.06 -0.06 a 1.65 1.65 0 0 0 -1.82 -0.33 1.65 1.65 0 0 0 -1 1.51 V 21 a 2 2 0 1 1 -4 0 v -0.09"/></svg>
+                    Settings
+                  </div>
+                </div>
+                <div class="spacer"></div>
+                <div class="section-label">Team</div>
+                <div class="dash-nav">
+                  <div class="dash-nav-item">Ar. Swati Vaidya</div>
+                  <div class="dash-nav-item">Anjali, Proposals</div>
+                  <div class="dash-nav-item">Rohan, Estimation</div>
+                </div>
+              </aside>
+
+              <div class="dash-main">
+                <div class="dash-head">
+                  <h4>Active proposals</h4>
+                  <div class="dash-new-btn">+ New Proposal</div>
+                </div>
+                <div class="dash-search">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                  Search by client, property, or status...
+                </div>
+                <div class="dash-analytics">
+                  <div class="dash-stat"><div class="n">12</div><div class="l">This month</div></div>
+                  <div class="dash-stat"><div class="n">4</div><div class="l">Sent</div></div>
+                  <div class="dash-stat"><div class="n">2</div><div class="l">Approved</div></div>
+                  <div class="dash-stat"><div class="n">1</div><div class="l">Awaiting Swati</div></div>
+                </div>
+                <div class="dash-list">
+                  <div class="dash-row">
+                    <div>
+                      <div class="dash-client">Mrs. Meera Phatak</div>
+                      <div class="dash-client-meta">3BHK Interior, Kothrud</div>
+                    </div>
+                    <span class="pill review">In Review</span>
+                    <span class="dash-amt">&#8377;22.4 L</span>
+                    <span class="dash-date">Today</span>
+                  </div>
+                  <div class="dash-row">
+                    <div>
+                      <div class="dash-client">Karan Joshi &amp; Family</div>
+                      <div class="dash-client-meta">4BHK Villa, Baner</div>
+                    </div>
+                    <span class="pill sent">Sent</span>
+                    <span class="dash-amt">&#8377;48.0 L</span>
+                    <span class="dash-date">Apr 18</span>
+                  </div>
+                  <div class="dash-row">
+                    <div>
+                      <div class="dash-client">Pethkar Enterprises</div>
+                      <div class="dash-client-meta">Office Interior, Hadapsar</div>
+                    </div>
+                    <span class="pill approved">Approved</span>
+                    <span class="dash-amt">&#8377;31.5 L</span>
+                    <span class="dash-date">Apr 15</span>
+                  </div>
+                  <div class="dash-row">
+                    <div>
+                      <div class="dash-client">Dr. Neha Kale</div>
+                      <div class="dash-client-meta">Clinic Fit-out, FC Road</div>
+                    </div>
+                    <span class="pill draft">Draft</span>
+                    <span class="dash-amt">&#8377;14.2 L</span>
+                    <span class="dash-date">Apr 14</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============== SCREEN 2: NEW PROPOSAL ============== -->
+  <section class="block alt">
+    <div class="container">
+      <div class="screen">
+        <div>
+          <div class="screen-heading">
+            <div class="screen-num">2</div>
+            <h3 class="screen-title">Start a new proposal in 2 minutes.</h3>
+          </div>
+          <p class="screen-narrative">Six fields, two minutes. Type in what the client told you on the phone - client name, property type, room count, rough budget, who referred them, any special asks. No templates to copy-paste. No format to fight with. Hit Generate.</p>
+        </div>
+
+        <div class="mac-frame">
+          <div class="mac-chrome">
+            <div class="dots">
+              <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
+            </div>
+            <div class="addr"><span class="lock">&#128274;</span>proposal.idesign-architects.com/new</div>
+            <div style="width:52px;"></div>
+          </div>
+          <div class="mac-body">
+            <div class="form-backdrop">
+              <div class="form-card">
+                <h4>New proposal</h4>
+                <div class="sub">Fill in what you learned on the call. The AI takes it from there.</div>
+
+                <div class="form-field">
+                  <label>Client name</label>
+                  <div class="field-val">Mrs. Meera Phatak</div>
+                </div>
+
+                <div class="form-row">
+                  <div class="form-field">
+                    <label>Property type</label>
+                    <div class="field-val">3BHK apartment</div>
+                  </div>
+                  <div class="form-field">
+                    <label>Location</label>
+                    <div class="field-val">Kothrud, Pune</div>
+                  </div>
+                </div>
+
+                <div class="form-row">
+                  <div class="form-field">
+                    <label>Rooms to design</label>
+                    <div class="field-val">Living + Kitchen + 3 BR</div>
+                  </div>
+                  <div class="form-field">
+                    <label>Budget range</label>
+                    <div class="field-val">&#8377;18 - 25 Lakhs</div>
+                  </div>
+                </div>
+
+                <div class="form-field">
+                  <label>Referral source</label>
+                  <div class="field-val">Karan Joshi (past client)</div>
+                </div>
+
+                <div class="form-field">
+                  <label>Call notes (free text)</label>
+                  <div class="field-val" style="min-height:64px;line-height:1.5;">
+                    Wants modular kitchen with Hafele hardware. Budget flexible for master bath. Timeline 4 months. Italian marble preference noted.
+                  </div>
+                </div>
+
+                <div class="form-submit">
+                  Generate draft
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+                </div>
+                <div class="form-hint">AI typically drafts in 60-90 seconds</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- THE SHIFT -->
+      <div class="shift">
+        <div class="shift-col before">
+          <div class="kicker">Today</div>
+          <h3>3 to 4 hours per proposal.</h3>
+          <p>Across 5 to 7 Excel tabs. Copy-paste from past Word files. Chase rates. Sometimes sent from Swati's phone at 11pm.</p>
+        </div>
+        <div class="shift-arrow">&#10142;</div>
+        <div class="shift-col after">
+          <div class="kicker">With the Proposal Engine</div>
+          <h3>10 minutes per proposal.</h3>
+          <p>One browser tab. Six fields. AI draft. Review. One tap to Swati. One tap to client. Done before your coffee is.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============== SCREEN 3: AI DRAFT ============== -->
+  <section class="block">
+    <div class="container">
+      <div class="screen">
+        <div>
+          <div class="screen-heading">
+            <div class="screen-num">3</div>
+            <h3 class="screen-title">AI draft. Your voice. Your rate library.</h3>
+          </div>
+          <p class="screen-narrative">90 seconds later, the draft opens. It's already a website, not a Word doc - using your three existing documents (Profile, Scope of Work, Estimated Cost) ingested once, your firm's tone, your rate library, your GST codes. Numbers out of your historical pattern are flagged in yellow. You will never be surprised by a rogue line in a proposal you sign off on.</p>
+        </div>
+
+        <div class="mac-frame">
+          <div class="mac-chrome">
+            <div class="dots">
+              <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
+            </div>
+            <div class="addr"><span class="lock">&#128274;</span>proposal.idesign-architects.com/p/meera-phatak-kothrud/draft</div>
+            <div style="width:52px;"></div>
+          </div>
+          <div class="mac-body">
+            <div class="draft-layout">
+              <div class="draft-preview">
+
+                <div class="draft-hero-sec">
+                  <div class="kicker">Prepared for</div>
+                  <h5>Mrs. Meera Phatak - 3BHK Kothrud</h5>
+                  <div class="meta">
+                    <span>April 2026</span><span>iDesign Architects</span><span>Ref: IDA-2026-041</span>
+                  </div>
+                </div>
+
+                <div class="draft-sec">
+                  <div class="draft-sec-label">Scope of Work</div>
+                  <h6>A home built around how your family actually lives.</h6>
+                  <p>Full interior design and turnkey execution for a 3BHK apartment in Kothrud, covering living, dining, kitchen and three bedrooms. Modular kitchen with Hafele hardware, master bath with Italian marble, custom wardrobes in all bedrooms. Phased execution across 4 months with on-site weekly reviews.</p>
+                </div>
+
+                <div class="draft-sec">
+                  <div class="draft-sec-label">Estimated Cost</div>
+                  <h6>Line-items, honest, itemised.</h6>
+                  <table class="draft-cost">
+                    <thead>
+                      <tr><th>Item</th><th style="text-align:right;">Amount</th></tr>
+                    </thead>
+                    <tbody>
+                      <tr><td>Living + dining (furniture, lighting, decor)</td><td>&#8377;5,20,000</td></tr>
+                      <tr class="flag-row">
+                        <td>
+                          Modular kitchen with Hafele fittings
+                          <span class="flag-inline">&#9888; 23% above your pattern</span>
+                        </td>
+                        <td>&#8377;9,20,000</td>
+                      </tr>
+                      <tr><td>Master bedroom + wardrobe + en-suite</td><td>&#8377;4,80,000</td></tr>
+                      <tr><td>Bedroom 2 + Bedroom 3</td><td>&#8377;3,60,000</td></tr>
+                      <tr><td>Master bath (Italian Carrara marble)</td><td>&#8377;2,40,000</td></tr>
+                      <tr><td>Project management + contingency</td><td>&#8377;1,60,000</td></tr>
+                      <tr style="background:var(--bg-alt); font-weight:700;"><td><strong>Total (+ GST as applicable)</strong></td><td><strong>&#8377;26,80,000</strong></td></tr>
+                    </tbody>
+                  </table>
+                </div>
+
+                <div class="draft-sec">
+                  <div class="draft-sec-label">Timeline</div>
+                  <h6>4 months. Handover April to August.</h6>
+                  <p>Design phase weeks 1-3, procurement + civil weeks 4-8, execution + finishing weeks 9-16. Weekly site review with the family on Saturday mornings.</p>
+                </div>
+
+              </div>
+
+              <aside class="draft-side">
+                <h6>Jump to section</h6>
+                <div class="draft-side-nav">
+                  <div class="draft-side-item">Profile / About</div>
+                  <div class="draft-side-item active">Scope of Work</div>
+                  <div class="draft-side-item">Estimated Cost</div>
+                  <div class="draft-side-item">Timeline</div>
+                  <div class="draft-side-item">Terms</div>
+                  <div class="draft-side-item">Contact</div>
+                </div>
+                <h6>Tools</h6>
+                <div class="draft-side-tools">
+                  <div class="draft-tool primary">
+                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M 21 15 a 2 2 0 0 1 -2 2 H 7 l -4 4 V 5 a 2 2 0 0 1 2 -2 h 14 a 2 2 0 0 1 2 2 z"/></svg>
+                    Chat to edit
+                  </div>
+                  <div class="draft-tool">
+                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M 17 3 a 2.83 2.83 0 1 1 4 4 L 7.5 20.5 2 22 l 1.5 -5.5 z"/></svg>
+                    Edit inline
+                  </div>
+                  <div class="draft-tool">
+                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M 9 11 l 3 3 L 22 4"/><path d="M 21 12 v 7 a 2 2 0 0 1 -2 2 H 5 a 2 2 0 0 1 -2 -2 V 5 a 2 2 0 0 1 2 -2 h 11"/></svg>
+                    Send to Swati
+                  </div>
+                </div>
+              </aside>
+            </div>
+          </div>
+        </div>
+
+        <div class="screen-sidebar-note">
+          <strong>On the flag above.</strong> The Kitchen line of &#8377;9.20 L came in 23% above iDesign's historical average for 3BHK Kothrud projects. The AI highlighted it; your team reviewed and decided to accept it (Hafele hardware justifies the jump). Every flag like this is logged. No rogue numbers ever leave the studio.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============== SCREEN 4: CHAT (FEATURED) ============== -->
+  <section class="block alt">
+    <div class="container">
+      <div class="screen featured">
+        <div>
+          <div class="screen-heading">
+            <div class="screen-num">4</div>
+            <h3 class="screen-title">Chat with your proposal.</h3>
+          </div>
+          <p class="screen-narrative">This is the part your team will love most. You don't navigate menus to make changes. You type what you want - in Marathi, Hindi or English, in one sentence or three - and it happens. Change a price, add a paragraph, adjust the timeline, rewrite a section in a more formal tone - all as fast as you can type.</p>
+        </div>
+
+        <div class="mac-frame">
+          <div class="mac-chrome">
+            <div class="dots">
+              <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
+            </div>
+            <div class="addr"><span class="lock">&#128274;</span>proposal.idesign-architects.com/p/meera-phatak-kothrud/chat</div>
+            <div style="width:52px;"></div>
+          </div>
+          <div class="mac-body">
+            <div class="chat-layout">
+
+              <div class="chat-preview">
+                <div class="draft-hero-sec" style="padding:20px 22px; margin-bottom:18px;">
+                  <div class="kicker">Prepared for</div>
+                  <h5 style="font-size:18px;">Mrs. Meera Phatak - 3BHK Kothrud</h5>
+                  <div class="meta" style="font-size:10.5px;">
+                    <span>April 2026</span><span>Ref: IDA-2026-041</span>
+                  </div>
+                </div>
+
+                <div class="draft-sec">
+                  <div class="draft-sec-label">Scope of Work</div>
+                  <h6 style="font-size:14px;">A home built around how your family actually lives.</h6>
+                  <p style="font-size:11.5px;">Full interior design and turnkey execution for a 3BHK apartment in Kothrud...</p>
+                  <div class="diff-highlight-p">
+                    <strong>Note:</strong> Master bath to feature Italian Carrara marble, sourced from verified Pune-based importer with 2-year craftsmanship guarantee.
+                  </div>
+                </div>
+
+                <div class="draft-sec">
+                  <div class="draft-sec-label">Estimated Cost</div>
+                  <table class="draft-cost">
+                    <thead>
+                      <tr><th>Item</th><th style="text-align:right;">Amount</th></tr>
+                    </thead>
+                    <tbody>
+                      <tr><td>Living + dining</td><td>&#8377;5,20,000</td></tr>
+                      <tr>
+                        <td>Modular kitchen with Hafele fittings</td>
+                        <td>
+                          <span class="diff-strike" style="font-size:10.5px;">&#8377;9,20,000</span>
+                          <strong>&#8377;8,00,000</strong>
+                          <span class="diff-badge">updated</span>
+                        </td>
+                      </tr>
+                      <tr><td>Master bedroom suite</td><td>&#8377;4,80,000</td></tr>
+                      <tr><td>Bedroom 2 + Bedroom 3</td><td>&#8377;3,60,000</td></tr>
+                      <tr><td>Master bath (Italian Carrara)</td><td>&#8377;2,40,000</td></tr>
+                      <tr><td>Project management + contingency</td><td>&#8377;1,60,000</td></tr>
+                    </tbody>
+                  </table>
+                </div>
+
+                <div class="draft-sec">
+                  <div class="draft-sec-label">Timeline</div>
+                  <h6 style="font-size:14px;">
+                    <span class="diff-strike">4 months.</span>
+                    5 months. Handover April to September.
+                    <span class="diff-badge">updated</span>
+                  </h6>
+                </div>
+              </div>
+
+              <aside class="chat-panel">
+                <div class="chat-panel-head">
+                  <h6>
+                    <span class="chat-dot"></span>
+                    Chat to edit
+                  </h6>
+                  <span style="font-size:11px; color:var(--text-mute);">Live</span>
+                </div>
+                <div class="chat-scroll">
+                  <div class="chat-msg user">
+                    Change the Kitchen budget to 8 lakhs and add a note in Scope of Work about Italian Carrara marble for the master bathroom. Also make the timeline 5 months instead of 4.
+                  </div>
+                  <div class="chat-msg ai">
+                    <strong>Done - 3 changes applied to the preview:</strong>
+                    <ol>
+                      <li><b>Kitchen &#8377;9.2L &rarr; &#8377;8L.</b> Yellow flag cleared (now 7% above 3BHK Kothrud pattern, within range).</li>
+                      <li><b>Scope of Work:</b> Added Italian Carrara marble note with sourcing and guarantee detail.</li>
+                      <li><b>Timeline 4 months &rarr; 5 months.</b> Revised completion: September 2026.</li>
+                    </ol>
+                    <div style="font-size:11.5px; color:var(--text-mute); margin-top:8px;">Changes are saved as draft. Click "Apply" to lock them in, or "Undo" to reverse.</div>
+                  </div>
+                  <div class="chat-msg user">
+                    Perfect. Apply it. And rewrite the Scope paragraph more formally.
+                  </div>
+                  <div class="chat-msg ai">
+                    <strong>Applied.</strong> Rewriting Scope paragraph now...
+                  </div>
+                </div>
+                <div class="chat-input-area">
+                  <div class="chat-input">
+                    Type your instruction...
+                    <div class="send-ic">
+                      <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+                    </div>
+                  </div>
+                </div>
+              </aside>
+
+            </div>
+          </div>
+        </div>
+
+        <div class="screen-sidebar-note">
+          <strong>Every chat edit is logged.</strong> You can roll back any change. 8-year audit trail retained for MCA Rule 3 compliance - your CA will like that. And yes, the AI understands Marathi and Hindi: <em>"Master bedroom cha budget 20% kami kar"</em> works exactly the same as <em>"Cut the master bedroom budget by 20%"</em>.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============== SCREEN 5: PHONE ============== -->
+  <section class="block">
+    <div class="container">
+      <div class="screen">
+        <div>
+          <div class="screen-heading">
+            <div class="screen-num">5</div>
+            <h3 class="screen-title">Your client sees this on their phone.</h3>
+          </div>
+          <p class="screen-narrative">Every client gets a website, not a PDF attachment. They open it on their phone. They scroll through it like a boutique brand's landing page. They can tap to reach you directly from inside the proposal. Six months later when they show it to their spouse, CA, or architect friend, the link still works. A PDF copy is one click away if they want one.</p>
+        </div>
+
+        <div class="phone-wrap">
+          <div class="phone">
+            <div class="phone-screen">
+              <div class="phone-status">
+                <span>9:41</span>
+                <span>&#8226; &#8226; &#8226; &#8226; &#8226;  &nbsp;&#128246;</span>
+              </div>
+              <div class="phone-hero-sec">
+                <div class="phone-approved-stamp">
+                  &#10003; Approved by Ar. Swati Vaidya, 21 April 2026
+                </div>
+                <div class="kicker">iDesign Architects - Pune</div>
+                <h5>A home designed around your family, Meera.</h5>
+                <p class="sub">Every sqft costed, every finish specified, every milestone dated. Tap below to walk through it.</p>
+                <div class="tap-cta">
+                  View proposal
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+                </div>
+              </div>
+              <div class="phone-sections">
+                <div class="phone-sec-item">
+                  <div class="num">01 - PROFILE</div>
+                  <h6>25 years of Pune homes.</h6>
+                  <p>A quick introduction to the studio, the principal architect, and the process.</p>
+                </div>
+                <div class="phone-sec-item">
+                  <div class="num">02 - SCOPE</div>
+                  <h6>Your 3BHK, room by room.</h6>
+                  <p>What we will design, build and deliver, with material and finish notes.</p>
+                </div>
+                <div class="phone-sec-item">
+                  <div class="num">03 - COST</div>
+                  <h6>&#8377;26.8 Lakhs, itemised.</h6>
+                  <p>Every line, every rupee. GST handled separately per your CA's guidance.</p>
+                </div>
+              </div>
+              <div class="phone-foot">
+                <div class="phone-foot-btn wa">
+                  <svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><path d="M17.6 14.2c-.3-.2-1.8-.9-2.1-1-.3-.1-.5-.2-.7.2-.2.3-.8 1-.9 1.2-.2.2-.3.2-.6.1-.3-.2-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6.1-.1.3-.3.4-.5.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5-.1-.1-.7-1.7-.9-2.3-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.4s1.1 2.8 1.2 3c.2.2 2.1 3.3 5.2 4.6 1.4.5 2.1.6 2.9.5.4 0 1.4-.6 1.6-1.1.2-.5.2-1 .2-1.1-.1-.1-.3-.2-.6-.3z"/></svg>
+                  WhatsApp Swati
+                </div>
+                <div class="phone-foot-btn call">
+                  <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M 22 16.92 v 3 a 2 2 0 0 1 -2.18 2 19.79 19.79 0 0 1 -8.63 -3.07 19.5 19.5 0 0 1 -6 -6 19.79 19.79 0 0 1 -3.07 -8.67 A 2 2 0 0 1 4.11 2 h 3 a 2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 0.7 2.81 2 2 0 0 1 -0.45 2.11 L 8.09 9.91 a 16 16 0 0 0 6 6 l 1.27 -1.27 a 2 2 0 0 1 2.11 -0.45 12.84 12.84 0 0 0 2.81 0.7 A 2 2 0 0 1 22 16.92 z"/></svg>
+                  Call studio
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="screen-sidebar-note">
+          <strong>PDF export is one click.</strong> If Mrs. Meera's CA or her spouse wants a paper copy, she clicks "Download PDF" at the bottom of the proposal and the same content (header, scope, estimated cost, timeline, terms, contact) lands as a formatted PDF. For Tally, Google Drive, WhatsApp archival - whatever they need. The website is always primary; the PDF is always the backup.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============== DOES / DOESN'T ============== -->
+  <section class="block alt">
+    <div class="container">
+      <div class="sec-header">
+        <span class="sec-label">What changes for the team</span>
+        <h2>Two lists. Read both once.</h2>
+        <p>One list for what goes away. One for what your clients start getting that other Pune firms don't offer.</p>
+      </div>
+
+      <div class="dual-panel">
+        <div class="panel strike">
+          <h3>What your team does NOT have to do.</h3>
+          <ul>
+            <li>Learn new software - it's a website, no install</li>
+            <li>Install anything - browser only, any browser</li>
+            <li>Handle templates, formatting, versioning - all automatic</li>
+            <li>Compile three separate PDFs per client - one integrated output</li>
+            <li>Chase Swati over email for signoff - WhatsApp ping inside the app</li>
+            <li>Maintain a rate library manually - centralised, versioned, GST-tagged</li>
+            <li>Worry about 8-year audit trail - built in, always on</li>
+          </ul>
+        </div>
+
+        <div class="panel warm">
+          <h3>What iDesign clients get that others don't.</h3>
+          <ul>
+            <li>A website proposal - your competitors send PDF attachments</li>
+            <li>Can reach Swati from inside the proposal (WhatsApp + call)</li>
+            <li>Link still works 6 months later when they show spouse or CA</li>
+            <li>Cinematic visuals that match iDesign's aesthetic sensibility</li>
+            <li>Approved-by stamp with date - builds trust before they open</li>
+            <li>Mobile-first, scrolls like a modern brand's landing page</li>
+            <li>One-click PDF download if they prefer paper</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============== PRICING RECAP ============== -->
+  <section class="block">
+    <div class="container">
+      <div class="recap">
+        <span class="sec-label" style="color: var(--gold-soft);">For your team, in numbers</span>
+        <h2>What it costs, how long, what you own.</h2>
+        <p>Everything iDesign invests in the Proposal Engine upgrades 100% toward the full Studio Command Centre for 90 days after go-live. So nothing is wasted if you decide to expand later.</p>
+
+        <div class="recap-grid">
+          <div class="recap-item">
+            <div class="l">Setup (one-time)</div>
+            <div class="v">&#8377;1,50,000</div>
+            <div class="s">GST as applicable</div>
+          </div>
+          <div class="recap-item">
+            <div class="l">Monthly</div>
+            <div class="v">&#8377;5,000</div>
+            <div class="s">60 proposal drafts, AI, support</div>
+          </div>
+          <div class="recap-item">
+            <div class="l">Goes live in</div>
+            <div class="v">4 weeks</div>
+            <div class="s">from signed SOW to kickoff</div>
+          </div>
+          <div class="recap-item">
+            <div class="l">Hypercare</div>
+            <div class="v">21 days</div>
+            <div class="s">post go-live, daily check-ins</div>
+          </div>
+        </div>
+
+        <div class="recap-cta-row">
+          <a class="cta-wa" href="https://wa.me/919673758777?text=Hi%20Shruti%2C%20our%20team%20has%20reviewed%20the%20Proposal%20Engine%20guide.%20Let%27s%20move%20forward.">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.6 14.2c-.3-.2-1.8-.9-2.1-1-.3-.1-.5-.2-.7.2-.2.3-.8 1-.9 1.2-.2.2-.3.2-.6.1-.3-.2-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6.1-.1.3-.3.4-.5.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5-.1-.1-.7-1.7-.9-2.3-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.4s1.1 2.8 1.2 3c.2.2 2.1 3.3 5.2 4.6.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.8-.7 2-1.5.3-.7.3-1.4.2-1.5-.1-.1-.3-.2-.6-.3zM12 2C6.5 2 2 6.5 2 12c0 1.8.5 3.5 1.3 5L2 22l5.1-1.3c1.4.8 3.1 1.3 4.9 1.3 5.5 0 10-4.5 10-10S17.5 2 12 2zm0 18.2c-1.6 0-3.1-.4-4.4-1.2l-.3-.2-3.2.8.8-3.1-.2-.3c-.9-1.4-1.3-2.9-1.3-4.5C3.4 7.3 7.3 3.4 12 3.4s8.6 3.9 8.6 8.6-3.9 8.2-8.6 8.2z"/></svg>
+            WhatsApp Shruti to begin
+          </a>
+          <a class="cta-ghost" href="index.html">
+            See the full proposal
+          </a>
+          <a class="cta-ghost" href="one-pager-proposal-engine.pdf" download>
+            Download this as PDF
+          </a>
+        </div>
+
+        <div class="caveat">
+          UI shown across the 5 screens is illustrative - the actual build will match iDesign's brand palette and adapt to your team's specific workflow during the 4-week kickoff. Every screen, every button, every copy line is customisable.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============== FOOTER ============== -->
+  <footer class="foot">
+    <div class="container">
+      <div>
+        <strong>Prepared by</strong> Tranquil Veda Private Limited - Pune<br>
+        GSTIN: 27AAHCT6956C1Z3 - SAC 998314 - Shruti, Principal Consultant
+      </div>
+      <div>
+        <strong>This guide</strong> Ref: JAR-IDA-002 (team guide for JAR-IDA-001)<br>
+        Prepared: 20 April 2026 - Valid as long as the proposal is open
+      </div>
+      <div>
+        <a href="index.html">&larr; Back to the full proposal</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    (function(){
+      var els = document.querySelectorAll('h2, .screen, .dual-panel, .recap, .shift, .hero-stats');
+      els.forEach(function(e){ e.classList.add('reveal'); });
+      if ('IntersectionObserver' in window) {
+        var io = new IntersectionObserver(function(entries){
+          entries.forEach(function(e){
+            if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); }
+          });
+        }, { threshold: 0.12 });
+        els.forEach(function(e){ io.observe(e); });
+      } else {
+        els.forEach(function(e){ e.classList.add('visible'); });
+      }
+    })();
+  </script>
+</body>
+</html>

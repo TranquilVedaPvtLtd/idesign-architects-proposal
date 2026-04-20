@@ -478,10 +478,13 @@
     .pe-workflow .pe-sub { font-size: 15.5px; color: rgba(255,255,255,0.78); max-width: 620px; margin-bottom: 32px; position: relative; }
     .pe-steps {
       display: grid;
-      grid-template-columns: repeat(5, 1fr);
+      grid-template-columns: repeat(6, 1fr);
       gap: 8px;
       position: relative;
       align-items: flex-start;
+    }
+    @media (max-width: 1100px) {
+      .pe-steps { grid-template-columns: repeat(3, 1fr); gap: 12px; }
     }
     .pe-step {
       padding: 20px 16px 18px;
@@ -903,32 +906,37 @@
       <div class="pe-workflow">
         <span class="pe-label">The Proposal Engine, step by step</span>
         <h3>From blank Excel to sign-off draft in under 10 minutes.</h3>
-        <p class="pe-sub">This is how a new client enquiry becomes a proposal in your voice, using your templates and your rate library. The AI drafts. You review, edit, sign off. Never auto-sent.</p>
+        <p class="pe-sub">This is how a new client enquiry becomes a cinematic website proposal in your voice, using your templates and your rate library. The AI drafts. You chat to edit it. You sign off. Never auto-sent. <a href="team-guide/" style="color:var(--gold-soft); font-weight:600; border-bottom:1px solid var(--gold-soft);">See the 5 UI screens in the team guide &rarr;</a></p>
         <div class="pe-steps">
           <div class="pe-step">
             <div class="pe-n">1</div>
             <h4>Your templates, imported</h4>
-            <p>Your standard proposal templates and your rate library are loaded once. The system learns your tone and pricing logic.</p>
+            <p>Your 3 standard documents (Profile, Scope, Estimated Cost) and rate library are loaded once. The system learns your tone and pricing logic.</p>
           </div>
           <div class="pe-step">
             <div class="pe-n">2</div>
             <h4>New client brief in</h4>
-            <p>Paste or upload the client brief. Room count, budget range, scope, material preferences - any shape you have it in.</p>
+            <p>Fill 6 short fields about the client - property type, rooms, budget range, referral, notes. Takes 2 minutes.</p>
           </div>
           <div class="pe-step">
             <div class="pe-n">3</div>
             <h4>AI drafts in your voice</h4>
-            <p>Under 10 minutes. Output shown in 3 columns: AI draft, your historical pattern for similar projects, final.</p>
+            <p>Under 90 seconds. Opens as a website preview - the exact format your client will see. Yellow-flags prices outside your historical pattern.</p>
           </div>
           <div class="pe-step">
             <div class="pe-n">4</div>
-            <h4>You review and edit</h4>
-            <p>Every line item is editable. Confidence score flagged when AI diverges from your historical pattern by more than 10%.</p>
+            <h4>Chat to edit, in plain English</h4>
+            <p>"Change Kitchen to 8L, add Italian marble note, timeline 5 months." The AI updates the proposal live, with a visible diff. In Marathi, Hindi or English.</p>
           </div>
           <div class="pe-step">
             <div class="pe-n">5</div>
             <h4>Sign off and send</h4>
-            <p>One-click export to PDF. WhatsApp, email or download. Never auto-sent. Audit log retained for 8 years.</p>
+            <p>Swati approves on her phone. One tap sends to the client as a WhatsApp link. 8-year audit log retained automatically.</p>
+          </div>
+          <div class="pe-step">
+            <div class="pe-n">6</div>
+            <h4>Client gets a website</h4>
+            <p>Not a PDF attachment. They scroll on their phone, tap "Call Swati" from inside. PDF export is one click for anyone who wants paper.</p>
           </div>
         </div>
       </div>
@@ -942,7 +950,7 @@
         </thead>
         <tbody>
           <tr><td>BOQ Engine with versioned rate library</td><td>One rate library for your studio. Reuse the same line items across projects. Price revisions take minutes, not hours. GST codes tagged at the item level.</td></tr>
-          <tr><td>AI Proposal Generator (Claude Sonnet backed)</td><td>Draft proposals from an approved BOQ in under 10 minutes. Output shown in 3 columns - AI draft, your historical pattern, final. You sign off before anything goes to the client.</td></tr>
+          <tr><td>AI Proposal Generator with natural-language chat editor</td><td>Draft proposals in your voice in under 10 minutes from your templates and rate library. Chat with the draft in plain English ("change Kitchen to 8L, add Italian marble note") to edit anything. Output is a cinematic website link with one-click PDF export. Never auto-sent.</td></tr>
           <tr><td>Milestone Payment Tracker</td><td>Payments mapped to the Indian construction schedule - booking, design, execution, handover, retention. Inflows and outflows in one screen per project.</td></tr>
           <tr><td>Project Cashflow Rollup</td><td>Client inflows and contractor outflows in a single view per project and across the studio. Know which project is funding which.</td></tr>
           <tr><td>WhatsApp Team Surface (Cloud API)</td><td>Replaces the 2pm and 4pm verbal standup. Designers post updates, photos and voice notes. Managers review in one feed. No app installs for anyone.</td></tr>
@@ -980,12 +988,13 @@
           <div class="amount-note">one-time setup. GST as applicable.</div>
           <div class="recurring">+ &#8377;5,000 / month</div>
           <ul>
-            <li>AI proposal generator in your voice, using your templates</li>
-            <li>Versioned rate library with GST/SAC/HSN tagging</li>
-            <li>Unlimited drafts per month + PDF export + WhatsApp-send</li>
-            <li>4 weeks to live, Hindi and Marathi training videos</li>
-            <li>100% creditable toward Command Centre within 90 days</li>
+            <li>AI proposal generator in your voice, using your 3 existing documents</li>
+            <li><strong style="color:var(--gold-soft); font-weight:700;">Natural-language chat editor</strong> - edit anything in plain English</li>
+            <li>Cinematic website output per client + one-click PDF export</li>
+            <li>60 drafts/month, 21-day hypercare, GST/SAC/HSN-tagged rate library</li>
+            <li>4 weeks to live, Hindi/Marathi training videos, 100% creditable to Command Centre (90 days)</li>
           </ul>
+          <a href="team-guide/" style="display:inline-flex;align-items:center;gap:6px;margin-top:18px;padding:10px 14px;background:rgba(255,215,0,0.14);color:var(--gold-soft);border:1px solid rgba(255,215,0,0.3);border-radius:8px;font-size:12.5px;font-weight:700;">See the 5 UI screens in the team guide &rarr;</a>
         </div>
 
         <div class="price-card">
@@ -1082,7 +1091,7 @@
                 <tr><td><strong>Payment schedule total</strong></td><td class="amt"><strong>&#8377;1,50,000</strong></td></tr>
               </tbody>
             </table>
-            <p style="margin-top:12px;font-size:13.5px;"><strong>Monthly &#8377;5,000</strong> covers AI API usage up to 40 proposal drafts, hosting, L2 support up to 2 hours. Billed in advance on the 1st, 7-day payment terms, starts one month after go-live. + GST.</p>
+            <p style="margin-top:12px;font-size:13.5px;"><strong>Monthly &#8377;5,000</strong> covers AI API usage up to <strong>60 proposal drafts</strong>, hosting, L2 support up to 2 hours. Billed in advance on the 1st, 7-day payment terms, starts one month after go-live. + GST.</p>
 
             <p style="font-size:15px;font-weight:700;color:var(--text);margin-top:28px;">Option B - Studio Command Centre</p>
             <p style="font-size:13.5px;color:var(--text-soft);margin-bottom:10px;">10 to 12 weeks to live. &#8377;5,50,000 setup + &#8377;15,000 / month.</p>
@@ -1169,6 +1178,8 @@
             <ol style="padding-left:22px;">
               <li style="margin-bottom:14px;"><strong>Which one do I pick - Pilot, Proposal Engine, or Command Centre?</strong><br>If you want to see a real project in the system before committing, start with the <strong>&#8377;60,000 Pilot</strong> (3 weeks). If you want to solve the proposal pain immediately without changing the rest of your operations, start with the <strong>&#8377;1,50,000 Proposal Engine</strong> (4 weeks). If you already know you want the full ops layer, start with the <strong>&#8377;5,50,000 Command Centre</strong> (10 to 12 weeks). Pilot credits against either of the other two. Proposal Engine credits toward Command Centre for 90 days.</li>
               <li style="margin-bottom:14px;"><strong>Does the AI draft in my actual voice?</strong><br>Yes. During the template audit we ingest at least 5 of your past approved proposals. The AI is instructed to match your tone, your section order, your phrasing conventions. You review every draft and can edit freely before sign-off. Confidence score shown on every AI line; anything more than 10% off your historical pattern is flagged visually.</li>
+              <li style="margin-bottom:14px;"><strong>What if I want to change something in the draft - do I have to learn some tool?</strong><br>No. You chat with the draft in plain English. Type <em>"change Kitchen to 8L and add a note about Italian marble, also make the timeline 5 months"</em> and the AI updates the proposal with a visible diff. Every change is logged, roll back any edit. Nothing to click through, nothing to memorise.</li>
+              <li style="margin-bottom:14px;"><strong>Can I give instructions in Marathi or Hindi?</strong><br>Yes. The chat editor understands all three - Marathi, Hindi, English - and mixed. <em>"Master bedroom cha budget 20% kami kar"</em> works exactly the same as <em>"Cut the master bedroom budget by 20%"</em>. The AI responds in whatever language you typed in.</li>
               <li style="margin-bottom:14px;"><strong>Does the AI send proposals to my clients without my approval?</strong><br>No. There is no auto-send, in any SKU. Every proposal requires your explicit sign-off before it reaches a client. The AI drafts, you review, you send.</li>
               <li style="margin-bottom:14px;"><strong>Is my team going to have to learn new software?</strong><br>In the Proposal Engine, the only user is you. In the Command Centre, the team-facing surface is WhatsApp, which they already use. The new screens are only seen by the 2 managers and yourself.</li>
               <li style="margin-bottom:14px;"><strong>What if we sign Command Centre, start, and the team refuses to use it in month three?</strong><br>Week-6 adoption checkpoint is written into the SOW. If fewer than 40% of your new projects are in the system by week 6, we pause the remaining build and refund 30% of the unused Phase C fees, and offer to pivot to the Proposal Engine at &#8377;1,50,000. Contractual, not a polite promise.</li>
