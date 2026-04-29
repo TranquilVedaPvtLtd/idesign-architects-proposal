@@ -1,495 +1,518 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="robots" content="noindex, nofollow">
-  <title>Scope of Work - iDesign Architects - JAR-IDA-001</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --ink: #0A1628;
-      --soft: #475569;
-      --mute: #94A3B8;
-      --border: #D4D9E0;
-      --bg: #FFFFFF;
-      --bg-alt: #F7F9FC;
-      --accent: #00A859;
-      --red: #FF1744;
-      --gold: #B8860B;
-    }
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body {
-      font-family: 'Inter', Georgia, serif;
-      color: var(--ink);
-      background: var(--bg-alt);
-      line-height: 1.65;
-      font-size: 15px;
-      padding: 32px 16px;
-    }
-    .doc {
-      max-width: 840px; margin: 0 auto;
-      background: var(--bg); padding: 72px 72px 96px;
-      box-shadow: 0 20px 60px rgba(10,22,40,0.08);
-      border-radius: 4px;
-    }
-    .header {
-      border-bottom: 2px solid var(--ink);
-      padding-bottom: 24px; margin-bottom: 40px;
-      display: flex; justify-content: space-between; align-items: flex-start; gap: 40px;
-    }
-    .header h1 {
-      font-size: 22px; font-weight: 800; letter-spacing: -0.01em;
-      margin-bottom: 6px;
-    }
-    .header .sub { font-size: 13px; color: var(--soft); line-height: 1.5; }
-    .header .meta { text-align: right; font-size: 12px; color: var(--soft); line-height: 1.7; }
-    .header .meta strong { display: block; color: var(--ink); font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; }
-    .title-block {
-      text-align: center; margin: 40px 0 48px;
-      padding: 24px; background: var(--bg-alt); border: 1px solid var(--border);
-    }
-    .title-block h2 { font-size: 24px; font-weight: 800; letter-spacing: -0.01em; margin-bottom: 8px; }
-    .title-block p { font-size: 14px; color: var(--soft); }
-    .parties {
-      display: grid; grid-template-columns: 1fr 1fr; gap: 32px;
-      margin-bottom: 40px;
-      padding: 24px; border: 1px solid var(--border);
-    }
-    .party h3 {
-      font-size: 11px; text-transform: uppercase; letter-spacing: 0.14em;
-      color: var(--soft); font-weight: 700; margin-bottom: 10px;
-    }
-    .party p { font-size: 14px; color: var(--ink); line-height: 1.7; }
-    .party strong { font-weight: 700; }
-    h2.section {
-      font-size: 15px; text-transform: uppercase; letter-spacing: 0.16em;
-      font-weight: 800; color: var(--ink);
-      margin: 44px 0 16px; padding-bottom: 8px;
-      border-bottom: 1px solid var(--ink);
-    }
-    h3.clause {
-      font-size: 15px; font-weight: 700; color: var(--ink);
-      margin: 26px 0 10px;
-    }
-    p { margin-bottom: 12px; color: var(--ink); }
-    ul, ol { margin: 10px 0 16px 24px; }
-    li { margin-bottom: 8px; color: var(--ink); }
-    table {
-      width: 100%; border-collapse: collapse;
-      margin: 16px 0 20px; font-size: 14px;
-    }
-    th, td {
-      border: 1px solid var(--border);
-      padding: 10px 14px; text-align: left; vertical-align: top;
-    }
-    th { background: var(--bg-alt); font-weight: 700; font-size: 12px; text-transform: uppercase; letter-spacing: 0.08em; }
-    td.amt { text-align: right; font-variant-numeric: tabular-nums; font-weight: 600; white-space: nowrap; }
-    .callout {
-      margin: 20px 0; padding: 18px 22px;
-      background: var(--bg-alt);
-      border-left: 3px solid var(--accent);
-      font-size: 14px; color: var(--ink);
-    }
-    .callout strong { font-weight: 700; }
-    .warn {
-      background: #FFF4F5; border-left-color: var(--red); color: var(--ink);
-    }
-    .signature-block {
-      margin-top: 80px; padding-top: 40px;
-      border-top: 2px solid var(--ink);
-    }
-    .sig-grid {
-      display: grid; grid-template-columns: 1fr 1fr;
-      gap: 48px; margin-top: 40px;
-    }
-    .sig-col { font-size: 13px; color: var(--soft); }
-    .sig-col h4 { font-size: 11px; text-transform: uppercase; letter-spacing: 0.12em; color: var(--soft); font-weight: 700; margin-bottom: 18px; }
-    .sig-line {
-      height: 48px; border-bottom: 1px solid var(--ink);
-      margin-bottom: 10px;
-    }
-    .sig-col .detail { margin: 4px 0; font-size: 13px; color: var(--ink); }
-    .sig-col .detail strong { font-weight: 700; }
-    .footer-sow {
-      margin-top: 60px; padding-top: 20px;
-      border-top: 1px solid var(--border);
-      font-size: 11px; color: var(--mute); text-align: center;
-    }
-    .back-link {
-      display: inline-block; margin-bottom: 20px;
-      font-size: 13px; color: var(--accent); font-weight: 600;
-      text-decoration: none;
-    }
-    .back-link::before { content: "&larr; "; }
-    @media (max-width: 700px) {
-      .doc { padding: 40px 24px 64px; }
-      .header { flex-direction: column; gap: 16px; }
-      .header .meta { text-align: left; }
-      .parties, .sig-grid { grid-template-columns: 1fr; gap: 24px; }
-    }
-    @media print {
-      body { background: #fff; padding: 0; font-size: 11pt; }
-      .doc { box-shadow: none; padding: 24px; }
-      .back-link { display: none; }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Statement of Work - Proposal Engine for iDesign Architects | Jarvis Daily</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Inter', system-ui, sans-serif; color: #1A2535; background: #fff; line-height: 1.7; -webkit-font-smoothing: antialiased; }
+
+  .page { max-width: 900px; margin: 0 auto; padding: 40px; }
+
+  /* Header */
+  .header { background: linear-gradient(135deg, #C49A2A 0%, #A07D1C 100%); color: #fff; padding: 36px 40px; display: flex; justify-content: space-between; align-items: start; border-radius: 8px 8px 0 0; }
+  .header h1 { font-size: 26px; font-weight: 800; letter-spacing: -0.5px; }
+  .header .tagline { font-size: 13px; opacity: 0.9; margin-top: 2px; }
+  .header .doc-type { text-align: right; }
+  .header .doc-type h2 { font-size: 14px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; }
+  .header .doc-type p { font-size: 12px; opacity: 0.9; margin-top: 3px; }
+
+  /* Section styling */
+  .section { margin: 2.5rem 0; }
+  .section-num { font-size: 11px; font-weight: 700; color: #C49A2A; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 6px; }
+  .section h2 { font-size: 20px; font-weight: 800; margin-bottom: 12px; color: #1A2535; }
+  .section h3 { font-size: 16px; font-weight: 700; margin: 1.5rem 0 0.75rem; color: #1A2535; }
+  .section p, .section li { font-size: 14px; color: #4A5568; }
+  .section ul, .section ol { padding-left: 1.5rem; margin: 0.5rem 0; }
+  .section li { margin-bottom: 4px; }
+
+  /* Tables */
+  table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 13px; }
+  thead { background: #FBF7EE; }
+  th { text-align: left; padding: 10px 12px; font-size: 11px; text-transform: uppercase; letter-spacing: 0.5px; color: #666; font-weight: 700; border-bottom: 2px solid #E8DCC4; }
+  td { padding: 10px 12px; border-bottom: 1px solid #f0f0f0; color: #4A5568; vertical-align: top; }
+  tbody tr:hover { background: #FDFAF3; }
+  .priority-high { color: #C49A2A; font-weight: 600; }
+  .priority-medium { color: #666; font-weight: 500; }
+  .priority-low { color: #999; font-weight: 400; }
+
+  /* Milestone cards */
+  .milestone { background: #FDFAF3; border: 1px solid #E8DCC4; border-radius: 8px; padding: 1.5rem; margin: 1.5rem 0; }
+  .milestone-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; }
+  .milestone-title { font-size: 16px; font-weight: 700; color: #1A2535; }
+  .milestone-tag { background: #C49A2A; color: #fff; font-size: 11px; font-weight: 700; padding: 4px 12px; border-radius: 4px; }
+  .milestone-meta { display: flex; gap: 2rem; font-size: 12px; color: #666; margin-bottom: 1rem; padding-bottom: 0.75rem; border-bottom: 1px solid #E8DCC4; }
+  .milestone-meta strong { color: #C49A2A; }
+  .deliverables { list-style: none; padding: 0; }
+  .deliverables li { padding: 4px 0 4px 1.2rem; position: relative; font-size: 13px; color: #4A5568; }
+  .deliverables li::before { content: ''; position: absolute; left: 0; top: 12px; width: 6px; height: 6px; background: #C49A2A; border-radius: 50%; }
+  .acceptance { background: #fff; border: 1px solid #E8DCC4; border-radius: 6px; padding: 1rem; margin-top: 1rem; }
+  .acceptance-label { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: #999; margin-bottom: 8px; }
+  .acceptance li { font-size: 12px; color: #4A5568; padding: 3px 0; }
+  .user-stories-covered { font-size: 11px; color: #999; margin-top: 0.75rem; font-style: italic; }
+
+  /* Payment schedule */
+  .payment-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin: 1.5rem 0; }
+  .payment-card { background: #FDFAF3; border: 1px solid #E8DCC4; border-radius: 8px; padding: 1.25rem; text-align: center; }
+  .payment-card.active { border-color: #C49A2A; background: #FFF8E1; }
+  .payment-pct { font-size: 12px; font-weight: 700; color: #C49A2A; margin-bottom: 4px; }
+  .payment-amt { font-size: 20px; font-weight: 800; color: #1A2535; }
+  .payment-gst { font-size: 11px; color: #999; margin-top: 2px; }
+  .payment-when { font-size: 11px; color: #666; margin-top: 8px; line-height: 1.5; }
+
+  /* Timeline */
+  .timeline-bar { display: flex; gap: 4px; margin: 1rem 0; height: 32px; border-radius: 6px; overflow: hidden; }
+  .timeline-segment { display: flex; align-items: center; justify-content: center; font-size: 10px; font-weight: 700; color: #fff; letter-spacing: 0.5px; }
+  .seg-1 { background: #C49A2A; flex: 1; }
+  .seg-2 { background: #A07D1C; flex: 2; }
+  .seg-3 { background: #7D5F15; flex: 1; }
+  .seg-4 { background: #5A440F; flex: 3; }
+
+  /* Note cards */
+  .note-card { background: #F8FAFC; border-left: 3px solid #C49A2A; border-radius: 0 6px 6px 0; padding: 1rem 1.25rem; margin: 1rem 0; }
+  .note-card strong { font-size: 13px; color: #1A2535; }
+  .note-card p { font-size: 13px; color: #4A5568; margin-top: 4px; }
+
+  /* Signatories */
+  .sig-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin: 1.5rem 0; }
+  .sig-block { border: 1px solid #E8DCC4; border-radius: 8px; padding: 1.5rem; }
+  .sig-label { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: #999; margin-bottom: 8px; }
+  .sig-name { font-size: 16px; font-weight: 700; color: #C49A2A; margin-bottom: 4px; }
+  .sig-detail { font-size: 12px; color: #666; line-height: 1.8; }
+  .sig-line { border-top: 1px solid #ccc; margin-top: 2rem; padding-top: 6px; font-size: 11px; color: #999; }
+
+  /* Footer */
+  .footer { text-align: center; padding: 2rem 0; font-size: 11px; color: #999; border-top: 1px solid #eee; margin-top: 2rem; }
+
+  /* Print */
+  @media print { body { padding: 0; } .page { padding: 20px; } .header { border-radius: 0; } }
+  @media (max-width: 600px) { .payment-grid { grid-template-columns: 1fr; } .sig-grid { grid-template-columns: 1fr; } .header { flex-direction: column; gap: 1rem; } .milestone-meta { flex-direction: column; gap: 0.5rem; } }
+</style>
 </head>
 <body>
-  <div class="doc">
+<div class="page">
 
-    <a class="back-link" href="index.html">Back to proposal</a>
+  <div class="header">
+    <div>
+      <h1>Jarvis Daily</h1>
+      <div class="tagline">Tranquil Veda Private Limited</div>
+    </div>
+    <div class="doc-type">
+      <h2>Statement of Work</h2>
+      <p>Proposal Engine for iDesign Architects</p>
+      <p>SOW-IDA-001 Rev. 3 | 29 April 2026</p>
+    </div>
+  </div>
 
-    <div class="header">
-      <div>
-        <h1>Scope of Work</h1>
-        <div class="sub">Studio Command Centre build and operations. Binding upon signature by both parties.</div>
+  <!-- 1. PROJECT OVERVIEW -->
+  <div class="section">
+    <div class="section-num">Section 1</div>
+    <h2>Project Overview</h2>
+    <p>Jarvis Daily will deploy a private, production-ready instance of the Proposal Engine for iDesign Architects (Pune), configured around iDesign's own templates, rate library, project schema and brand. Through this engagement iDesign will:</p>
+    <ul>
+      <li>Generate AI-drafted client proposals in iDesign's firm voice, typically within 90 seconds</li>
+      <li>Edit any drafted proposal in natural language (English, Marathi or Hindi), with visible diff and per-edit rollback</li>
+      <li>Send approved proposals as cinematic websites on iDesign's subdomain, with one-click PDF export and WhatsApp-on-approval</li>
+      <li>Retain full ownership and export rights over every proposal, client record, rate revision and piece of business data</li>
+      <li>Maintain an immutable audit trail of every proposal version, edit and send action, retained for 8 years (MCA Rule 3 compliance)</li>
+    </ul>
+    <p style="margin-top:0.75rem;">The system is hosted on managed infrastructure procured and maintained by Jarvis Daily. Build duration is <strong>4 calendar weeks from kickoff</strong>, followed by <strong>21 calendar days of hypercare</strong> with daily check-ins, then a 12-month retainer.</p>
+  </div>
+
+  <!-- 2. USER STORIES -->
+  <div class="section">
+    <div class="section-num">Section 2</div>
+    <h2>User Stories</h2>
+
+    <h3>Module 1: AI Proposal Drafting</h3>
+    <table>
+      <thead><tr><th>ID</th><th>User Story</th><th>Priority</th></tr></thead>
+      <tbody>
+        <tr><td>US-01</td><td>As the <strong>Principal Architect</strong>, I can request a new proposal for a client by selecting a project type and entering a brief, and receive a full first draft within 90 seconds in iDesign Architects' firm voice.</td><td class="priority-high">High</td></tr>
+        <tr><td>US-02</td><td>As the <strong>Principal Architect</strong>, the AI's draft uses iDesign Architects' rate library with current GST/SAC/HSN tagging applied to every line item.</td><td class="priority-high">High</td></tr>
+        <tr><td>US-03</td><td>As a <strong>proposal-checker</strong>, I see a confidence score on every line item, with deviations beyond 10% from iDesign Architects' historical patterns visually flagged for my review.</td><td class="priority-high">High</td></tr>
+        <tr><td>US-04</td><td>As the <strong>Principal Architect</strong>, the proposal is generated as a single integrated output combining Profile, Scope of Work, and Estimated Cost, not three separate documents.</td><td class="priority-high">High</td></tr>
+        <tr><td>US-05</td><td>As an <strong>admin</strong>, I can update the firm's profile content, rate library, or sample proposals, and the AI reflects those changes in all subsequent drafts.</td><td class="priority-medium">Medium</td></tr>
+      </tbody>
+    </table>
+
+    <h3>Module 2: Natural-Language Chat Editing</h3>
+    <table>
+      <thead><tr><th>ID</th><th>User Story</th><th>Priority</th></tr></thead>
+      <tbody>
+        <tr><td>US-06</td><td>As an <strong>authorised user</strong>, I can direct the AI in plain English, Marathi or Hindi to modify any drafted proposal (e.g., "change Kitchen budget to 8 lakhs and add a note about Italian Carrara marble") and the change is applied within seconds.</td><td class="priority-high">High</td></tr>
+        <tr><td>US-07</td><td>As an <strong>authorised user</strong>, every chat edit shows a visible diff so I can see exactly what changed before accepting.</td><td class="priority-high">High</td></tr>
+        <tr><td>US-08</td><td>As an <strong>authorised user</strong>, I can roll back any chat edit at any time before sending the proposal.</td><td class="priority-high">High</td></tr>
+        <tr><td>US-09</td><td>As an <strong>admin</strong>, every chat edit is logged to the immutable audit trail with author, timestamp, and before/after snapshots.</td><td class="priority-high">High</td></tr>
+      </tbody>
+    </table>
+
+    <h3>Module 3: Approval, Output and Send</h3>
+    <table>
+      <thead><tr><th>ID</th><th>User Story</th><th>Priority</th></tr></thead>
+      <tbody>
+        <tr><td>US-10</td><td>As the <strong>Principal Architect</strong>, no proposal can be sent to a client until I or another authorised approver explicitly signs off; the system enforces a hard human sign-off gate.</td><td class="priority-high">High</td></tr>
+        <tr><td>US-11</td><td>As a <strong>client recipient</strong>, I receive a shareable cinematic website at a unique URL on the iDesign Architects subdomain (e.g., <em>proposal.idesign-architects.com/&lt;client-slug&gt;</em>), with a one-click PDF export available.</td><td class="priority-high">High</td></tr>
+        <tr><td>US-12</td><td>As an <strong>authorised user</strong>, once a proposal is approved I can send it to the client via WhatsApp from within the Engine, with email as a fallback channel.</td><td class="priority-high">High</td></tr>
+      </tbody>
+    </table>
+
+    <h3>Module 4: Admin, Export and Audit</h3>
+    <table>
+      <thead><tr><th>ID</th><th>User Story</th><th>Priority</th></tr></thead>
+      <tbody>
+        <tr><td>US-13</td><td>As an <strong>admin</strong>, I can view, search and export every proposal, every revision, and every audit log entry at any time, in CSV or JSON format.</td><td class="priority-high">High</td></tr>
+        <tr><td>US-14</td><td>As an <strong>admin</strong>, an automated weekly export of all proposals, the rate library and the audit log is delivered to iDesign Architects' Google Drive.</td><td class="priority-high">High</td></tr>
+        <tr><td>US-15</td><td>As a <strong>compliance reviewer</strong>, the audit trail is immutable, append-only, and retained for 8 years to satisfy MCA Rule 3.</td><td class="priority-medium">Medium</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- 3. MILESTONES -->
+  <div class="section">
+    <div class="section-num">Section 3</div>
+    <h2>Deliverables by Milestone</h2>
+
+    <div class="milestone">
+      <div class="milestone-header">
+        <div class="milestone-title">Project Kickoff and Foundation</div>
+        <div class="milestone-tag">Week 1</div>
       </div>
-      <div class="meta">
-        <strong>Document ref.</strong>
-        SOW-IDA-001<br>
-        <strong style="margin-top:10px;">Date</strong>
-        19 April 2026<br>
-        <strong style="margin-top:10px;">Valid for signature until</strong>
-        03 May 2026
+      <div class="milestone-meta">
+        <div>Payment: <strong>&#8377;75,000 + GST (50%)</strong></div>
+        <div>Due: <strong>At project kickoff</strong></div>
+      </div>
+      <ul class="deliverables">
+        <li>Server provisioning, environment setup, and a private staging URL for the iDesign Architects instance</li>
+        <li>Ingestion of the three standard documents (Profile, Scope of Work, Estimated Cost)</li>
+        <li>Voice-matching against at least 5 historical approved proposals supplied by iDesign Architects</li>
+        <li>Rate library import with versioning enabled and GST/SAC/HSN tagging applied</li>
+        <li>Initial AI training on iDesign Architects' content and brand voice</li>
+        <li>Subdomain configuration for proposal URLs (e.g., proposal.idesign-architects.com)</li>
+      </ul>
+      <div class="acceptance">
+        <div class="acceptance-label">Acceptance Criteria</div>
+        <ul>
+          <li>Three standard documents ingested and confirmed in writing by iDesign Architects within 5 business days of sharing</li>
+          <li>Rate library imported with first sample line items reproduced within 5% variance of a historical example</li>
+          <li>Subdomain DNS resolved and serving a placeholder proposal page</li>
+          <li>Staging environment available to nominated UAT contact</li>
+        </ul>
+      </div>
+      <div class="user-stories-covered">User Stories: US-02 (foundation), US-05 (foundation)</div>
+    </div>
+
+    <div class="milestone">
+      <div class="milestone-header">
+        <div class="milestone-title">Core Build and UAT</div>
+        <div class="milestone-tag">Weeks 2-3</div>
+      </div>
+      <div class="milestone-meta">
+        <div>Payment: <strong>&#8377;60,000 + GST (40%)</strong></div>
+        <div>Due: <strong>After UAT and BAT sign-off</strong></div>
+      </div>
+      <ul class="deliverables">
+        <li>End-to-end AI proposal generator with confidence scoring on every line and 10% deviation flags</li>
+        <li>Natural-language chat editor in English, Marathi and Hindi, with visible diff view and per-edit rollback</li>
+        <li>Three-document collapse into single integrated proposal output, demonstrated on at least 2 sample projects</li>
+        <li>Website-first proposal renderer producing the cinematic output at the unique client URL, with one-click PDF export</li>
+        <li>Mandatory human sign-off gate enforced before any client-facing send</li>
+        <li>WhatsApp-on-approval send flow configured, with email fallback</li>
+        <li>Immutable audit trail capturing every proposal version, every chat edit, every send action</li>
+        <li>Weekly automated export to iDesign Architects' Google Drive (proposals, rate library, audit log)</li>
+        <li>Hindi, Marathi and English training videos for the principal user and 1-2 proposal-checkers</li>
+      </ul>
+      <div class="acceptance">
+        <div class="acceptance-label">Acceptance Criteria</div>
+        <ul>
+          <li>End-to-end UAT completed by iDesign Architects' team (2 rounds of feedback included per deliverable)</li>
+          <li>One full sample proposal generated, chat-edited, approved, and rendered at a real client URL with working PDF export</li>
+          <li>Audit trail spot-checked across 10 events for accuracy and immutability</li>
+          <li>Weekly export verified for at least one Google Drive delivery cycle</li>
+          <li>All training videos reviewed and approved by iDesign Architects' team</li>
+        </ul>
+      </div>
+      <div class="user-stories-covered">User Stories: US-01 to US-15 (all stories implemented)</div>
+    </div>
+
+    <div class="milestone">
+      <div class="milestone-header">
+        <div class="milestone-title">Go-Live and 21-Day Hypercare</div>
+        <div class="milestone-tag">Week 4 + 21 days</div>
+      </div>
+      <div class="milestone-meta">
+        <div>Payment: <strong>&#8377;15,000 + GST (10%)</strong></div>
+        <div>Due: <strong>After final handover post hypercare</strong></div>
+      </div>
+      <ul class="deliverables">
+        <li>Production deployment of the iDesign Architects Proposal Engine instance</li>
+        <li>First live proposal generated, approved, and sent to a real client</li>
+        <li>Admin credential handover for the Engine admin panel</li>
+        <li>Runbook PDF (operations, troubleshooting, role-based access guidance)</li>
+        <li>1-hour handover call with the principal user and proposal-checking team</li>
+        <li>21-day hypercare with daily remote check-ins (priority bug fixes, voice tuning, performance monitoring)</li>
+      </ul>
+      <div class="acceptance">
+        <div class="acceptance-label">Acceptance Criteria</div>
+        <ul>
+          <li>iDesign Architects' team confirms production performance is satisfactory</li>
+          <li>At least 5 real proposals generated, approved and sent through the Engine during hypercare</li>
+          <li>Admin team demonstrates independent operation (generate, edit via chat, approve, send, export)</li>
+          <li>Runbook reviewed and approved by iDesign Architects' team</li>
+          <li>All hypercare check-ins documented with action items closed out</li>
+        </ul>
+      </div>
+      <div class="user-stories-covered">User Stories: All stories verified in production environment</div>
+    </div>
+  </div>
+
+  <!-- 4. DATA REQUIREMENTS -->
+  <div class="section">
+    <div class="section-num">Section 4</div>
+    <h2>Data Requirements</h2>
+    <p>iDesign Architects must provide the following before project kickoff:</p>
+
+    <h3>Three Standard Documents</h3>
+    <ul>
+      <li><strong>Profile</strong> document - the firm's standard introduction / capability statement used in client proposals.</li>
+      <li><strong>Scope of Work</strong> template - the firm's standard scope structure for residential and commercial projects.</li>
+      <li><strong>Estimated Cost</strong> template - the firm's standard cost-breakdown structure including current room/area headings.</li>
+    </ul>
+
+    <h3>Voice-Matching Reference Set</h3>
+    <ul>
+      <li>At least <strong>5 historical approved proposals</strong> (PDF or document form) representative of the firm's voice and structure. Used solely for AI voice-matching.</li>
+    </ul>
+
+    <h3>Rate Library</h3>
+    <table>
+      <thead><tr><th>Column</th><th>Description</th><th>Required</th></tr></thead>
+      <tbody>
+        <tr><td>Item Code</td><td>Internal identifier or short tag</td><td>No</td></tr>
+        <tr><td>Description</td><td>Line item description</td><td>Yes</td></tr>
+        <tr><td>Unit</td><td>sq.ft. / nos. / lot / per piece</td><td>Yes</td></tr>
+        <tr><td>Rate (INR)</td><td>Standard rate</td><td>Yes</td></tr>
+        <tr><td>SAC / HSN</td><td>Tax classification code</td><td>Yes</td></tr>
+        <tr><td>Category</td><td>e.g., civil / electrical / joinery / finishes</td><td>Yes</td></tr>
+        <tr><td>Notes</td><td>Inclusions, exclusions, conditions</td><td>No</td></tr>
+      </tbody>
+    </table>
+
+    <h3>Accounts and Access</h3>
+    <ul>
+      <li>Authority to configure a subdomain on idesign-architects.com (e.g., proposal.idesign-architects.com) for proposal output URLs</li>
+      <li>WhatsApp Business number for proposal-send flow (existing or new), and Google Drive account for weekly exports</li>
+      <li>Single nominated point of contact and 1-2 designated proposal-checkers for UAT and hypercare</li>
+    </ul>
+  </div>
+
+  <!-- 5. INFRASTRUCTURE -->
+  <div class="section">
+    <div class="section-num">Section 5</div>
+    <h2>Infrastructure and Hosting</h2>
+    <table>
+      <thead><tr><th>Component</th><th>Managed By</th><th>Cost Bearer</th></tr></thead>
+      <tbody>
+        <tr><td>Application hosting (Proposal Engine instance)</td><td>Jarvis Daily</td><td>Included in &#8377;5,000/mo retainer</td></tr>
+        <tr><td>AI model API usage (up to 60 drafts / calendar month)</td><td>Jarvis Daily</td><td>Included in &#8377;5,000/mo retainer</td></tr>
+        <tr><td>Audit trail and weekly export storage</td><td>Jarvis Daily</td><td>Included in &#8377;5,000/mo retainer</td></tr>
+        <tr><td>L2 support up to 2 hours / calendar month</td><td>Jarvis Daily</td><td>Included in &#8377;5,000/mo retainer</td></tr>
+        <tr><td>Drafts beyond 60 / month</td><td>Jarvis Daily</td><td>iDesign Architects (&#8377;25 per additional draft)</td></tr>
+        <tr><td>Subdomain DNS (proposal.idesign-architects.com)</td><td>iDesign Architects</td><td>iDesign Architects (no incremental cost - existing domain)</td></tr>
+        <tr><td>WhatsApp Business send credits and email service</td><td>Provider direct</td><td>iDesign Architects at provider rates</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- 6. PAYMENT SCHEDULE -->
+  <div class="section">
+    <div class="section-num">Section 6</div>
+    <h2>Payment Schedule</h2>
+
+    <div class="payment-grid">
+      <div class="payment-card active">
+        <div class="payment-pct">First Payment (50%)</div>
+        <div class="payment-amt">&#8377;75,000</div>
+        <div class="payment-gst">+ GST = &#8377;88,500</div>
+        <div class="payment-when">At SOW signature<br>Work begins upon receipt</div>
+      </div>
+      <div class="payment-card">
+        <div class="payment-pct">Second Payment (40%)</div>
+        <div class="payment-amt">&#8377;60,000</div>
+        <div class="payment-gst">+ GST = &#8377;70,800</div>
+        <div class="payment-when">After UAT + BAT<br>iDesign team signs off</div>
+      </div>
+      <div class="payment-card">
+        <div class="payment-pct">Third Payment (10%)</div>
+        <div class="payment-amt">&#8377;15,000</div>
+        <div class="payment-gst">+ GST = &#8377;17,700</div>
+        <div class="payment-when">After final handover<br>post 21-day hypercare</div>
       </div>
     </div>
 
-    <div class="title-block">
-      <h2>Studio Command Centre - Design, Build and Operations</h2>
-      <p>Between Tranquil Veda Private Limited and iDesign Architects, Pune</p>
+    <table>
+      <thead><tr><th>Item</th><th>Amount</th><th>GST (18%)</th><th>Total</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Total Setup</strong></td><td>&#8377;1,50,000</td><td>&#8377;27,000</td><td><strong>&#8377;1,77,000</strong></td></tr>
+        <tr><td>Monthly Retainer (all-inclusive)</td><td>&#8377;5,000/mo</td><td>&#8377;900/mo</td><td>&#8377;5,900/mo</td></tr>
+      </tbody>
+    </table>
+    <p style="font-size:13px;color:#666;margin-top:0.75rem;">Each tranche is gated on the named deliverable being accepted in writing - no tranche is released on a schedule alone. The monthly retainer is invoiced on the 1st of each calendar month, in advance, commencing one month after final handover. Payment terms: 7 calendar days from invoice date. For intra-state supply (Maharashtra to Maharashtra) GST is charged as CGST 9% + SGST 9%; for inter-state supply, IGST 18%. iDesign Architects may deduct TDS at the applicable rate (2% under Section 194C or 10% under Section 194J of the Income-tax Act, 1961, as iDesign Architects' auditor determines) and shall issue Form 16A quarterly. Late invoices accrue interest at 1.5% per month, compounded monthly.</p>
+  </div>
+
+  <!-- 7. TIMELINE -->
+  <div class="section">
+    <div class="section-num">Section 7</div>
+    <h2>Timeline</h2>
+    <div class="timeline-bar">
+      <div class="timeline-segment seg-1">Wk 1: Foundation</div>
+      <div class="timeline-segment seg-2">Wk 2-3: Core Build + UAT</div>
+      <div class="timeline-segment seg-3">Wk 4: Go-Live</div>
+      <div class="timeline-segment seg-4">21 days: Hypercare</div>
+    </div>
+    <p style="font-size:13px;color:#666;margin-top:0.5rem;">Total project duration: 4 calendar weeks from kickoff to go-live, followed by 21 calendar days of hypercare with daily remote check-ins. The minimum engagement term is the build plus 12 calendar months of monthly retainer from final handover; thereafter the arrangement converts to month-to-month.</p>
+  </div>
+
+  <!-- 8. ASSUMPTIONS -->
+  <div class="section">
+    <div class="section-num">Section 8</div>
+    <h2>Assumptions and Dependencies</h2>
+    <ol>
+      <li>iDesign Architects provides the three standard documents, the rate library, and at least 5 historical approved proposals within 3 business days of kickoff.</li>
+      <li>iDesign Architects nominates a single point of contact (typically the Principal Architect) authorised to sign off on document ingestion, rate-library mapping, proposal drafts and acceptance of deliverables.</li>
+      <li>The nominated point of contact commits a minimum of <strong>1 hour per week</strong> for User Acceptance Testing during the 4-week build. This is a material commitment, reviewed at week 2; a shortfall after week 2 may trigger a pause under the kill clause and the adoption checkpoint in Section 10.</li>
+      <li>iDesign Architects confirms receipt of each deliverable within 7 business days of sharing. Silence beyond 7 business days constitutes deemed acceptance.</li>
+      <li>iDesign Architects authorises subdomain configuration on idesign-architects.com for proposal output URLs.</li>
+      <li>1-2 designated proposal-checkers are made available for training video review and remote hypercare check-ins during the 21-day hypercare window.</li>
+      <li>WhatsApp Business send credits and any email service costs are settled by iDesign Architects directly with the provider at provider rates.</li>
+    </ol>
+  </div>
+
+  <!-- 9. CHANGE REQUEST -->
+  <div class="section">
+    <div class="section-num">Section 9</div>
+    <h2>Change Request Process</h2>
+    <ul>
+      <li>Each deliverable in Section 3 includes <strong>up to 2 rounds of revision feedback</strong> at no additional cost.</li>
+      <li>Additional revisions, new features, or scope additions not listed in this SOW are treated as Change Requests, billed at <strong>&#8377;2,500 per engineering hour</strong>, exclusive of GST.</li>
+      <li>Change Requests must be submitted in writing (email or documented WhatsApp message). Jarvis Daily issues a written impact estimate within 3 business days; iDesign Architects approves the estimate in writing before any work begins.</li>
+      <li>No verbal Change Request shall be honoured under any circumstance.</li>
+    </ul>
+  </div>
+
+  <!-- 10. IMPORTANT NOTES -->
+  <div class="section">
+    <div class="section-num">Section 10</div>
+    <h2>Important Notes</h2>
+
+    <div class="note-card">
+      <strong>System Design</strong>
+      <p>The Proposal Engine is grounded on iDesign Architects' own data: the firm's three standard documents, the rate library, and the 5 historical approved proposals. Generic large language models will not produce comparable results because they lack this private, proprietary context. The monthly retainer covers all model API usage up to 60 drafts per calendar month; drafts beyond that are billed at &#8377;25 each.</p>
     </div>
 
-    <div class="parties">
-      <div class="party">
-        <h3>Service Provider</h3>
-        <p>
-          <strong>Tranquil Veda Private Limited</strong><br>
-          A company incorporated under the Companies Act, 2013<br>
-          Registered office: Pune, Maharashtra, India<br>
-          GSTIN: 27AAHCT6956C1Z3<br>
-          SAC Code: 998314 (IT consulting &amp; software services)<br>
-          Authorised signatory: Shruti, Principal Consultant<br>
-          Email: shruti@jarvisdaily.com<br>
-          Phone: +91 96737 58777
-        </p>
-      </div>
-      <div class="party">
-        <h3>Client</h3>
-        <p>
-          <strong>iDesign Architects</strong><br>
-          7-C, Ex-Servicemen Colony, Off Paud Road, Pune - 411 038<br>
-          Maharashtra, India<br>
-          GSTIN: [to be provided]<br>
-          Authorised signatory: Ar. Swati Vaidya, Principal Architect &amp; Founder<br>
+    <div class="note-card">
+      <strong>Adoption Checkpoint (Week 6 from go-live)</strong>
+      <p>A formal adoption review takes place six weeks after go-live. If fewer than 40% of iDesign Architects' new client proposals initiated after go-live have been generated through the Engine by this date, both parties shall convene in good faith within 7 business days to assess the adoption barriers (training gaps, workflow friction, data quality issues, role coverage) and to agree any necessary adjustments to onboarding cadence, training inputs, or scope. No automatic refund is triggered by the adoption checkpoint.</p>
+    </div>
+
+    <div class="note-card">
+      <strong>Upgrade Path to Studio Command Centre</strong>
+      <p>Should iDesign Architects subsequently elect to expand to the full Studio Command Centre engagement (a separate SOW) within 90 calendar days of final handover, the &#8377;1,50,000 Proposal Engine setup fee shall be credited 100% against the Studio Command Centre setup fee. The Studio Command Centre adds the BOQ engine, milestone payment tracker, cashflow rollup, contractor payment dashboard, mobile site-visit capture, and team WhatsApp surface.</p>
+    </div>
+
+    <div class="note-card">
+      <strong>Cancellation</strong>
+      <p>Either party may terminate this SOW with 30 calendar days written notice. Setup fees already invoiced are non-refundable. Monthly retainer is pro-rated for the termination month. On termination, iDesign Architects' data is exported, retrieved and deleted per the procedure in Section 11.4. Jarvis Daily may terminate for material breach, insolvency, non-payment beyond 30 days past invoice due date, or failure to fulfil the 1 hour per week UAT commitment beyond two consecutive review weeks.</p>
+    </div>
+
+    <div class="note-card">
+      <strong>Liability, Confidentiality and Governing Law</strong>
+      <p>Both parties shall treat as confidential any non-public information shared under this engagement, surviving termination for 3 years. Jarvis Daily's total aggregate liability under this SOW is capped at fees paid in the three calendar months immediately preceding the event giving rise to the claim. Neither party is liable for indirect or consequential damages, or for delays caused by force majeure events. This SOW is governed by Indian law; courts at Pune, Maharashtra have exclusive jurisdiction. Disputes will first be referred to good faith negotiation; if unresolved within 30 days, to sole-arbitrator arbitration at Pune under the Arbitration and Conciliation Act, 1996. Digital signatures are valid under the Information Technology Act, 2000.</p>
+    </div>
+  </div>
+
+  <!-- 11. DATA OWNERSHIP AND INTELLECTUAL PROPERTY -->
+  <div class="section">
+    <div class="section-num">Section 11</div>
+    <h2>Data Ownership and Intellectual Property</h2>
+
+    <div class="note-card">
+      <strong>11.1 Data Ownership</strong>
+      <p>iDesign Architects owns all data and materials processed through the Proposal Engine, including all proposals generated, the firm's rate library and rate revisions, BOQ inputs and outputs, project schemas, template content authored by iDesign, brand assets, pricing benchmarks, client lists, contact records, project details, and the audit trail of edits and approvals. Jarvis Daily processes this data solely to deliver the services under this SOW. iDesign retains full access and export rights at any time during the engagement and for 90 calendar days after termination.</p>
+    </div>
+
+    <div class="note-card">
+      <strong>11.2 Admin Access</strong>
+      <p>At go-live, Jarvis Daily hands over to iDesign's nominated team the credentials for the Proposal Engine admin panel, which provides role-based access to view, search, edit and export all of the data referred to in Section 11.1. Jarvis Daily's internal Platform infrastructure, including AI model API keys, source code repositories, build pipelines, hosting accounts and CI/CD systems, remains with Jarvis Daily as part of the Platform IP described in Section 11.5.</p>
+    </div>
+
+    <div class="note-card">
+      <strong>11.3 Purpose of Use</strong>
+      <p>iDesign's data is used for one purpose only: delivering the services under this SOW. It is not sold, not used to train general-purpose AI models, not shared with any other Jarvis Daily client, and not disclosed to outside parties. Data is routed through the third-party providers listed in Section 11.6 only as strictly required to operate the Proposal Engine.</p>
+      <p style="margin-top:0.5rem;">Jarvis Daily may collect and use de-identified, aggregated telemetry from Platform operations (for example, latency metrics, error rates, prompt-success rates, feature-usage patterns) to improve Platform reliability and performance. Such telemetry shall under no circumstances include, and shall not be construed to grant Jarvis Daily any right to use, disclose or commercialise: iDesign's rate library, rate cards or pricing benchmarks; iDesign's project schema, BOQ structure or template content; iDesign's client lists, project pipeline or business intelligence; or any content of iDesign's proposals, in original or derivative form.</p>
+    </div>
+
+    <div class="note-card">
+      <strong>11.4 Data Export and Deletion on Termination</strong>
+      <p>On termination of this SOW for any reason, iDesign shall receive a complete export of all data referred to in Section 11.1 in CSV or JSON format, delivered within 21 business days of the termination date, subject to all outstanding invoices being cleared. iDesign retains export and retrieval rights for 90 calendar days following the termination date.</p>
+      <p style="margin-top:0.5rem;">Jarvis Daily then deletes iDesign's data from active production systems. Encrypted rolling backups purge on their natural cycle (up to 60 calendar days). Data retained by third-party providers, or data Jarvis Daily is required to retain for statutory compliance, dispute resolution, or defence of legal claims, is excluded from this deletion. All data handling complies with the Digital Personal Data Protection Act, 2023; iDesign is the data fiduciary and Jarvis Daily operates as a data processor on documented instructions.</p>
+    </div>
+
+    <div class="note-card">
+      <strong>11.5 Intellectual Property</strong>
+      <p>The Jarvis Daily Proposal Engine Platform (including its source code, system prompts, AI instructions, prompt-engineering methodology, model orchestration logic, application programming interfaces, configuration framework, generic user-interface components, internal libraries and underlying infrastructure) is a pre-existing software product owned by Tranquil Veda Private Limited, developed independently of this engagement and intended for licensing to multiple clients and for direct commercial release.</p>
+      <p style="margin-top:0.5rem;">Under this SOW, iDesign is licensing a configured production tenant of the Platform for the duration of the engagement; nothing in this engagement transfers ownership of the Platform to iDesign or constitutes a work-for-hire arrangement under Section 17 of the Copyright Act, 1957. Any work product, configuration, prompt, or template structure created by Jarvis Daily in the course of building, extending or operating the Platform (whether or not in connection with this SOW) is and remains the sole property of Tranquil Veda Private Limited on a perpetual, worldwide, irrevocable, royalty-free, sub-licensable and transferable basis; the parties expressly disclaim any application of the presumptions in Sections 18 and 19 of the Indian Copyright Act, 1957 to the Platform.</p>
+      <p style="margin-top:0.5rem;">iDesign expressly authorises Tranquil Veda Private Limited to offer the Platform to third parties on a multi-tenant, single-tenant or any other basis, at any time during or after the term of this Agreement, without further consent from, notice to, or compensation to iDesign. iDesign grants Jarvis Daily a perpetual, worldwide, irrevocable, royalty-free licence to use any feedback, suggestions, bug reports, feature requests and improvement ideas provided by iDesign or its personnel to improve the Platform; this feedback licence excludes the materials enumerated in Sections 11.1 and 11.3.</p>
+      <p style="margin-top:0.5rem;">iDesign shall not, directly or through any third party, attempt to reverse-engineer, decompile, replicate, or build a substantially similar proposal-generation platform using its access to the Platform under this Agreement. After 90 calendar days of live usage and subject to iDesign's prior written consent, Jarvis Daily may name iDesign publicly as a case study; without written consent, iDesign remains anonymous in all Jarvis Daily marketing.</p>
+    </div>
+
+    <div class="note-card">
+      <strong>11.6 Third-Party Service Providers</strong>
+      <p>The service is delivered using reputable third-party providers, including an AI model provider for proposal generation, a cloud hosting provider, the Meta WhatsApp Business Cloud API for approved sends, and any email or storage integrations iDesign requests. Each operates under its own terms and retains records per its own policies and applicable law. Jarvis Daily selects responsible providers but does not warrant third-party conduct or uptime. Jarvis Daily's total liability for sub-processor incidents is capped at fees paid in the preceding three calendar months.</p>
+    </div>
+  </div>
+
+  <!-- 12. SIGNATORIES -->
+  <div class="section">
+    <div class="section-num">Section 12</div>
+    <h2>Signatories</h2>
+
+    <div class="sig-grid">
+      <div class="sig-block">
+        <div class="sig-label">Client</div>
+        <div class="sig-name">iDesign Architects</div>
+        <div class="sig-detail">
+          Authorised Signatory: Ar. Swati Vaidya, Principal Architect &amp; Founder<br>
+          Address: 7-C, Ex-Servicemen Colony, Off Paud Road, Pune 411038<br>
           Email: [to be provided]<br>
           Phone: [to be provided]<br>
-          Website: https://idesign-architects.com
-        </p>
+          GSTIN: [to be provided]
+        </div>
+        <div class="sig-line">Authorised Signatory</div>
+      </div>
+      <div class="sig-block">
+        <div class="sig-label">Vendor</div>
+        <div class="sig-name">Tranquil Veda Private Limited</div>
+        <div class="sig-detail">
+          Brand: Jarvis Daily<br>
+          Authorised Signatory: Shruti, Principal Consultant<br>
+          Email: shruti@jarvisdaily.com<br>
+          Phone: +91 96737 58777<br>
+          GSTIN: 27AAHCT6956C1Z3<br>
+          SAC Code: 998314 (IT consulting &amp; software services)
+        </div>
+        <div class="sig-line">Authorised Signatory</div>
       </div>
     </div>
-
-    <p>This Scope of Work ("SOW") sets out the terms under which Tranquil Veda Private Limited ("Service Provider") will design, build, deploy and support the Studio Command Centre ("the Platform") for iDesign Architects ("Client"). This SOW is to be read together with the accompanying proposal (ref. JAR-IDA-001, dated 19 April 2026).</p>
-
-    <h2 class="section">1. Scope and deliverables</h2>
-
-    <h3 class="clause">1.1 Engagement</h3>
-    <p>The engagement is a fixed-scope, phased build of the Studio Command Centre. The engagement period begins on the date of signature of this SOW and receipt of the first tranche of the setup fee, whichever is later. The estimated build duration is 10 to 12 calendar weeks, followed by 30 calendar days of hypercare.</p>
-
-    <h3 class="clause">1.2 Numbered deliverables and acceptance criteria</h3>
-    <table>
-      <thead><tr><th style="width:45%;">Deliverable</th><th>Acceptance criteria</th></tr></thead>
-      <tbody>
-        <tr><td>1. Schema mapping document</td><td>Document listing every Excel sheet, field and calculation rule, signed off by Client within 5 business days of sharing.</td></tr>
-        <tr><td>2. Rate library migration</td><td>Historical rate library imported, SAC and HSN codes applied; first sample BOQ reproduced within 5% variance of a historical example.</td></tr>
-        <tr><td>3. BOQ engine with versioning</td><td>Creation, revision and diff view operational for one complete project end-to-end.</td></tr>
-        <tr><td>4. AI proposal generator</td><td>Three-column output (AI draft, historical pattern, final) rendered, human sign-off gate enforced, no client-facing auto-send.</td></tr>
-        <tr><td>5. Milestone payment tracker</td><td>Inflows and outflows visible per project, mapped to Indian construction milestone schedule.</td></tr>
-        <tr><td>6. Cashflow rollup</td><td>Studio-wide and per-project cashflow view operational with at least 14 days of live data.</td></tr>
-        <tr><td>7. WhatsApp team surface</td><td>Verified WhatsApp Business Cloud API number in Client's name, designers and managers onboarded, 2pm/4pm standup replaced by written feed.</td></tr>
-        <tr><td>8. Mobile site-visit capture</td><td>Photo + voice note flow operational on Android and iOS browsers, tagged auto-transcription reaching the Command Centre within 2 minutes.</td></tr>
-        <tr><td>9. Contractor payment dashboard</td><td>WhatsApp-native confirmations sent and acknowledgement-logged for at least one contractor end-to-end.</td></tr>
-        <tr><td>10. GST-aware invoicing</td><td>At least 3 sample invoices generated with correct SAC 998391 / SAC 9954 / HSN 9403 combinations, validated by Client's chartered accountant.</td></tr>
-        <tr><td>11. Weekly Excel export</td><td>Automated weekly export of all data to Client's Google Drive, operational for at least 4 consecutive weeks.</td></tr>
-        <tr><td>12. Audit trail compliant with MCA Rule 3</td><td>Immutable append-only change log operational, with 8-year retention policy documented.</td></tr>
-        <tr><td>13. Training video library</td><td>Hindi, Marathi and English walkthrough videos for every screen, delivered on Client's Google Drive.</td></tr>
-        <tr><td>14. 2-day Pune onsite</td><td>Onsite hypercare conducted at Client's studio during first week after go-live.</td></tr>
-        <tr><td>15. Runbook PDF + 2-hour handover call</td><td>Runbook delivered, handover call completed with both studio managers and principal designer.</td></tr>
-      </tbody>
-    </table>
-
-    <h3 class="clause">1.3 Exclusions (out of scope)</h3>
-    <ul>
-      <li>3D rendering, moodboard generation, SketchUp, AutoCAD or any CAD/BIM file authoring.</li>
-      <li>HR, payroll or salary processing for Client or Client's team.</li>
-      <li>Client-facing website redesign or public web properties beyond the internal Command Centre.</li>
-      <li>Public website chatbot, available as a separate Phase D engagement, KPI-gated.</li>
-      <li>VLM (vision-language model) drawing-to-BOQ automated extraction, available as a separate Phase D engagement, KPI-gated.</li>
-      <li>Backfill of projects older than the last 20 completed projects as of signature date.</li>
-      <li>Content creation (photography, copywriting, brand collateral) beyond training videos.</li>
-      <li>Third-party software licence fees invoiced directly to Client (see section 3).</li>
-    </ul>
-
-    <h2 class="section">2. Engagement commitments from Client</h2>
-    <p>The Client undertakes:</p>
-    <ul>
-      <li>To nominate a single point of contact (typically the Principal Architect) authorised to sign off on schema mappings, BOQ logic, proposal drafts and acceptance of deliverables.</li>
-      <li>To commit a <strong>minimum of 2 hours per week</strong> of the nominated point of contact's time for User Acceptance Testing (UAT) during the full build period. This is a material commitment, reviewed at week 2.</li>
-      <li>To provide timely access to representative historical data (last 20 projects), current Excel workbooks, rate library, past BOQs and past client proposals.</li>
-      <li>To confirm receipt of each deliverable within <strong>7 business days</strong> of sharing. Silence beyond 7 business days constitutes deemed acceptance.</li>
-      <li>To allocate two managers and at least two designers for training during the Pune onsite.</li>
-    </ul>
-    <div class="callout warn">
-      <strong>Kill clause - UAT commitment.</strong> If the Client's nominated UAT contact is unable or unwilling to commit the minimum 2 hours per week after week 2 of the build, Service Provider reserves the right to pause the engagement and trigger the adoption-risk clause in section 6.2 below. This is a condition of the engagement, not a courtesy request.
-    </div>
-
-    <h2 class="section">3. Fees and commercials</h2>
-
-    <h3 class="clause">3.1 Setup fee</h3>
-    <table>
-      <thead><tr><th style="width:66%;">Component</th><th style="text-align:right;">Amount (INR)</th></tr></thead>
-      <tbody>
-        <tr><td>Discovery, schema audit and data migration (last 20 projects)</td><td class="amt">&#8377;1,20,000</td></tr>
-        <tr><td>Core Command Centre build (all line items in clause 1.2, items 3 to 12)</td><td class="amt">&#8377;2,80,000</td></tr>
-        <tr><td>Team rollout: Hindi/Marathi training videos + 2-day Pune onsite (items 13 and 14)</td><td class="amt">&#8377;80,000</td></tr>
-        <tr><td>30-day hypercare post go-live</td><td class="amt">&#8377;70,000</td></tr>
-        <tr><td><strong>Total setup fee</strong></td><td class="amt"><strong>&#8377;5,50,000</strong></td></tr>
-      </tbody>
-    </table>
-
-    <h3 class="clause">3.2 Monthly retainer</h3>
-    <p><strong>&#8377;15,000 per month</strong>, commencing one calendar month after go-live. The retainer covers:</p>
-    <ul>
-      <li>Hosting and infrastructure pass-through for Service Provider-managed components.</li>
-      <li>AI API usage up to 50 proposal drafts per calendar month.</li>
-      <li>L2 support up to 4 hours per calendar month (monitoring, incident response, routine fixes).</li>
-      <li>Ongoing feature upkeep (security patches, dependency updates, breaking-API handling).</li>
-    </ul>
-    <p>The retainer does not cover new feature development, scope additions or L3 engineering. Those are handled via change requests under section 4.</p>
-
-    <h3 class="clause">3.3 Alternative commercial: Command Centre Prepaid</h3>
-    <p>At Client's option, the setup fee and the first 12 months of retainer may be bundled into a single one-time payment of <strong>&#8377;6,50,000</strong> (inclusive of the 12-month retainer, exclusive of GST). Year 2 renewal is <strong>&#8377;1,80,000 per year</strong>, invoiced in advance at the end of the 12-month prepaid period, and framed as Compliance, Hosting &amp; Continuity (8-year MCA audit retention being the anchor value). Prepaid election must be made at the time of SOW signature.</p>
-
-    <h3 class="clause">3.4 Alternative engagement: Proposal Engine</h3>
-    <p>At Client's option, Client may elect the <strong>Proposal Engine</strong> engagement at <strong>&#8377;1,50,000</strong> setup + <strong>&#8377;5,000 per month</strong> (exclusive of GST), in lieu of the full Studio Command Centre. Scope includes:</p>
-    <ul>
-      <li><strong>Three-document integration.</strong> Ingestion of Client's three existing standard documents (Profile, Scope of Work, Estimated Cost) plus at least 5 historical approved proposals for voice-matching. These collapse into a single integrated proposal output per client, not three separate documents.</li>
-      <li><strong>AI proposal generator.</strong> Drafts in Client's firm voice and rate library, typically within 90 seconds. Confidence scoring on every line, with deviations beyond 10% from Client's historical patterns visually flagged. Mandatory human sign-off gate before any proposal is sent to a client.</li>
-      <li><strong>Natural-language chat editor.</strong> Client's authorised users may direct the AI to modify a drafted proposal in plain English, Marathi or Hindi (e.g., "change Kitchen budget to 8 lakhs and add a note about Italian Carrara marble"). The AI applies the change, displays a visible diff, and logs the edit to the audit trail. Client may roll back any chat edit.</li>
-      <li><strong>Website-first output.</strong> Every generated proposal is a shareable cinematic website at a unique URL on Client's subdomain (e.g., <em>proposal.idesign-architects.com/client-slug</em>), with one-click PDF export for offline / archival use.</li>
-      <li>Rate library with versioning and GST/SAC/HSN tagging.</li>
-      <li>WhatsApp-on-approval send flow to client, email fallback.</li>
-      <li>Weekly Excel export to Client's Google Drive (export-on-demand, not lock-in).</li>
-      <li>Hindi, Marathi and English training videos for the principal user and the 2-3 team proposal-checkers.</li>
-      <li><strong>21 days of hypercare</strong> post go-live with daily check-ins.</li>
-      <li>Immutable audit log of every proposal version, every chat edit, every send action, retained for 8 years (MCA Rule 3 compliance).</li>
-    </ul>
-    <p>Proposal Engine monthly covers AI API usage up to <strong>60 proposal drafts per calendar month</strong>, hosting, and L2 support up to 2 hours per calendar month. Target go-live is 4 calendar weeks from kickoff. Client commits a minimum of <strong>1 hour per week</strong> of the nominated user's time for UAT during the build.</p>
-    <p>If Client signs a Proposal Engine SOW and subsequently signs the Studio Command Centre or Command Centre Prepaid SOW within <strong>90 days</strong> of Proposal Engine go-live, the full &#8377;1,50,000 Proposal Engine setup fee shall be credited against the Command Centre setup fee.</p>
-
-    <h3 class="clause">3.4a Payment schedule - Proposal Engine (Option C)</h3>
-    <table>
-      <thead><tr><th>Trigger event</th><th style="text-align:right;">Amount (INR)</th></tr></thead>
-      <tbody>
-        <tr><td>On signature of this SOW (tranche 1, Kickstart, 50%)</td><td class="amt">&#8377;75,000</td></tr>
-        <tr><td>On UAT + BAT signoff by Client's team (tranche 2, 40%)</td><td class="amt">&#8377;60,000</td></tr>
-        <tr><td>On final handover post 21-day hypercare (tranche 3, 10%)</td><td class="amt">&#8377;15,000</td></tr>
-        <tr><td><strong>Total setup schedule (Proposal Engine)</strong></td><td class="amt"><strong>&#8377;1,50,000</strong></td></tr>
-      </tbody>
-    </table>
-    <p>Monthly retainer of &#8377;5,000 + GST is invoiced on the 1st of each calendar month, in advance, commencing one month after final handover. Payment terms: 7 calendar days from invoice date.</p>
-    <p>The 40% tranche ties directly to Client's team completing User Acceptance Testing and Business Acceptance Testing on the delivered build. No tranche is released on a schedule alone; each is gated on the named deliverable being accepted in writing.</p>
-
-    <h3 class="clause">3.4b Optional Studio Starter Pilot</h3>
-    <p>If Client elects the optional Studio Starter Pilot at <strong>&#8377;60,000</strong> (one-time, three weeks, scope as defined in the proposal), and subsequently signs the Proposal Engine, Studio Command Centre or Command Centre Prepaid SOW within <strong>60 days</strong> of Pilot completion, the full &#8377;60,000 pilot fee shall be credited against that setup fee. Pilot and subsequent engagement sign-up are governed by separate SOWs. Pilot payment schedule: &#8377;30,000 on signature and &#8377;30,000 on pilot completion.</p>
-
-    <h3 class="clause">3.5 Third-party subscriptions</h3>
-    <p>Third-party software subscriptions used within the Platform (including but not limited to Supabase, Airtable, Make.com, Retool/Softr, Meta WhatsApp Business Cloud API, Anthropic Claude API) may, at Client's election, be:</p>
-    <ul>
-      <li>Billed directly to Client's payment method (recommended, preserves Client ownership and control); or</li>
-      <li>Passed through by Service Provider at cost, with Client reimbursing monthly against invoiced usage.</li>
-    </ul>
-
-    <h3 class="clause">3.6 GST</h3>
-    <p>All fees above are exclusive of Goods and Services Tax. GST will be charged at applicable rates as notified from time to time by the Government of India. For intra-state supply (Maharashtra to Maharashtra), GST is charged as <strong>CGST at 9% + SGST at 9%</strong>. For inter-state supply, GST is charged as <strong>IGST at 18%</strong>.</p>
-
-    <h3 class="clause">3.7 TDS</h3>
-    <p>The Client may deduct Tax Deducted at Source ("TDS") at the applicable rate, being <strong>2% under Section 194C</strong> or <strong>10% under Section 194J</strong> of the Income-tax Act, 1961, as the Client's auditor determines. The Client shall issue a TDS certificate in Form 16A on a quarterly basis within the statutory timeline.</p>
-
-    <h3 class="clause">3.8 Payment schedule - Studio Command Centre (option A)</h3>
-    <table>
-      <thead><tr><th>Trigger event</th><th style="text-align:right;">Amount (INR)</th></tr></thead>
-      <tbody>
-        <tr><td>On signature of this SOW (tranche 1, 50%)</td><td class="amt">&#8377;2,75,000</td></tr>
-        <tr><td>On commencement of build (day 1 of Foundation phase, tranche 2, 25%)</td><td class="amt">&#8377;1,37,500</td></tr>
-        <tr><td>On go-live (start of hypercare, tranche 3, 25%)</td><td class="amt">&#8377;1,37,500</td></tr>
-        <tr><td><strong>Total setup schedule</strong></td><td class="amt"><strong>&#8377;5,50,000</strong></td></tr>
-      </tbody>
-    </table>
-    <p>Monthly retainer of &#8377;15,000 + GST is invoiced on the 1st of each calendar month, in advance, commencing one month after go-live. Payment terms: 7 calendar days from invoice date.</p>
-
-    <h3 class="clause">3.9 Payment schedule - Command Centre Prepaid (option B, if elected)</h3>
-    <table>
-      <thead><tr><th>Trigger event</th><th style="text-align:right;">Amount (INR)</th></tr></thead>
-      <tbody>
-        <tr><td>On signature of this SOW (tranche 1, 50%)</td><td class="amt">&#8377;3,25,000</td></tr>
-        <tr><td>On commencement of build (tranche 2, 50%)</td><td class="amt">&#8377;3,25,000</td></tr>
-        <tr><td><strong>Total prepaid schedule</strong></td><td class="amt"><strong>&#8377;6,50,000</strong></td></tr>
-      </tbody>
-    </table>
-    <p>No monthly retainer for the first 12 months from go-live. Year 2 renewal of &#8377;1,80,000 + GST is invoiced at the end of the 12-month prepaid period, payable in advance within 15 calendar days of invoice.</p>
-
-    <h3 class="clause">3.10 Late payment</h3>
-    <p>Invoices unpaid beyond the 7-day payment terms shall accrue interest at <strong>1.5% per month</strong>, compounded monthly, until settled. Service Provider reserves the right to pause all L2 support and any production monitoring beginning <strong>15 calendar days</strong> after invoice due date, until outstanding amounts are settled in full.</p>
-
-    <h2 class="section">4. Change requests</h2>
-    <p>Any addition, modification or deletion to the scope defined in section 1.2 shall be treated as a Change Request ("CR"). The CR process is as follows:</p>
-    <ol>
-      <li>Client submits a written CR (email or documented WhatsApp message) describing the requested change.</li>
-      <li>Service Provider issues a written impact estimate within 3 business days, detailing scope, schedule impact, and cost.</li>
-      <li>Client approves the estimate in writing before any work begins.</li>
-      <li>Change is executed and billed in the next invoice cycle.</li>
-    </ol>
-    <p><strong>Change requests are billed at &#8377;2,500 per engineering hour, exclusive of GST.</strong> No verbal CR shall be honoured under any circumstance.</p>
-
-    <h3 class="clause">4.1 Revision limits on deliverables</h3>
-    <p>Each deliverable in section 1.2 is subject to a cap of <strong>two (2) rounds of revisions</strong> based on Client feedback within the fixed scope. Revisions beyond the second round are treated as Change Requests and billed at &#8377;2,500 per hour.</p>
-
-    <h3 class="clause">4.2 Deemed acceptance</h3>
-    <p>Where Client does not provide written feedback, approval or rejection on a deliverable within <strong>7 business days</strong> of sharing, the deliverable shall be deemed accepted.</p>
-
-    <h2 class="section">5. Intellectual property</h2>
-
-    <h3 class="clause">5.1 Ownership of work product</h3>
-    <p>All source code, configuration, database schema, training videos, runbook PDF and documentation produced specifically for Client under this SOW ("Work Product") shall, upon full payment of all fees due, be the property of the Client, on a work-for-hire basis.</p>
-
-    <h3 class="clause">5.2 Retained rights of Service Provider</h3>
-    <p>Service Provider retains the right to use, modify and redistribute:</p>
-    <ul>
-      <li>Generic, non-Client-specific components, utilities, libraries, prompt templates and workflow patterns that pre-exist this engagement or are developed by Service Provider for general use.</li>
-      <li>After <strong>90 calendar days</strong> of live Client usage, and subject to Client's prior written consent, the right to name iDesign Architects publicly as a case study. Without written consent, Client remains anonymous in all Service Provider marketing.</li>
-    </ul>
-
-    <h3 class="clause">5.3 Third-party IP</h3>
-    <p>Third-party software, APIs and libraries used in the Platform remain governed by their respective licences. No IP of any third party is transferred to Client under this SOW.</p>
-
-    <h2 class="section">6. Term, termination and adoption</h2>
-
-    <h3 class="clause">6.1 Term</h3>
-    <p>This SOW commences on the date of signature and remains in force for a minimum period covering the build + 12 months of retainer (Option A) or the 12-month prepaid period (Option B). Thereafter, the arrangement converts to month-to-month on the monthly retainer (Option A) or renews annually (Option B).</p>
-
-    <h3 class="clause">6.2 Adoption checkpoint (week 6)</h3>
-    <p>A formal adoption review takes place at the end of <strong>week 6</strong> of the build. If fewer than <strong>40% of Client's new projects initiated after build kickoff</strong> have been entered into the Command Centre by this date:</p>
-    <ul>
-      <li>Service Provider will pause the Team Workflow phase.</li>
-      <li>Service Provider will refund <strong>30% of the Team Workflow phase fees</strong> against the then-unearned balance.</li>
-      <li>The parties will in good faith renegotiate to a thinner, AI-proposal-only SKU at a revised fee of &#8377;1,50,000 (flat), in lieu of the full Command Centre scope.</li>
-    </ul>
-
-    <h3 class="clause">6.3 Cancellation by Client</h3>
-    <p>Client may terminate this SOW with <strong>30 calendar days written notice</strong>. Upon termination:</p>
-    <ul>
-      <li>Setup fees already invoiced are non-refundable, except as provided under clause 6.2.</li>
-      <li>Monthly retainer is pro-rated for the termination month.</li>
-      <li>Service Provider shall deliver all Client Work Product (code, credentials, data exports) within 15 business days of the termination date.</li>
-    </ul>
-
-    <h3 class="clause">6.4 Cancellation by Service Provider</h3>
-    <p>Service Provider may terminate this SOW with 30 calendar days written notice in the event of: material breach by Client; Client insolvency; non-payment beyond 30 days past invoice due date; or Client's failure to fulfil the 2 hours per week UAT commitment (section 2) beyond two consecutive review weeks.</p>
-
-    <h2 class="section">7. Confidentiality</h2>
-    <p>Both parties shall treat as confidential any non-public information shared under this engagement, including client lists, project financials, rate libraries, design work, and the existence and terms of this SOW. A separate Mutual Non-Disclosure Agreement ("NDA") may be signed alongside this SOW and shall be read as incorporated herein by reference.</p>
-    <p>Confidentiality obligations survive termination of this SOW for a period of 3 years.</p>
-
-    <h2 class="section">8. Data protection</h2>
-    <p>Service Provider shall handle all Client data (including client contact information, project data, rate libraries and financial records) in accordance with the Digital Personal Data Protection Act, 2023 of India. Client is the data fiduciary and Service Provider operates as a data processor acting on documented instructions of Client.</p>
-
-    <h2 class="section">9. Representations, warranties and liability</h2>
-
-    <h3 class="clause">9.1 Warranties</h3>
-    <p>Service Provider warrants that:</p>
-    <ul>
-      <li>All Work Product will be delivered in a professional and workmanlike manner, meeting the acceptance criteria in clause 1.2.</li>
-      <li>Service Provider holds valid GST registration and all licences required to perform the Services.</li>
-      <li>To the best of Service Provider's knowledge, Work Product produced under this SOW does not infringe the intellectual property of any third party.</li>
-    </ul>
-
-    <h3 class="clause">9.2 Liability cap</h3>
-    <p>To the maximum extent permitted by applicable law, the total aggregate liability of Service Provider arising out of or in connection with this SOW shall not exceed <strong>the total fees paid by Client to Service Provider in the three (3) calendar months immediately preceding the event giving rise to the claim</strong>. Neither party shall be liable for indirect, incidental, special, consequential or punitive damages, including loss of profit or business opportunity.</p>
-
-    <h2 class="section">10. Force majeure</h2>
-    <p>Neither party shall be liable for any failure or delay in performance to the extent such failure or delay is caused by circumstances beyond reasonable control, including acts of God, war, terrorism, civil disturbance, pandemic, internet or power outages, action of regulatory authorities, or strikes. The affected party shall promptly notify the other and use reasonable efforts to resume performance.</p>
-
-    <h2 class="section">11. Governing law, jurisdiction and dispute resolution</h2>
-    <p>This SOW shall be governed by and construed in accordance with the laws of India. The courts at <strong>Pune, Maharashtra</strong> shall have exclusive jurisdiction over any dispute arising hereunder.</p>
-    <p>Any dispute, controversy or claim arising out of or in connection with this SOW shall first be attempted to be resolved by good faith negotiation between senior representatives of both parties. If the dispute is not resolved within 30 calendar days, the dispute shall be referred to arbitration by a sole arbitrator appointed by mutual consent, seated at <strong>Pune, Maharashtra</strong>, under the Arbitration and Conciliation Act, 1996. The language of arbitration shall be English.</p>
-
-    <h2 class="section">12. General</h2>
-    <ul>
-      <li><strong>Entire agreement.</strong> This SOW, together with the proposal (JAR-IDA-001) and any referenced NDA, constitutes the entire agreement between the parties on the subject matter and supersedes all prior discussions, whether oral or written.</li>
-      <li><strong>Amendments.</strong> No amendment to this SOW is valid unless made in writing and signed by duly authorised signatories of both parties.</li>
-      <li><strong>Assignment.</strong> Neither party may assign this SOW without the prior written consent of the other, except that Service Provider may assign to an affiliate or successor entity upon notice.</li>
-      <li><strong>Severability.</strong> If any provision of this SOW is held invalid or unenforceable, the remaining provisions shall remain in full force and effect.</li>
-      <li><strong>Notices.</strong> All formal notices under this SOW shall be in writing, sent by email to the authorised signatory of the other party, with acknowledgement requested.</li>
-      <li><strong>Counterparts and electronic signature.</strong> This SOW may be executed in counterparts, each of which shall be deemed an original, and all of which together shall constitute one instrument. Digital signatures (including via WhatsApp-shared PDFs or e-signature platforms) shall be valid under the Information Technology Act, 2000.</li>
-    </ul>
-
-    <h2 class="section">13. Commercial option election</h2>
-    <p>Client hereby elects <u>_______________</u> (initial one of the four):</p>
-    <ul style="list-style:none;padding-left:0;">
-      <li style="padding:4px 0;"><strong>Option A</strong> - Studio Command Centre (&#8377;5,50,000 setup + &#8377;15,000/month)</li>
-      <li style="padding:4px 0;"><strong>Option B</strong> - Command Centre Prepaid (&#8377;6,50,000 one-time, Year 1 bundled)</li>
-      <li style="padding:4px 0;"><strong>Option C</strong> - Proposal Engine (&#8377;1,50,000 setup + &#8377;5,000/month, 4-week build)</li>
-      <li style="padding:4px 0;"><strong>Option D</strong> - Studio Starter Pilot (&#8377;60,000, 3-week pilot, 100% creditable)</li>
-    </ul>
-
-    <div class="signature-block">
-      <h2 class="section" style="margin-top:0;">Signatures</h2>
-      <p>IN WITNESS WHEREOF, the parties have caused this SOW to be executed by their duly authorised representatives as of the date first written above.</p>
-
-      <div class="sig-grid">
-        <div class="sig-col">
-          <h4>For Tranquil Veda Private Limited</h4>
-          <div class="sig-line"></div>
-          <p class="detail"><strong>Name:</strong> Shruti</p>
-          <p class="detail"><strong>Title:</strong> Principal Consultant and Authorised Signatory</p>
-          <p class="detail"><strong>Date:</strong> _______________</p>
-          <p class="detail"><strong>Place:</strong> Pune, Maharashtra</p>
-        </div>
-        <div class="sig-col">
-          <h4>For iDesign Architects</h4>
-          <div class="sig-line"></div>
-          <p class="detail"><strong>Name:</strong> Ar. Swati Vaidya</p>
-          <p class="detail"><strong>Title:</strong> Principal Architect &amp; Founder</p>
-          <p class="detail"><strong>Date:</strong> _______________</p>
-          <p class="detail"><strong>Place:</strong> Pune, Maharashtra</p>
-        </div>
-      </div>
-
-      <div style="margin-top: 48px;">
-        <h4 style="font-size: 11px; text-transform: uppercase; letter-spacing: 0.12em; color: var(--soft); font-weight: 700; margin-bottom: 18px;">Witness</h4>
-        <div class="sig-grid">
-          <div class="sig-col">
-            <div class="sig-line"></div>
-            <p class="detail"><strong>Name:</strong> _______________</p>
-            <p class="detail"><strong>Address:</strong> _______________</p>
-          </div>
-          <div class="sig-col">
-            <div class="sig-line"></div>
-            <p class="detail"><strong>Name:</strong> _______________</p>
-            <p class="detail"><strong>Address:</strong> _______________</p>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="footer-sow">
-      SOW-IDA-001 | Prepared 19 April 2026 | Tranquil Veda Private Limited | GSTIN 27AAHCT6956C1Z3 | Pune, Maharashtra
-    </div>
-
   </div>
+
+  <div class="footer">
+    Prepared by Jarvis Daily (Tranquil Veda Pvt Ltd) | SOW-IDA-001 Rev. 3 | 29 April 2026 | Confidential
+  </div>
+
+</div>
 </body>
 </html>
