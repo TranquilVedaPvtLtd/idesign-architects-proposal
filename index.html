@@ -65,6 +65,9 @@
         document.querySelectorAll('a[href$="sow.html"]').forEach(function(el) {
           el.addEventListener('click', function() { posthog.capture('sow_clicked', { proposal: _title }); });
         });
+        document.querySelectorAll('a[href="team-guide/"], a[href$="/team-guide/"]').forEach(function(el) {
+          el.addEventListener('click', function() { posthog.capture('team_guide_clicked', { proposal: _title, location: el.closest('.top-nav') ? 'top_nav' : 'inline' }); });
+        });
         document.querySelectorAll('[data-stakeholder]').forEach(function(el) {
           el.addEventListener('click', function() {
             posthog.capture('stakeholder_anchor_clicked', { role: el.getAttribute('data-stakeholder'), proposal: _title });
@@ -787,9 +790,58 @@
       }
       .hero-strip .strip-pain { font-size: 13.5px; }
     }
+    /* ============== TOP NAV PILL (fixed, top-right) ============== */
+    .top-nav {
+      position: fixed;
+      top: 18px;
+      right: 18px;
+      z-index: 100;
+      display: flex;
+      gap: 6px;
+      padding: 5px;
+      background: rgba(0, 0, 0, 0.45);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-radius: 999px;
+      border: 1px solid rgba(255, 215, 0, 0.25);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.35);
+    }
+    .top-nav a {
+      color: #f4f4f4;
+      font-size: 12.5px;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      text-decoration: none;
+      padding: 8px 14px;
+      border-radius: 999px;
+      transition: background 0.18s, color 0.18s, filter 0.18s;
+      white-space: nowrap;
+    }
+    .top-nav a:hover {
+      background: rgba(255, 215, 0, 0.14);
+      color: var(--gold-soft);
+    }
+    .top-nav a.primary {
+      background: linear-gradient(135deg, var(--gold) 0%, var(--gold-soft) 100%);
+      color: #1a1a1a;
+    }
+    .top-nav a.primary:hover {
+      filter: brightness(1.08);
+      color: #1a1a1a;
+    }
+    @media (max-width: 600px) {
+      .top-nav { top: 12px; right: 12px; }
+      .top-nav a { padding: 7px 11px; font-size: 11.5px; }
+    }
   </style>
 </head>
 <body>
+
+  <!-- Top-right nav: persistent links to Team Guide (5-screen UI mockup) and SOW -->
+  <nav class="top-nav" aria-label="Document navigation">
+    <a href="team-guide/" class="primary">Team Guide</a>
+    <a href="sow.html">SOW</a>
+  </nav>
 
   <!-- ============== BLOCK 1 - HERO ============== -->
   <section class="hero" id="hero" data-section="hero">
