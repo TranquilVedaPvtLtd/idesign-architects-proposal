@@ -55,8 +55,8 @@
   .user-stories-covered { font-size: 11px; color: #999; margin-top: 0.75rem; font-style: italic; }
 
   /* Payment schedule */
-  .payment-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin: 1.5rem 0; }
-  .payment-card { background: #FDFAF3; border: 1px solid #E8DCC4; border-radius: 8px; padding: 1.25rem; text-align: center; }
+  .payment-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.75rem; margin: 1.5rem 0; }
+  .payment-card { background: #FDFAF3; border: 1px solid #E8DCC4; border-radius: 8px; padding: 1.1rem 0.9rem; text-align: center; }
   .payment-card.active { border-color: #C49A2A; background: #FFF8E1; }
   .payment-pct { font-size: 12px; font-weight: 700; color: #C49A2A; margin-bottom: 4px; }
   .payment-amt { font-size: 20px; font-weight: 800; color: #1A2535; }
@@ -103,7 +103,7 @@
     <div class="doc-type">
       <h2>Statement of Work</h2>
       <p>Proposal Engine for iDesign Architects</p>
-      <p>SOW-IDA-001 Rev. 3 | 29 April 2026</p>
+      <p>SOW-IDA-001 Rev. 4 | 08 May 2026</p>
     </div>
   </div>
 
@@ -182,8 +182,8 @@
         <div class="milestone-tag">Week 1</div>
       </div>
       <div class="milestone-meta">
-        <div>Payment: <strong>&#8377;75,000 + GST (50%)</strong></div>
-        <div>Due: <strong>At project kickoff</strong></div>
+        <div>Payment: <strong>&#8377;37,500 + GST at signature, &#8377;37,500 + GST within 10 days (50% total)</strong></div>
+        <div>Due: <strong>Split by mutual arrangement</strong></div>
       </div>
       <ul class="deliverables">
         <li>Server provisioning, environment setup, and a private staging URL for the iDesign Architects instance</li>
@@ -334,19 +334,25 @@
 
     <div class="payment-grid">
       <div class="payment-card active">
-        <div class="payment-pct">First Payment (50%)</div>
-        <div class="payment-amt">&#8377;75,000</div>
-        <div class="payment-gst">+ GST = &#8377;88,500</div>
+        <div class="payment-pct">First Payment (25%)</div>
+        <div class="payment-amt">&#8377;37,500</div>
+        <div class="payment-gst">+ GST = &#8377;44,250</div>
         <div class="payment-when">At SOW signature<br>Work begins upon receipt</div>
       </div>
+      <div class="payment-card active">
+        <div class="payment-pct">Second Payment (25%)</div>
+        <div class="payment-amt">&#8377;37,500</div>
+        <div class="payment-gst">+ GST = &#8377;44,250</div>
+        <div class="payment-when">Within 10 days of<br>SOW signature</div>
+      </div>
       <div class="payment-card">
-        <div class="payment-pct">Second Payment (40%)</div>
+        <div class="payment-pct">Third Payment (40%)</div>
         <div class="payment-amt">&#8377;60,000</div>
         <div class="payment-gst">+ GST = &#8377;70,800</div>
         <div class="payment-when">After UAT + BAT<br>iDesign team signs off</div>
       </div>
       <div class="payment-card">
-        <div class="payment-pct">Third Payment (10%)</div>
+        <div class="payment-pct">Final Payment (10%)</div>
         <div class="payment-amt">&#8377;15,000</div>
         <div class="payment-gst">+ GST = &#8377;17,700</div>
         <div class="payment-when">After final handover<br>post 21-day hypercare</div>
@@ -360,7 +366,7 @@
         <tr><td>Monthly Retainer (all-inclusive)</td><td>&#8377;5,000/mo</td><td>&#8377;900/mo</td><td>&#8377;5,900/mo</td></tr>
       </tbody>
     </table>
-    <p style="font-size:13px;color:#666;margin-top:0.75rem;">Each tranche is gated on the named deliverable being accepted in writing - no tranche is released on a schedule alone. The monthly retainer is invoiced on the 1st of each calendar month, in advance, commencing one month after final handover. Payment terms: 7 calendar days from invoice date. For intra-state supply (Maharashtra to Maharashtra) GST is charged as CGST 9% + SGST 9%; for inter-state supply, IGST 18%. iDesign Architects may deduct TDS at the applicable rate (2% under Section 194C or 10% under Section 194J of the Income-tax Act, 1961, as iDesign Architects' auditor determines) and shall issue Form 16A quarterly. Late invoices accrue interest at 1.5% per month, compounded monthly.</p>
+    <p style="font-size:13px;color:#666;margin-top:0.75rem;">The Foundation tranche (50%) is split into two equal payments by mutual arrangement: the first at SOW signature, the second within 10 calendar days of SOW signature. The Third (40%) and Final (10%) tranches are gated on the named deliverable being accepted in writing - no tranche is released on a schedule alone. The monthly retainer is invoiced on the 1st of each calendar month, in advance, commencing one month after final handover. Payment terms: 7 calendar days from invoice date. For intra-state supply (Maharashtra to Maharashtra) GST is charged as CGST 9% + SGST 9%; for inter-state supply, IGST 18%. iDesign Architects may deduct TDS at the applicable rate (2% under Section 194C or 10% under Section 194J of the Income-tax Act, 1961, as iDesign Architects' auditor determines) and shall issue Form 16A quarterly. Late invoices accrue interest at 1.5% per month, compounded monthly.</p>
   </div>
 
   <!-- 7. TIMELINE -->
