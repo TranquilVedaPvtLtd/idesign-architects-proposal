@@ -866,17 +866,40 @@
       var DESKTOP = 'assets/hero-desktop.mp4';
       var MOBILE  = 'assets/hero-mobile.mp4';
       var mq = window.matchMedia('(max-width: 768px)');
+      function attempt() {
+        if (!v.paused) return;
+        v.muted = true;
+        var p = v.play();
+        if (p && typeof p.catch === 'function') p.catch(function(){});
+      }
       function setSrc(src) {
         if (v.currentSrc && v.currentSrc.indexOf(src.split('/').pop()) !== -1) return;
         v.src = src;
         v.load();
-        var p = v.play();
-        if (p && typeof p.catch === 'function') p.catch(function(){});
+        attempt();
       }
       setSrc(mq.matches ? MOBILE : DESKTOP);
       var onChange = function(e) { setSrc(e.matches ? MOBILE : DESKTOP); };
       if (typeof mq.addEventListener === 'function') mq.addEventListener('change', onChange);
       else if (typeof mq.addListener === 'function') mq.addListener(onChange);
+
+      // Safari refuses autoplay while macOS Low Power Mode is on, and pauses
+      // media in background tabs. Retry once the media is ready, when the tab
+      // comes back, and on the viewer's first gesture (always permitted).
+      var readyEvents = ['loadeddata', 'canplay'];
+      for (var r = 0; r < readyEvents.length; r++) v.addEventListener(readyEvents[r], attempt);
+      document.addEventListener('visibilitychange', function() {
+        if (!document.hidden) attempt();
+      });
+      var gestures = ['pointerdown', 'touchstart', 'keydown', 'wheel', 'scroll'];
+      for (var g = 0; g < gestures.length; g++) {
+        document.addEventListener(gestures[g], attempt, { capture: true, passive: true });
+      }
+      v.addEventListener('playing', function() {
+        for (var d = 0; d < gestures.length; d++) {
+          document.removeEventListener(gestures[d], attempt, { capture: true });
+        }
+      });
     })();
   </script>
 
@@ -1541,7 +1564,7 @@
         Reference: JAR-IDA-001<br>
         Prepared: 6 June 2026<br>
         Business valid until: 20 June 2026<br>
-        Link expires: 6 July 2026
+        Link expires: 31 August 2026
       </div>
       <div>
         <strong>Legal instruments</strong>
@@ -1584,12 +1607,11 @@
       }
     })();
 
-    // 30-day auto-expiry
+    // Link auto-expiry (extended from 6 July 2026 on 25 July 2026)
     (function() {
-      var published = new Date('2026-06-06T00:00:00+05:30');
+      var expires = new Date('2026-08-31T23:59:59+05:30');
       var now = new Date();
-      var daysSince = (now - published) / (1000 * 60 * 60 * 24);
-      if (daysSince > 30) {
+      if (now > expires) {
         document.getElementById('expired').classList.add('visible');
         document.body.style.overflow = 'hidden';
       }
